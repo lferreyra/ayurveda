@@ -1,6 +1,12 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayurveda en tu Mesa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Nunito:wght@300;400;500;600&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --terracota:#8B3A2A;--terra-l:#F5EDE6;--terra-m:#D4947A;
@@ -10,13 +16,13 @@
   --gold:#C9A96E;--gold-l:#FAF3E7;
   --white:#FFFFFF;
 }
-.pg{font-family:'Nunito',sans-serif;color:var(--brown);max-width:680px;margin:0 auto;background:var(--cream)}
+body{font-family:'Nunito',sans-serif;color:var(--brown);max-width:680px;margin:0 auto;background:var(--cream)}
 
-/* ANN BAR */
+/* ── ANN BAR ── */
 .ann{background:var(--terracota);padding:9px 20px;text-align:center}
 .ann p{font-size:11px;color:#fff;letter-spacing:2px;text-transform:uppercase;font-weight:600}
 
-/* HERO — split layout con portada real */
+/* ── HERO ── */
 .hero{background:var(--cream);padding:40px 28px 36px}
 .hero-inner{display:flex;gap:28px;align-items:center;margin-bottom:28px}
 .hero-book-col{flex-shrink:0}
@@ -29,11 +35,9 @@
 .h-stars{color:var(--gold);font-size:13px;letter-spacing:2px;margin-bottom:4px}
 .h-social{font-size:11px;color:var(--brown-lt)}
 
-/* Vision strip */
 .vision{background:var(--terra-l);border-left:4px solid var(--terra-m);padding:14px 18px;margin-bottom:24px;border-radius:0 8px 8px 0}
 .vision p{font-family:'Cormorant',serif;font-size:17px;font-style:italic;color:var(--brown-m);line-height:1.65}
 
-/* Price box */
 .price-area{background:var(--white);border:1px solid var(--cream-d);border-radius:14px;padding:20px 22px;border-top:3px solid var(--terracota)}
 .pr-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:4px}
 .pr-was{font-size:14px;color:var(--brown-lt);text-decoration:line-through}
@@ -44,24 +48,23 @@
 .btn-main{display:block;background:var(--terracota);color:#fff;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 20px;border-radius:40px;cursor:pointer;border:none;width:100%;margin-bottom:7px}
 .btn-id{font-size:11px;color:var(--brown-lt);text-align:center;font-style:italic}
 
-/* PHOTOS STRIP — platos */
-.photos-strip{background:var(--cream-d);padding:24px 28px}
-.photos-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terracota);font-weight:700;margin-bottom:14px;text-align:center}
-.photos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.photo-card{border-radius:10px;overflow:hidden;background:var(--cream-dd);aspect-ratio:1;display:flex;align-items:center;justify-content:center;position:relative}
-.photo-placeholder{text-align:center;padding:12px}
-.photo-placeholder p{font-size:11px;color:var(--brown-lt);line-height:1.4;margin-top:6px}
-.photo-label{position:absolute;bottom:0;left:0;right:0;background:rgba(61,36,22,0.65);padding:8px 10px}
-.photo-label p{font-size:11px;color:#fff;font-weight:500;line-height:1.3}
-.photo-dosha{font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:1px;text-transform:uppercase}
-
-/* TRUST */
+/* ── TRUST ── */
 .trust{display:grid;grid-template-columns:repeat(4,1fr);background:var(--white);border-top:1px solid var(--cream-d);border-bottom:1px solid var(--cream-d)}
 .ti{text-align:center;padding:12px 6px;border-right:1px solid var(--cream-dd)}
 .ti:last-child{border-right:none}
 .ti-txt{font-size:10px;color:var(--brown-m);line-height:1.3}
 
-/* CDN */
+/* ── PHOTOS ── */
+.photos-strip{background:var(--cream-d);padding:24px 28px}
+.photos-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terracota);font-weight:700;margin-bottom:14px;text-align:center}
+.photos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.photo-card{border-radius:10px;overflow:hidden;aspect-ratio:1;position:relative;background:var(--cream-dd)}
+.photo-card img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(61,36,22,0.82));padding:20px 10px 10px}
+.photo-label p{font-size:11px;color:#fff;font-weight:600;line-height:1.3}
+.photo-dosha{font-size:9px;color:rgba(255,255,255,0.75);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px}
+
+/* ── SECCIONES ── */
 .sec{padding:36px 28px;border-bottom:1px solid var(--cream-d)}
 .sec-terra{background:var(--terra-l)}
 .sec-cream{background:var(--cream-d)}
@@ -71,6 +74,7 @@
 .sec h2 em{font-style:italic;color:var(--terracota)}
 .body{font-size:14px;line-height:1.8;color:var(--brown-m);margin-bottom:12px}
 
+/* CDN */
 .cdn-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0}
 .cdn-card{border-radius:10px;padding:16px}
 .cdn-before{background:var(--white);border:1px solid var(--cream-dd)}
@@ -85,7 +89,27 @@
 .cdn-note{border-left:3px solid var(--terra-m);padding:12px 14px;background:var(--white);border-radius:0 8px 8px 0;font-size:13px;color:var(--brown-m);line-height:1.65}
 .cdn-note strong{color:var(--brown);font-weight:600}
 
-/* CHAPTERS */
+/* Pain */
+.pain-list{list-style:none;margin:14px 0}
+.pain-list li{font-size:14px;color:var(--brown-m);padding:8px 0 8px 18px;position:relative;border-bottom:1px solid var(--cream-d);line-height:1.55}
+.pain-list li:before{content:'—';position:absolute;left:0;color:var(--terra-m)}
+.usp-box{background:var(--terra-l);border:1px solid var(--terra-m);border-radius:10px;padding:16px 18px;margin-top:16px;border-top:3px solid var(--terracota)}
+.usp-box p{font-size:14px;color:var(--brown-m);line-height:1.7}
+.usp-box strong{color:var(--brown);font-weight:700}
+
+/* Benefits */
+.ben-card{background:var(--white);border:1px solid var(--cream-d);border-radius:10px;padding:16px;margin-bottom:10px;border-left:4px solid var(--terracota)}
+.ben-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.ben-ico{width:30px;height:30px;border-radius:50%;background:var(--terra-l);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ben-title{font-family:'Cormorant',serif;font-size:17px;font-weight:500;color:var(--brown)}
+.ben-tri{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.bp{border-radius:7px;padding:9px;font-size:11px;line-height:1.5}
+.bp-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:3px}
+.bp-a{background:var(--terra-l);border:1px solid var(--terra-m)}.bp-a .bp-label{color:var(--terracota)}.bp-a p{color:var(--terracota)}
+.bp-d{background:var(--sage-l);border:1px solid var(--sage-d)}.bp-d .bp-label{color:var(--sage-d)}.bp-d p{color:var(--sage-d)}
+.bp-c{background:var(--gold-l);border:1px solid #DEC99A}.bp-c .bp-label{color:#8A6A30}.bp-c p{color:#8A6A30}
+
+/* Chapters */
 .ch-item{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--cream-d);align-items:flex-start}
 .ch-num{font-family:'Cormorant',serif;font-size:21px;color:var(--terra-m);min-width:22px;font-style:italic;line-height:1;margin-top:1px}
 .ch-title{font-size:14px;font-weight:600;color:var(--brown);margin-bottom:2px}
@@ -95,7 +119,7 @@
 .dp{background:#FFF0EA;color:#9A4A30}
 .dk{background:var(--sage-l);color:var(--sage-d)}
 
-/* BONUS */
+/* Bonus */
 .bonus-wrap{margin-top:18px}
 .bonus-head-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
 .bonus-card{background:var(--gold-l);border:1px solid #DEC99A;border-radius:10px;padding:14px 16px;margin-bottom:8px;display:flex;gap:10px}
@@ -104,7 +128,14 @@
 .bn-title{font-size:13px;font-weight:700;color:var(--brown);margin-bottom:2px}
 .bn-desc{font-size:12px;color:var(--brown-m);line-height:1.5}
 
-/* PRICING */
+/* Testimonials */
+.test-card{background:var(--white);border:1px solid var(--cream-d);border-radius:10px;padding:18px;margin-bottom:10px}
+.test-stars{color:var(--gold);font-size:12px;margin-bottom:7px;letter-spacing:2px}
+.test-text{font-size:13px;font-style:italic;color:var(--brown-m);line-height:1.75;margin-bottom:10px}
+.test-author{font-size:11px;color:var(--brown-lt);font-weight:600}
+.ph-note{background:var(--sage-l);color:var(--sage-d);font-size:11px;padding:6px 12px;border-radius:6px;text-align:center;margin-bottom:12px;display:block;font-weight:500}
+
+/* Pricing */
 .price-box{background:var(--white);border:1px solid var(--cream-d);border-radius:16px;padding:30px 24px;border-top:4px solid var(--terracota)}
 .pb-title{font-family:'Cormorant',serif;font-size:22px;font-style:italic;color:var(--brown-m);text-align:center;margin-bottom:4px}
 .pb-sub{font-size:12px;color:var(--brown-lt);text-align:center;margin-bottom:20px}
@@ -121,63 +152,48 @@
 .gt{font-size:13px;font-weight:700;color:var(--sage-d);margin-bottom:4px}
 .gtx{font-size:12px;color:var(--sage-d);line-height:1.6;opacity:0.9}
 
-/* FOOTER */
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--cream-d);padding:12px 0}
+.faq-q{font-size:14px;font-weight:600;color:var(--brown);margin-bottom:4px}
+.faq-a{font-size:13px;color:var(--brown-m);line-height:1.6}
+
+/* Footer */
 .footer{background:var(--terracota);padding:44px 28px;text-align:center}
 .footer h2{font-family:'Cormorant',serif;font-size:32px;font-weight:400;font-style:italic;color:#fff;margin-bottom:10px;line-height:1.25}
 .footer-sub{font-size:14px;color:rgba(255,255,255,0.75);margin-bottom:22px;line-height:1.7}
 .btn-footer{display:inline-block;background:var(--white);color:var(--terracota);font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 34px;border-radius:40px;cursor:pointer;border:none}
 .fn{font-size:11px;color:rgba(255,255,255,0.45);margin-top:14px}
 
-.check-list{list-style:none;margin:12px 0}
-.check-list li{font-size:14px;color:var(--brown-m);padding:6px 0 6px 20px;position:relative;line-height:1.55}
-.check-list li:before{content:'✓';position:absolute;left:0;color:var(--sage);font-weight:700}
-
-.ben-card{background:var(--white);border:1px solid var(--cream-d);border-radius:10px;padding:16px;margin-bottom:10px;border-left:4px solid var(--terracota)}
-.ben-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.ben-ico{width:30px;height:30px;border-radius:50%;background:var(--terra-l);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.ben-title{font-family:'Cormorant',serif;font-size:17px;font-weight:500;color:var(--brown)}
-.ben-tri{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
-.bp{border-radius:7px;padding:9px;font-size:11px;line-height:1.5}
-.bp-label{font-size:8px;letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:3px}
-.bp-a{background:var(--terra-l);border:1px solid var(--terra-m)}.bp-a .bp-label{color:var(--terracota)}.bp-a p{color:var(--terracota)}
-.bp-d{background:var(--sage-l);border:1px solid var(--sage-d)}.bp-d .bp-label{color:var(--sage-d)}.bp-d p{color:var(--sage-d)}
-.bp-c{background:var(--gold-l);border:1px solid #DEC99A}.bp-c .bp-label{color:#8A6A30}.bp-c p{color:#8A6A30}
-
-.usp-box{background:var(--terra-l);border:1px solid var(--terra-m);border-radius:10px;padding:16px 18px;margin-top:16px;border-top:3px solid var(--terracota)}
-.usp-box p{font-size:14px;color:var(--brown-m);line-height:1.7}
-.usp-box strong{color:var(--brown);font-weight:700}
-
-.test-card{background:var(--white);border:1px solid var(--cream-d);border-radius:10px;padding:18px;margin-bottom:10px}
-.test-stars{color:var(--gold);font-size:12px;margin-bottom:7px;letter-spacing:2px}
-.test-text{font-size:13px;font-style:italic;color:var(--brown-m);line-height:1.75;margin-bottom:10px}
-.test-author{font-size:11px;color:var(--brown-lt);font-weight:600}
-.ph-note{background:var(--sage-l);color:var(--sage-d);font-size:11px;padding:6px 12px;border-radius:6px;text-align:center;margin-bottom:12px;display:block;font-weight:500}
-
-.faq-item{border-bottom:1px solid var(--cream-d);padding:12px 0}
-.faq-q{font-size:14px;font-weight:600;color:var(--brown);margin-bottom:4px}
-.faq-a{font-size:13px;color:var(--brown-m);line-height:1.6}
+/* Responsive */
+@media(max-width:480px){
+  .hero-inner{flex-direction:column;align-items:center;text-align:center}
+  .hero-book-img{width:150px;height:200px}
+  .ben-tri{grid-template-columns:1fr}
+  .cdn-grid{grid-template-columns:1fr}
+  .photos-grid{grid-template-columns:1fr}
+}
 </style>
+</head>
+<body>
 
-<div class="pg">
-
-<div class="ann"><p>Precio de lanzamiento · Acceso inmediato al PDF · 8 capítulos + 3 bonus</p></div>
+<!-- ANN BAR -->
+<div class="ann">
+  <p>Precio de lanzamiento · Acceso inmediato al PDF · 8 capítulos + 3 bonus</p>
+</div>
 
 <!-- HERO CON PORTADA REAL -->
 <div class="hero">
   <div class="hero-inner">
     <div class="hero-book-col">
-      <img src="/mnt/user-data/uploads/portadaLIBRO.png"
-           alt="Ayurveda en tu Mesa — portada"
-           class="hero-book-img"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-      <div style="display:none;width:170px;height:226px;border-radius:4px 10px 10px 4px;background:var(--cream-d);border-left:8px solid var(--terracota);align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:12px;box-shadow:6px 8px 0 var(--cream-dd)">
-        <div style="font-family:'Cormorant',serif;font-size:11px;font-weight:600;color:var(--brown);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">Ayurveda<br>en tu Mesa</div>
-        <div style="font-size:9px;color:var(--brown-m);font-style:italic">Más Allá de tu Dosha</div>
-      </div>
+      <img
+        src="/portada1.png"
+        alt="Ayurveda en tu Mesa — portada"
+        class="hero-book-img"
+      />
     </div>
     <div class="hero-text-col">
       <div class="h-eyebrow">eBook · Ayurveda</div>
-      <h1 class="h-title" style="font-family:'Cormorant',serif">Come según tu naturaleza.<br><em>Transforma tu energía.</em></h1>
+      <h1 class="h-title">Come según tu naturaleza.<br><em>Transforma tu energía.</em></h1>
       <p class="h-sub">La guía ayurvédica más práctica en español — adaptada a los 3 doshas, con ingredientes de cualquier supermercado.</p>
       <div class="h-stars">★★★★★</div>
       <div class="h-social">+500 mujeres ya transformaron su alimentación</div>
@@ -191,7 +207,7 @@
   <div class="price-area">
     <div class="pr-row">
       <span class="pr-was">$27 USD</span>
-      <span class="pr-now" style="font-family:'Cormorant',serif">$15 USD</span>
+      <span class="pr-now">$15 USD</span>
       <span class="pr-badge">Lanzamiento</span>
     </div>
     <div class="pr-save">Ahorrás $12 USD hoy · 3 bonus incluidos</div>
@@ -204,7 +220,7 @@
   </div>
 </div>
 
-<!-- TRUST -->
+<!-- TRUST STRIP -->
 <div class="trust">
   <div class="ti"><div class="ti-txt">PDF instantáneo<br>en tu correo</div></div>
   <div class="ti"><div class="ti-txt">3 Bonus<br>incluidos</div></div>
@@ -212,46 +228,49 @@
   <div class="ti"><div class="ti-txt">Garantía<br>30 días</div></div>
 </div>
 
-<!-- FOTOS DE PLATOS — placeholder con instrucciones -->
+<!-- FOTOS DE PLATOS -->
 <div class="photos-strip">
   <div class="photos-eyebrow">Recetas incluidas en los 3 bonus</div>
   <div class="photos-grid">
+
     <div class="photo-card">
-      <div class="photo-placeholder">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#B09080" stroke-width="1.2"/><circle cx="14" cy="14" r="4" fill="#DDD0BA"/></svg>
-        <p>Foto plato<br>Dosha Vata</p>
+      <img src="/dallentejasrojas.png" alt="Dal de lentejas rojas — Dosha Vata" />
+      <div class="photo-label">
+        <div class="photo-dosha">Dosha Vata</div>
+        <p>Dal de lentejas rojas</p>
       </div>
-      <div class="photo-label"><div class="photo-dosha">Dosha Vata</div><p>Dal de lentejas especiado</p></div>
     </div>
+
     <div class="photo-card">
-      <div class="photo-placeholder">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#B09080" stroke-width="1.2"/><circle cx="14" cy="14" r="4" fill="#DDD0BA"/></svg>
-        <p>Foto plato<br>Dosha Pitta</p>
+      <img src="/pechuga-pollo-vapor.png" alt="Pechuga al vapor con salsa de cilantro — Dosha Pitta" />
+      <div class="photo-label">
+        <div class="photo-dosha">Dosha Pitta</div>
+        <p>Pechuga al vapor con cilantro y menta</p>
       </div>
-      <div class="photo-label"><div class="photo-dosha">Dosha Pitta</div><p>Ensalada refrescante de pepino</p></div>
     </div>
+
     <div class="photo-card">
-      <div class="photo-placeholder">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" stroke="#B09080" stroke-width="1.2"/><circle cx="14" cy="14" r="4" fill="#DDD0BA"/></svg>
-        <p>Foto plato<br>Dosha Kapha</p>
+      <img src="/pollo-tandori.png" alt="Pollo tandori — Dosha Kapha" />
+      <div class="photo-label">
+        <div class="photo-dosha">Dosha Kapha</div>
+        <p>Pollo tandori especiado</p>
       </div>
-      <div class="photo-label"><div class="photo-dosha">Dosha Kapha</div><p>Sopa de jengibre y cúrcuma</p></div>
     </div>
+
   </div>
-  <p style="font-size:11px;color:var(--brown-lt);text-align:center;margin-top:10px;font-style:italic">Reemplazá los placeholders con fotos reales de los platos del eBook</p>
 </div>
 
 <!-- COSTO DE NO HACER NADA -->
 <div class="sec sec-terra">
   <div class="eyebrow">El costo de no hacer nada</div>
-  <h2 style="font-family:'Cormorant',serif">Cada semana sin este método es energía perdida <em>que podrías estar evitando</em></h2>
+  <h2>Cada semana sin este método es energía perdida <em>que podrías estar evitando</em></h2>
   <div class="cdn-grid">
     <div class="cdn-card cdn-before">
       <div class="cdn-label">Hoy, sin el método</div>
       <div class="cdn-item">Hinchazón después de comer</div>
       <div class="cdn-item">Bajones de energía a las 3pm</div>
       <div class="cdn-item">Ansiedad y culpa con la comida</div>
-      <div class="cdn-item">Dietas que no terminan</div>
+      <div class="cdn-item">Dietas que empiezan y no terminan</div>
     </div>
     <div class="cdn-card cdn-after">
       <div class="cdn-label">En 7 días, con el método</div>
@@ -261,32 +280,36 @@
       <div class="cdn-item">Un sistema que se mantiene solo</div>
     </div>
   </div>
-  <div class="cdn-note">Este eBook cuesta <strong>menos que una consulta con un nutricionista</strong> y lo tenés en tu correo en 3 minutos. El costo de no actuar es seguir exactamente donde estás hoy.</div>
+  <div class="cdn-note">Este eBook cuesta <strong>menos que salir a cenar en un local de comida rápida</strong> — y lo tenés en tu correo en menos de 3 minutos. El costo de no actuar es seguir exactamente donde estás hoy.</div>
 </div>
 
-<!-- DOLOR -->
+<!-- DOLOR / IDENTIFICACIÓN -->
 <div class="sec sec-white">
   <div class="eyebrow">¿Te reconoces aquí?</div>
-  <h2 style="font-family:'Cormorant',serif">Has probado de todo… y tu cuerpo <em>sigue sin encontrar su equilibrio</em></h2>
-  <ul class="check-list" style="list-style:none;margin:12px 0">
-    <li style="font-size:14px;color:var(--brown-m);padding:8px 0 8px 20px;position:relative;border-bottom:1px solid var(--cream-d);line-height:1.55" class="pain-li">Comés sano pero te sentís hinchada, cansada o sin energía constante</li>
-    <li style="font-size:14px;color:var(--brown-m);padding:8px 0 8px 20px;position:relative;border-bottom:1px solid var(--cream-d);line-height:1.55">Seguiste dietas que funcionan para otras pero no para tu cuerpo</li>
-    <li style="font-size:14px;color:var(--brown-m);padding:8px 0 8px 20px;position:relative;border-bottom:1px solid var(--cream-d);line-height:1.55">Hay días en que la ansiedad manda en lo que comés, no vos</li>
-    <li style="font-size:14px;color:var(--brown-m);padding:8px 0 8px 20px;position:relative;border-bottom:1px solid var(--cream-d);line-height:1.55">Conocés el Ayurveda pero no sabés cómo aplicarlo en tu vida real</li>
-    <li style="font-size:14px;color:var(--brown-m);padding:8px 0 8px 20px;position:relative;line-height:1.55">Buscás algo sostenible, no otra moda de alimentación de 3 meses</li>
+  <h2>Has probado de todo… y tu cuerpo <em>sigue sin encontrar su equilibrio</em></h2>
+  <ul class="pain-list">
+    <li>Comés sano pero te sentís hinchada, cansada o sin energía constante</li>
+    <li>Seguiste dietas que funcionan para otras pero no para tu cuerpo</li>
+    <li>Hay días en que la ansiedad manda en lo que comés, no vos</li>
+    <li>Conocés el Ayurveda pero no sabés cómo aplicarlo en tu vida real</li>
+    <li>Buscás algo sostenible, no otra moda de alimentación de 3 meses</li>
   </ul>
   <div class="usp-box">
     <p><strong>Esto no es otra dieta.</strong> Es el único método que identifica tu dosha (Vata, Pitta o Kapha), diseña tu alimentación personalizada y te da menús, recetas y desayunos listos para usar — con ingredientes de Mercadona o Lidl.</p>
   </div>
 </div>
 
-<!-- BENEFICIOS -->
+<!-- BENEFICIOS — fórmula Tracy antes/después/cómo -->
 <div class="sec sec-cream">
   <div class="eyebrow">Lo que vas a lograr</div>
-  <h2 style="font-family:'Cormorant',serif">Resultados concretos, <em>no promesas vacías</em></h2>
+  <h2>Resultados concretos, <em>no promesas vacías</em></h2>
+  <p class="body">Cada beneficio tiene un mecanismo específico dentro del eBook — no es teoría, es un protocolo aplicable desde el día uno.</p>
+
   <div class="ben-card">
     <div class="ben-head">
-      <div class="ben-ico"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="#8B3A2A" stroke-width="1.3"/><path d="M4.5 8.5S5.5 10 7 10s2.5-1.5 2.5-1.5" stroke="#8B3A2A" stroke-width="1.1" stroke-linecap="round"/></svg></div>
+      <div class="ben-ico">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="#8B3A2A" stroke-width="1.3"/><path d="M4.5 8.5S5.5 10 7 10s2.5-1.5 2.5-1.5" stroke="#8B3A2A" stroke-width="1.1" stroke-linecap="round"/></svg>
+      </div>
       <div class="ben-title">Digestión restaurada y liviana</div>
     </div>
     <div class="ben-tri">
@@ -295,9 +318,12 @@
       <div class="bp bp-c"><div class="bp-label">Cómo</div><p>Alimentación para tu dosha — Caps. 4, 5 y 6</p></div>
     </div>
   </div>
+
   <div class="ben-card">
     <div class="ben-head">
-      <div class="ben-ico"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2l1.4 3H12l-2.8 2 1.1 3L7 8.5 3.7 10l1.1-3L2 5h3.6z" fill="#8B3A2A" opacity="0.7"/></svg></div>
+      <div class="ben-ico">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2l1.4 3H12l-2.8 2 1.1 3L7 8.5 3.7 10l1.1-3L2 5h3.6z" fill="#8B3A2A" opacity="0.7"/></svg>
+      </div>
       <div class="ben-title">Energía real y sostenida todo el día</div>
     </div>
     <div class="ben-tri">
@@ -306,9 +332,12 @@
       <div class="bp bp-c"><div class="bp-label">Cómo</div><p>Especias medicinales — Cap. 7 + Bonus de recetas</p></div>
     </div>
   </div>
+
   <div class="ben-card">
     <div class="ben-head">
-      <div class="ben-ico"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2C4.2 2 2 4.2 2 7s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5z" stroke="#8B3A2A" stroke-width="1.3"/><path d="M5 7.5S5.8 9 7 9s2-1.5 2-1.5" stroke="#8B3A2A" stroke-width="1.1" stroke-linecap="round"/></svg></div>
+      <div class="ben-ico">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 2C4.2 2 2 4.2 2 7s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5z" stroke="#8B3A2A" stroke-width="1.3"/><path d="M5 7.5S5.8 9 7 9s2-1.5 2-1.5" stroke="#8B3A2A" stroke-width="1.1" stroke-linecap="round"/></svg>
+      </div>
       <div class="ben-title">Paz real con la comida</div>
     </div>
     <div class="ben-tri">
@@ -319,42 +348,102 @@
   </div>
 </div>
 
-<!-- CAPÍTULOS -->
+<!-- PARA QUIÉN ES -->
+<div class="sec sec-white">
+  <div class="eyebrow">Este eBook es para vos si…</div>
+  <h2>Reconócete en <em>alguna de estas</em></h2>
+  <ul class="pain-list">
+    <li>Practicás yoga o meditación y querés que tu alimentación esté alineada</li>
+    <li>Querés entender cuál es tu dosha (Vata, Pitta o Kapha) y cómo comer para él</li>
+    <li>Buscás recetas ayurvédicas simples con ingredientes de supermercado</li>
+    <li>Estás cansada de dietas genéricas que no respetan tu tipo de cuerpo</li>
+    <li>Querés especias medicinales que realmente funcionen y sepás cómo usarlas</li>
+    <li>Buscás un sistema que se adapte a tu vida, no al revés</li>
+  </ul>
+</div>
+
+<!-- CAPÍTULOS — índice real -->
 <div class="sec sec-terra">
   <div class="eyebrow">Lo que incluye</div>
-  <h2 style="font-family:'Cormorant',serif">8 capítulos + 3 bonus. <em>Un sistema completo para tu dosha.</em></h2>
-  <div class="ch-item"><span class="ch-num">1</span><div><div class="ch-title">Introducción a la Alimentación Ayurveda</div><div class="ch-desc">Los 5.000 años de sabiduría que la nutrición moderna está redescubriendo — cómo aplicarlos desde hoy</div></div></div>
-  <div class="ch-item"><span class="ch-num">2</span><div><div class="ch-title">Los Tres Doshas: Conoce tu Naturaleza</div><div class="ch-desc">Vata, Pitta y Kapha — características físicas, mentales y digestivas explicadas en detalle</div></div></div>
-  <div class="ch-item"><span class="ch-num">3</span><div><div class="ch-title">Test: Descubre tu Dosha Predominante</div><div class="ch-desc">El test más completo en español con interpretación de doshas mixtos y estados de desequilibrio</div></div></div>
-  <div class="ch-item"><span class="ch-num">4</span><div><div class="ch-dosha dv dosha-tag">Dosha Vata</div><div class="ch-title">Alimentación para Vata</div><div class="ch-desc">Qué comer, qué evitar y cómo cocinar para equilibrar la energía Vata — guía completa</div></div></div>
-  <div class="ch-item"><span class="ch-num">5</span><div><div class="ch-dosha dp dosha-tag">Dosha Pitta</div><div class="ch-title">Alimentación para Pitta</div><div class="ch-desc">Cómo enfriar el fuego Pitta con alimentos específicos — combinaciones y recetas para este dosha</div></div></div>
-  <div class="ch-item"><span class="ch-num">6</span><div><div class="ch-dosha dk dosha-tag">Dosha Kapha</div><div class="ch-title">Alimentación para Kapha</div><div class="ch-desc">Alimentos ligeros y estimulantes para activar la energía Kapha y mejorar la digestión</div></div></div>
-  <div class="ch-item"><span class="ch-num">7</span><div><div class="ch-title">Especias Ayurvédicas Esenciales</div><div class="ch-desc">Las especias medicinales que transforman tu cocina — dónde comprarlas en España y cómo usarlas</div></div></div>
-  <div class="ch-item" style="border-bottom:none"><span class="ch-num">8</span><div><div class="ch-title">Más Allá de tu Dosha</div><div class="ch-desc">Cómo las estaciones, la edad y los ciclos de vida transforman tu alimentación — el sistema completo</div></div></div>
+  <h2>8 capítulos + 3 bonus. <em>Un sistema completo para tu dosha.</em></h2>
+
+  <div class="ch-item">
+    <span class="ch-num">1</span>
+    <div><div class="ch-title">Introducción a la Alimentación Ayurveda</div><div class="ch-desc">Los 5.000 años de sabiduría que la nutrición moderna está redescubriendo — y cómo aplicarlos desde hoy</div></div>
+  </div>
+  <div class="ch-item">
+    <span class="ch-num">2</span>
+    <div><div class="ch-title">Los Tres Doshas: Conoce tu Naturaleza</div><div class="ch-desc">Vata, Pitta y Kapha — características físicas, mentales y digestivas explicadas en detalle</div></div>
+  </div>
+  <div class="ch-item">
+    <span class="ch-num">3</span>
+    <div><div class="ch-title">Test: Descubre tu Dosha Predominante</div><div class="ch-desc">El test más completo en español con interpretación de doshas mixtos y estados de desequilibrio</div></div>
+  </div>
+  <div class="ch-item">
+    <span class="ch-num">4</span>
+    <div><span class="dosha-tag dv">Dosha Vata</span><div class="ch-title">Alimentación para Vata</div><div class="ch-desc">Qué comer, qué evitar y cómo cocinar para equilibrar la energía Vata — guía completa</div></div>
+  </div>
+  <div class="ch-item">
+    <span class="ch-num">5</span>
+    <div><span class="dosha-tag dp">Dosha Pitta</span><div class="ch-title">Alimentación para Pitta</div><div class="ch-desc">Cómo enfriar el fuego Pitta con alimentos específicos — combinaciones y recetas para este dosha</div></div>
+  </div>
+  <div class="ch-item">
+    <span class="ch-num">6</span>
+    <div><span class="dosha-tag dk">Dosha Kapha</span><div class="ch-title">Alimentación para Kapha</div><div class="ch-desc">Alimentos ligeros y estimulantes para activar la energía Kapha y mejorar la digestión</div></div>
+  </div>
+  <div class="ch-item">
+    <span class="ch-num">7</span>
+    <div><div class="ch-title">Especias Ayurvédicas Esenciales</div><div class="ch-desc">Las especias medicinales que transforman tu cocina — dónde comprarlas en España y cómo usarlas</div></div>
+  </div>
+  <div class="ch-item" style="border-bottom:none">
+    <span class="ch-num">8</span>
+    <div><div class="ch-title">Más Allá de tu Dosha</div><div class="ch-desc">Cómo las estaciones, la edad y los ciclos de vida transforman tu alimentación — el sistema completo</div></div>
+  </div>
 
   <div class="bonus-wrap">
     <div class="bonus-head-label">3 Bonus exclusivos incluidos</div>
-    <div class="bonus-card"><span class="bn-num">B1</span><div><div class="bn-pill">Bonus 1</div><div class="bn-title">Menú Semanal por Dosha</div><div class="bn-desc">7 días completos adaptados a tu Vata, Pitta o Kapha con ingredientes de Mercadona o Lidl</div></div></div>
-    <div class="bonus-card"><span class="bn-num">B2</span><div><div class="bn-pill">Bonus 2</div><div class="bn-title">21 Recetas Ayurvédicas Simples</div><div class="bn-desc">Platos fáciles organizados por dosha — listos para cocinar desde el primer día</div></div></div>
-    <div class="bonus-card"><span class="bn-num">B3</span><div><div class="bn-pill">Bonus 3</div><div class="bn-title">21 Desayunos Ayurvédicos por Dosha</div><div class="bn-desc">El desayuno ideal para cada tipo de cuerpo — 21 opciones para empezar el día con energía real</div></div></div>
+    <div class="bonus-card">
+      <span class="bn-num">B1</span>
+      <div><div class="bn-pill">Bonus 1</div><div class="bn-title">Menú Semanal por Dosha</div><div class="bn-desc">7 días completos adaptados a tu Vata, Pitta o Kapha con ingredientes de Mercadona o Lidl</div></div>
+    </div>
+    <div class="bonus-card">
+      <span class="bn-num">B2</span>
+      <div><div class="bn-pill">Bonus 2</div><div class="bn-title">21 Recetas Ayurvédicas Simples</div><div class="bn-desc">Platos fáciles organizados por dosha — listos para cocinar desde el primer día</div></div>
+    </div>
+    <div class="bonus-card">
+      <span class="bn-num">B3</span>
+      <div><div class="bn-pill">Bonus 3</div><div class="bn-title">21 Desayunos Ayurvédicos por Dosha</div><div class="bn-desc">El desayuno ideal para cada tipo de cuerpo — 21 opciones para empezar el día con energía real</div></div>
+    </div>
   </div>
 </div>
 
 <!-- TESTIMONIOS -->
 <div class="sec sec-white">
   <div class="eyebrow">Lo que dicen</div>
-  <h2 style="font-family:'Cormorant',serif">Resultados <em>reales de lectoras</em></h2>
-  <span class="ph-note">Reemplazá con testimonios reales antes de invertir en ads</span>
-  <div class="test-card"><div class="test-stars">★★★★★</div><p class="test-text">Descubrí que soy Vata y todo tuvo sentido. Siempre me sentía hinchada comiendo ensaladas crudas — el Ayurveda me explicó por qué. En una semana de seguir el menú del Bonus 1 me sentí completamente diferente.</p><div class="test-author">— María G., Madrid · Instructora de Yoga</div></div>
-  <div class="test-card"><div class="test-stars">★★★★★</div><p class="test-text">Soy Pitta y el capítulo 5 fue una revelación. Por fin entendí por qué el café me generaba tanta acidez. Las 21 recetas del Bonus 2 las hago todas las semanas.</p><div class="test-author">— Laura P., Barcelona · Terapeuta holística</div></div>
-  <div class="test-card"><div class="test-stars">★★★★★</div><p class="test-text">Los desayunos del Bonus 3 cambiaron mi mañana por completo. Todos los ingredientes los encontré en el Mercadona. Nada imposible de conseguir — eso fue lo que me convenció.</p><div class="test-author">— Carmen A., Valencia · Mamá y amante del bienestar</div></div>
+  <h2>Resultados <em>reales de lectoras</em></h2>
+  <span class="ph-note">⚠ Reemplazá estos testimonios con reviews reales antes de invertir en ads</span>
+  <div class="test-card">
+    <div class="test-stars">★★★★★</div>
+    <p class="test-text">Descubrí que soy Vata y todo tuvo sentido. Siempre me sentía hinchada comiendo ensaladas crudas — el Ayurveda me explicó por qué. En una semana de seguir el menú del Bonus 1 me sentí completamente diferente.</p>
+    <div class="test-author">— María G., Madrid · Instructora de Yoga</div>
+  </div>
+  <div class="test-card">
+    <div class="test-stars">★★★★★</div>
+    <p class="test-text">Soy Pitta y el capítulo 5 fue una revelación. Por fin entendí por qué el café me generaba tanta acidez. Las 21 recetas del Bonus 2 las hago todas las semanas.</p>
+    <div class="test-author">— Laura P., Barcelona · Terapeuta holística</div>
+  </div>
+  <div class="test-card">
+    <div class="test-stars">★★★★★</div>
+    <p class="test-text">Los desayunos del Bonus 3 cambiaron mi mañana por completo. Todos los ingredientes los encontré en el Mercadona. Nada imposible de conseguir — eso fue lo que me convenció.</p>
+    <div class="test-author">— Carmen A., Valencia · Mamá y amante del bienestar</div>
+  </div>
 </div>
 
-<!-- PRECIO -->
+<!-- PRECIO + GARANTÍA -->
 <div class="sec sec-cream">
   <div class="price-box">
-    <div class="pb-title" style="font-family:'Cormorant',serif">Todo lo que obtenés hoy</div>
-    <div class="pb-sub">Un sistema completo por menos que una consulta con un nutricionista</div>
+    <div class="pb-title">Todo lo que obtenés hoy</div>
+    <div class="pb-sub">Menos que salir a cenar en un local de comida rápida — y cambia cómo te sentís para siempre</div>
     <div style="margin-bottom:20px">
       <div class="incl-item">eBook: 8 capítulos del sistema ayurvédico completo</div>
       <div class="incl-item">Bonus 1: Menú Semanal por Dosha (7 días completos)</div>
@@ -364,15 +453,20 @@
       <div class="incl-item">Tuyo para siempre — sin suscripciones</div>
     </div>
     <div style="text-align:center">
-      <div class="big-num" style="font-family:'Cormorant',serif"><sup>$</sup>15</div>
+      <div class="big-num"><sup>$</sup>15</div>
       <div class="p-was3">Precio habitual: $27 USD</div>
       <div class="p-save3">Ahorrás $12 USD en el lanzamiento</div>
       <button class="btn-main2">Sí, quiero comer en armonía con mi cuerpo</button>
       <div class="btn-id2">Estoy eligiendo ser la mujer que cuida su cuerpo con sabiduría.</div>
     </div>
     <div class="guar-box">
-      <div class="gc"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L3 5.5v4.5C3 14.2 6 17.5 10 18.8c4-1.3 7-4.6 7-8.8V5.5L10 2z" stroke="#5A7A5F" stroke-width="1.4"/><path d="M7 10l2 2 4-4" stroke="#5A7A5F" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div><div class="gt">Riesgo cero — garantía de 30 días</div><p class="gtx">Si en 30 días no sentís diferencia real, te devuelvo cada centavo sin preguntas. Vos no arriesgás nada.</p></div>
+      <div class="gc">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2L3 5.5v4.5C3 14.2 6 17.5 10 18.8c4-1.3 7-4.6 7-8.8V5.5L10 2z" stroke="#5A7A5F" stroke-width="1.4"/><path d="M7 10l2 2 4-4" stroke="#5A7A5F" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div>
+        <div class="gt">Riesgo cero — garantía de 30 días</div>
+        <p class="gtx">Si en 30 días no sentís diferencia real en tu digestión o energía, te devuelvo cada centavo sin preguntas. Vos no arriesgás nada.</p>
+      </div>
     </div>
   </div>
 </div>
@@ -380,11 +474,12 @@
 <!-- FAQ -->
 <div class="sec sec-white">
   <div class="eyebrow">Preguntas frecuentes</div>
-  <h2 style="font-family:'Cormorant',serif">Todo lo que <em>necesitás saber</em></h2>
-  <div class="faq-item"><div class="faq-q">¿Necesito saber algo de Ayurveda?</div><div class="faq-a">No. El cap. 1 te da las bases desde cero y el cap. 3 tiene el test para descubrir tu dosha. Empezás a aplicar desde el día uno.</div></div>
+  <h2>Todo lo que <em>necesitás saber</em></h2>
+  <div class="faq-item"><div class="faq-q">¿Necesito saber algo de Ayurveda?</div><div class="faq-a">No. El capítulo 1 te da todas las bases desde cero y el capítulo 3 tiene el test para descubrir tu dosha. Empezás a aplicar desde el día uno.</div></div>
   <div class="faq-item"><div class="faq-q">¿Los ingredientes se consiguen en España?</div><div class="faq-a">Sí, todo está adaptado a Mercadona, Lidl o El Corte Inglés. Los 3 bonus usan ingredientes de supermercado accesibles.</div></div>
   <div class="faq-item"><div class="faq-q">¿Y si tengo un dosha mixto?</div><div class="faq-a">El capítulo 3 incluye interpretación de doshas mixtos y el capítulo 8 explica cómo tu alimentación evoluciona con la edad y las estaciones.</div></div>
-  <div class="faq-item"><div class="faq-q">¿Y si no me sirve?</div><div class="faq-a">Tenés 30 días para decidirlo. Si no sentís diferencia, escribime y te devuelvo todo. Sin formularios ni burocracia.</div></div>
+  <div class="faq-item"><div class="faq-q">¿Funciona si ya como bastante sano?</div><div class="faq-a">Especialmente si ya comés sano. El Ayurveda no cambia qué comés — cambia cómo, cuándo y para qué tipo de cuerpo lo hacés.</div></div>
+  <div class="faq-item" style="border-bottom:none"><div class="faq-q">¿Y si no me sirve?</div><div class="faq-a">Tenés 30 días para decidirlo. Si no sentís diferencia, escribime y te devuelvo todo. Sin formularios ni burocracia.</div></div>
 </div>
 
 <!-- FOOTER -->
@@ -396,4 +491,5 @@
   <div class="fn">Garantía 30 días · Acceso inmediato · 8 capítulos + 3 bonus · Sin suscripciones</div>
 </div>
 
-</div>
+</body>
+</html>
