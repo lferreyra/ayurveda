@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test: Descubre tu Dosha | Ayurveda en tu Mesa</title>
+    
+    <!-- Fuentes Ultra Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Paleta Luxury Wellness */
+            --bg-linen: #FCFAF6;       
+            --bg-clay: #F2EBE1;        
+            --bg-sage-dark: #2C3C32;   
+            --text-dark: #1A1A1A;      
+            --text-muted: #5C5C5C;     
+            --accent-terracotta: #AD513B; 
+            --accent-gold: #C09559;       
+            
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+            
+            --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-lux: 20px;         
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-linen);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* HEADER SIMPLE */
+        .header {
+            padding: 24px 5%;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--bg-sage-dark);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 5%;
+            position: relative;
+        }
+
+        .card {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            border-radius: var(--radius-lux);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.05);
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        @media (max-width: 768px) {
+            .card { padding: 40px 20px; }
+        }
+
+        h1, h2, h3 { font-family: var(--font-display); font-weight: 400; color: var(--bg-sage-dark); line-height: 1.2;}
+        
+        .kicker {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-terracotta);
+            margin-bottom: 16px;
+            display: block;
+            font-weight: 500;
+        }
+
+        /* BOTONES */
+        .btn-luxury {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 40px;
+            background-color: var(--bg-sage-dark);
+            color: var(--bg-linen);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-lux);
+            margin-top: 30px;
+            text-decoration: none;
+        }
+        .btn-luxury:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(44, 60, 50, 0.2);
+            background-color: var(--accent-terracotta);
+        }
+        .btn-luxury:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--bg-sage-dark);
+            color: var(--bg-sage-dark);
+        }
+        .btn-outline:hover { background-color: var(--bg-sage-dark); color: var(--bg-linen); }
+
+        /* VISTAS DEL QUIZ */
+        .view {
+            display: none;
+            animation: fadeIn 0.8s var(--ease-lux) forwards;
+        }
+        .view.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* PANTALLA DE INICIO */
+        #intro-view h1 { font-size: 3.5rem; margin-bottom: 24px; }
+        #intro-view p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 16px; font-weight: 300; }
+
+        /* PANTALLA DEL QUIZ */
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--bg-clay);
+            border-radius: 4px;
+            margin-bottom: 25px; /* Deja espacio de 10px visual con el text box y libera la parte superior */
+            overflow: hidden;
+            position: relative; /* Modificado de absolute para respetar flow */
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-terracotta);
+            width: 0%;
+            transition: width 0.5s var(--ease-lux);
+        }
+
+        .question-section { margin-bottom: 10px; font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 0.1em; }
+        .question-title { font-size: 2.2rem; margin-bottom: 30px; }
+
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        .option-card {
+            border: 2px solid var(--bg-clay);
+            border-radius: 12px;
+            padding: 20px 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            background: white;
+        }
+        .option-card:hover {
+            border-color: rgba(173, 81, 59, 0.3);
+            background: var(--bg-linen);
+        }
+        .option-card.selected {
+            border-color: var(--accent-terracotta);
+            background: rgba(173, 81, 59, 0.05);
+            font-weight: 500;
+        }
+
+        /* PANTALLA RESULTADO */
+        #result-view { text-align: center; }
+        .result-dosha-name { font-size: 4rem; color: var(--accent-terracotta); margin: 10px 0 20px; line-height: 1; }
+        .result-desc { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 40px; font-weight: 300; text-align: left; background: var(--bg-linen); padding: 30px; border-radius: 12px; border: 1px solid var(--bg-clay);}
+        
+        .loader {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(173, 81, 59, 0.2);
+            border-top-color: var(--accent-terracotta);
+            border-radius: 50%;
+            animation: spin 1s infinite linear;
+            margin: 40px auto;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* CTA SECTION CLOSER */
+        .cta-section {
+            background: linear-gradient(135deg, var(--bg-sage-dark), #1a241f);
+            padding: 40px;
+            border-radius: 16px;
+            margin-top: 50px;
+            color: white;
+            box-shadow: 0 20px 40px rgba(44, 60, 50, 0.15);
+        }
+        .cta-section h3 {
+            color: white;
+            font-size: 2.2rem;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .cta-section .kicker {
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+        }
+        .cta-section p {
+            color: rgba(255,255,255,0.85) !important;
+        }
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 30px;
+            background-color: transparent;
+            color: #25D366;
+            border: 1px solid #25D366;
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s var(--ease-lux);
+            text-decoration: none;
+            gap: 8px;
+        }
+        .btn-whatsapp:hover {
+            background-color: #25D366;
+            color: white;
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.2);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <a href="ayurveda-en-tu-mesa.html" class="logo">AYURVEDA EN TU MESA</a>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            
+            <!-- 1. PANTALLA DE INICIO -->
+            <div id="intro-view" class="view active">
+                <span class="kicker">Análisis de Biotipo Ayurveda</span>
+                <h1>Descubre tu <br><i>Dosha Predominante</i></h1>
+                <p>Todos nacemos con una combinación única de los 5 elementos (Tierra, Agua, Fuego, Aire, Éter) expresados en tres fuerzas: Vata, Pitta y Kapha.</p>
+                <p>Conocer tu Dosha es la llave maestra para entender por qué algunos alimentos te enferman y otros te llenan de energía.</p>
+                <p style="font-size: 0.9rem; margin-top: 20px;"><em>Responde 13 preguntas marcando <strong>una o más opciones</strong> que te describan en general (puedes elegir varias si sientes que encajas en más de una).</em></p>
+                <button class="btn-luxury" onclick="startQuiz()">Comenzar el Test</button>
+            </div>
+
+            <!-- 2. PANTALLA DEL QUIZ -->
+            <div id="quiz-view" class="view">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                
+                <div class="question-section" id="q-section">SECCIÓN 1: Tu Cuerpo Físico</div>
+                <h2 class="question-title" id="q-title" style="margin-bottom: 10px;">Cargando pregunta...</h2>
+                <div style="font-size: 0.85rem; color: var(--accent-terracotta); margin-bottom: 30px; font-weight: 500;">* Puedes seleccionar más de una opción.</div>
+                
+                <div class="options-grid" id="options-container">
+                    <!-- Opciones inyectadas por JS -->
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.85rem; color: #aaa;" id="q-counter">1 de 13</span>
+                    <button class="btn-luxury" id="next-btn" onclick="nextQuestion()" disabled>Siguiente</button>
+                </div>
+            </div>
+
+            <!-- 3. LA ESPERA (Cálculo) -->
+            <div id="loading-view" class="view" style="text-align: center; padding: 60px 0;">
+                <h2 style="font-size: 2rem;">Decodificando tu Fuego Digestivo...</h2>
+                <div class="loader"></div>
+                <p style="color: var(--text-muted);">Analizando tus respuestas genéticas y metabólicas.</p>
+            </div>
+
+            <!-- 4. PANTALLA DE RESULTADO -->
+            <div id="result-view" class="view">
+                <span class="kicker">Tu Código Genético Ayurveda es:</span>
+                <h1 class="result-dosha-name" id="result-title">PITTA</h1>
+                
+                <div class="result-desc" id="result-desc">
+                    <!-- Descripción inyectada por JS -->
+                </div>
+
+                <div class="cta-section">
+                    <span class="kicker">Tu Próximo Paso Lógico</span>
+                    <h3>El manual genérico ya no te sirve.</h3>
+                    <p style="margin-bottom: 25px; font-size: 1.1rem; line-height: 1.8; font-weight: 300;">
+                        Ahora que conoces tu Dosha predominante, necesitas alinear tu alimentación de inmediato sin caer en dietas extremas.<br><br>
+                        <strong style="color: var(--accent-gold); font-weight: 500;">Accede a cambiar tu forma de sentirte desde hoy, por menos de lo que te cuesta un café al día.</strong>
+                    </p>
+                    
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; align-items: center;">
+                        <a href="ayurveda-en-tu-mesa.html" class="btn-luxury" style="margin-top: 0; background-color: var(--accent-terracotta); color: white; border: 1px solid var(--accent-terracotta);">Mejorar Mi Salud Ahora</a>
+                        <button class="btn-whatsapp" onclick="shareWhatsApp()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                            </svg>
+                            Compartir WhatsApp
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        // LA BASE DE DATOS DEL TEST
+        const questions = [
+            // SECCIÓN 1: Físico
+            {
+                section: "SECCIÓN 1: Tu Cuerpo Físico",
+                text: "1. Mi complexión corporal es:",
+                options: [
+                    { value: "A", text: "Delgada, huesos finos, difícil ganar peso." },
+                    { value: "B", text: "Mediana, musculosa, peso estable." },
+                    { value: "C", text: "Robusta, huesos anchos, fácil ganar peso." }
+                ]
+            },
+            {
+                section: "SECCIÓN 1: Tu Cuerpo Físico",
+                text: "2. Mi piel es:",
+                options: [
+                    { value: "A", text: "Seca, con tendencia a la aspereza o descamación." },
+                    { value: "B", text: "Sensible, con tendencia al enrojecimiento o erupciones." },
+                    { value: "C", text: "Suave, grasa, poros grandes." }
+                ]
+            },
+            {
+                section: "SECCIÓN 1: Tu Cuerpo Físico",
+                text: "3. Mi cabello es:",
+                options: [
+                    { value: "A", text: "Rizado, seco, quebradizo." },
+                    { value: "B", text: "Fino, liso, con tendencia a la caída." },
+                    { value: "C", text: "Abundante, grueso, oleoso." }
+                ]
+            },
+            {
+                section: "SECCIÓN 1: Tu Cuerpo Físico",
+                text: "4. Mi digestión es:",
+                options: [
+                    { value: "A", text: "Irregular (a veces bien, a veces mal, tendencia a gases)." },
+                    { value: "B", text: "Rápida y fuerte (me da hambre seguido, acidez)." },
+                    { value: "C", text: "Lenta pero estable (sensación de pesadez)." }
+                ]
+            },
+            {
+                section: "SECCIÓN 1: Tu Cuerpo Físico",
+                text: "5. Prefiero naturalmente el clima:",
+                options: [
+                    { value: "A", text: "Cálido y húmedo (el frío seco me agota las articulaciones)." },
+                    { value: "B", text: "Fresco o frío (el calor me pone irritable y me agota)." },
+                    { value: "C", text: "Cálido y seco (el frío y la humedad me pesan y deprimen)." }
+                ]
+            },
+            // SECCIÓN 2: Mente
+            {
+                section: "SECCIÓN 2: Tu Mente y Emociones",
+                text: "6. Mi manera de aprender es:",
+                options: [
+                    { value: "A", text: "Aprendo velozmente pero lo olvido rápido." },
+                    { value: "B", text: "Aprendo con método, análisis y mucha lógica." },
+                    { value: "C", text: "Tardo en aprender, pero jamás lo olvido." }
+                ]
+            },
+            {
+                section: "SECCIÓN 2: Tu Mente y Emociones",
+                text: "7. Bajo estrés, tiendo a:",
+                options: [
+                    { value: "A", text: "Angustiarme de más, ponerme ansiosa, temerosa o dispersarme." },
+                    { value: "B", text: "Irritarme, volverme crítica, controladora o impaciente." },
+                    { value: "C", text: "Apagarme, callarme, aislarme o refugiarme en la comida." }
+                ]
+            },
+            {
+                section: "SECCIÓN 2: Tu Mente y Emociones",
+                text: "8. Mi estilo de hablar es:",
+                options: [
+                    { value: "A", text: "Rápido, emocionado, cambio de tema frecuentemente." },
+                    { value: "B", text: "Preciso, directo, articulado y convencido." },
+                    { value: "C", text: "Lento, tranquilo, medido y dulce." }
+                ]
+            },
+            {
+                section: "SECCIÓN 2: Tu Mente y Emociones",
+                text: "9. Mi calidad de sueño es:",
+                options: [
+                    { value: "A", text: "Ligero, me despierto fácil con ruidos o ansiedad." },
+                    { value: "B", text: "Moderado, duermo bien pero me cuesta si mi mente no para." },
+                    { value: "C", text: "Profundo e ininterrumpible, me cuesta muchísimo despertar." }
+                ]
+            },
+            {
+                section: "SECCIÓN 2: Tu Mente y Emociones",
+                text: "10. En mis relaciones personales soy:",
+                options: [
+                    { value: "A", text: "Sociable, divertida y entusiasta, aunque a veces inconsistente." },
+                    { value: "B", text: "Apasionada, líder y muy leal, aunque puedo ser demasiado exigente." },
+                    { value: "C", text: "Cariñosa, la que sostiene al grupo, estable, aunque me cuesta soltar." }
+                ]
+            },
+            // SECCIÓN 3: Hábitos
+            {
+                section: "SECCIÓN 3: Alimentación y Hábitos",
+                text: "11. Mi apetito general es:",
+                options: [
+                    { value: "A", text: "Variable. Hay días que como todo el día, a veces me olvido de comer." },
+                    { value: "B", text: "Intenso y como reloj. Si no como al dar la hora me pongo de mal humor." },
+                    { value: "C", text: "Moderado. Puedo saltarme comidas sin problema, no me urge." }
+                ]
+            },
+            {
+                section: "SECCIÓN 3: Alimentación y Hábitos",
+                text: "12. Los alimentos que más se me antojan son:",
+                options: [
+                    { value: "A", text: "Cosas calientes, reconfortantes, aceitosas, muy dulces o muy saladas." },
+                    { value: "B", text: "Cosas frescas, ensaladas, sabores amargos, cervezas o picantes suaves." },
+                    { value: "C", text: "Cosas secas, ligeras, crujientes o picantes, chocolates (tiendo a lo pesado dulce)." }
+                ]
+            },
+            {
+                section: "SECCIÓN 3: Alimentación y Hábitos",
+                text: "13. Mi patrón de energía durante el día es:",
+                options: [
+                    { value: "A", text: "En ráfagas. Alta energía de golpe seguida de agotamiento repentino." },
+                    { value: "B", text: "Constante y afilada, especialmente fuerte a media mañana/mediodía." },
+                    { value: "C", text: "Lenta para arrancar (mañanas duras), pero muy resistente el resto del día." }
+                ]
+            }
+        ];
+
+        // LÓGICA DE ESTADO
+        let currentQuestion = 0;
+        let answers = { A: 0, B: 0, C: 0 };
+        let selectedOptions = [];
+
+        // ELEMENTOS DOM
+        const introView = document.getElementById('intro-view');
+        const quizView = document.getElementById('quiz-view');
+        const loadingView = document.getElementById('loading-view');
+        const resultView = document.getElementById('result-view');
+        
+        const qSection = document.getElementById('q-section');
+        const qTitle = document.getElementById('q-title');
+        const optionsContainer = document.getElementById('options-container');
+        const qCounter = document.getElementById('q-counter');
+        const nextBtn = document.getElementById('next-btn');
+        const progressFill = document.getElementById('progress-fill');
+
+        function startQuiz() {
+            introView.classList.remove('active');
+            quizView.classList.add('active');
+            renderQuestion();
+        }
+
+        // UTILIDAD PARA BARAJAR (Aleatorizar)
+        function shuffleArray(array) {
+            let curId = array.length;
+            while (0 !== curId) {
+                let randId = Math.floor(Math.random() * curId);
+                curId -= 1;
+                let tmp = array[curId];
+                array[curId] = array[randId];
+                array[randId] = tmp;
+            }
+            return array;
+        }
+
+        function renderQuestion() {
+            const q = questions[currentQuestion];
+            selectedOptions = [];
+            nextBtn.disabled = true;
+            
+            // Actualizar textos
+            qSection.innerText = q.section;
+            qTitle.innerText = q.text.replace(/^\d+\.\s*/, ''); // Quitar el número de la pregunta visualmente
+            qCounter.innerText = `${currentQuestion + 1} de 13`;
+            
+            // Actualizar barra de progreso
+            const progress = ((currentQuestion) / questions.length) * 100;
+            progressFill.style.width = `${progress}%`;
+
+            // Ocultar el patrón Vata/Pitta/Kapha aleatorizando el arreglo
+            const mixedOptions = shuffleArray([...q.options]);
+
+            // Construir opciones limpios
+            optionsContainer.innerHTML = '';
+            mixedOptions.forEach(opt => {
+                const div = document.createElement('div');
+                div.className = 'option-card';
+                // Solo renderizamos el texto, y ocultamos la letra A, B, o C al usuario.
+                div.innerHTML = opt.text;
+                div.onclick = () => selectOption(div, opt.value);
+                optionsContainer.appendChild(div);
+            });
+        }
+
+        function selectOption(element, value) {
+            // Alternar selección múltiple
+            if (selectedOptions.includes(value)) {
+                // Deseleccionar
+                selectedOptions = selectedOptions.filter(v => v !== value);
+                element.classList.remove('selected');
+            } else {
+                // Seleccionar
+                selectedOptions.push(value);
+                element.classList.add('selected');
+            }
+            
+            // Habilitar botón de siguiente solo si hay al menos una opción seleccionada
+            nextBtn.disabled = selectedOptions.length === 0;
+        }
+
+        function nextQuestion() {
+            if (selectedOptions.length > 0) {
+                // Sumar puntos por cada opción seleccionada
+                selectedOptions.forEach(val => {
+                    answers[val]++;
+                });
+                
+                currentQuestion++;
+                
+                if (currentQuestion < questions.length) {
+                    // Animación suave entre preguntas
+                    quizView.style.opacity = 0;
+                    setTimeout(() => {
+                        renderQuestion();
+                        quizView.style.opacity = 1;
+                    }, 300);
+                } else {
+                    finishQuiz();
+                }
+            }
+        }
+
+        function finishQuiz() {
+            quizView.classList.remove('active');
+            loadingView.classList.add('active');
+            
+            // Simular tiempo de carga/algoritmo
+            setTimeout(() => {
+                loadingView.classList.remove('active');
+                showResult();
+            }, 2000);
+        }
+
+        function showResult() {
+            resultView.classList.add('active');
+            
+            // Lógica de cálculo estricta
+            const a = answers.A;
+            const b = answers.B;
+            const c = answers.C;
+            
+            let dosha = "";
+            let description = "";
+
+            // Mayoría simple
+            if (a > b && a > c) { dosha = "VATA"; }
+            else if (b > a && b > c) { dosha = "PITTA"; }
+            else if (c > a && c > b) { dosha = "KAPHA"; }
+            // Empates
+            else if (a === b && a > c) { dosha = "VATA-PITTA (Bi-dóshico)"; }
+            else if (b === c && b > a) { dosha = "PITTA-KAPHA (Bi-dóshico)"; }
+            else if (a === c && a > b) { dosha = "VATA-KAPHA (Bi-dóshico)"; }
+            else { dosha = "TRIDÓSHICO (Equilibrado)"; }
+
+            // Llenar datos (Textos basados en el libro)
+            document.getElementById('result-title').innerText = dosha;
+            
+            const descHtml = document.getElementById('result-desc');
+            if(dosha.includes("VATA") && !dosha.includes("PITTA") && !dosha.includes("KAPHA")) {
+                descHtml.innerHTML = `<p><strong>Vata es la energía del movimiento (Aire + Éter).</strong> Eres creativa, entusiasta y aprendes rápido. Físicamente tiendes a ser delgada, liviana y a sufrir de frío o manos heladas.</p>
+                <p style="margin-top:10px;"><strong>Tu Dolor Principal:</strong> Cuando Vata se desequilibra por el estrés o la comida fría, tu digestión se vuelve irregular (gases abdominales) y tu mente se llena de ansiedad e insomnio. Necesitas leer el <strong>Capítulo 4</strong> urgentemente para asentar tu energía con comidas calientes y oleosas.</p>`;
+            } 
+            else if(dosha.includes("PITTA") && !dosha.includes("VATA") && !dosha.includes("KAPHA")) {
+                descHtml.innerHTML = `<p><strong>Pitta es la energía de la transformación (Fuego + Agua).</strong> Eres inteligente, organizada y una líder nata. Físicamente tienes buena musculatura y digestión fuerte, pero sufres calor fácilmente.</p>
+                <p style="margin-top:10px;"><strong>Tu Dolor Principal:</strong> Cuando Pitta se sobrecalienta, tu fuego digestivo quema de más creando acidez, reflujo o inflamaciones de piel, y tu mente se vuelve irritable. Necesitas el <strong>Capítulo 5</strong> para "enfriar" y calmar tu sistema metabólico.</p>`;
+            }
+            else if(dosha.includes("KAPHA") && !dosha.includes("VATA") && !dosha.includes("PITTA")) {
+                descHtml.innerHTML = `<p><strong>Kapha es la energía de la estructura (Tierra + Agua).</strong> Eres la persona más calmada, amorosa y constante del lugar. Físicamente eres robusta, de huesos anchos y metabolismo ahorrador.</p>
+                <p style="margin-top:10px;"><strong>Tu Dolor Principal:</strong> Cuando Kapha se estanca te vuelves apática, con pesadez letárgica tras comer y retienes peso fácilmente. Tu digestión se vuelve extremadamente lenta. Tienes que leer el <strong>Capítulo 6</strong> para encender calor picante y ligereza en tus comidas diarias.</p>`;
+            }
+            else {
+                // Para los empates
+                descHtml.innerHTML = `<p><strong>Eres de naturaleza bi-dóshica o mixta.</strong> Compartes grandes virtudes de dos constituciones. Esto significa que reaccionas a diferentes estímulos dependiendo de la época del año o el tipo de estrés.</p>
+                <p style="margin-top:10px;">En <strong>Ayurveda en tu Mesa</strong> te explicaremos exactamente cómo modular ambos lados de tu fuego digestivo (Agni) para que ni te sobrecalientes ni teestanques.</p>`;
+            }
+        }
+
+        // Web Share API (Supabase Placeholder)
+        function shareResult() {
+            const doshaResult = document.getElementById('result-title').innerText;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Mi Dosha Ayurveda',
+                    text: `Hice el test metabólico de Ayurveda en tu Mesa y mi Dosha es: ${doshaResult}. ¡Averigua el tuyo!`,
+                    url: window.location.href,
+                })
+                .catch((error) => console.log('Error compartiendo', error));
+            } else {
+                alert("Funcionalidad a conectar con tu API de Supabase en producción para generar un link único de perfiles. ¡Por ahora, tu resultado es: " + doshaResult + "!");
+            }
+        }
+
+        // WhatsApp Share
+        function shareWhatsApp() {
+            const doshaResult = document.getElementById('result-title').innerText;
+            const text = encodeURIComponent(`¡Hola!\n\nAcabo de hacer un breve test de Ayurveda, y me salió que mi tipo de metabolismo es ${doshaResult}.\n\nLa verdad está súper interesante, porque te explica por qué a veces, por más que comas sano, igual terminas sintiéndote mal o sin energía.\n\nTe lo comparto para que lo hagas tú también a ver qué te sale. No tardas nada:\n\n${window.location.href}`);
+            window.open(`https://wa.me/?text=${text}`, '_blank');
+        }
+    </script>
+</body>
+</html>
