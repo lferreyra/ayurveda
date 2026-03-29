@@ -447,6 +447,455 @@
         .review-author {
             display: flex;
             align-items: center;
+            gap: 12px;<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayurveda en tu Mesa | El Fin de las Dietas Universales</title>
+    
+    <!-- Fuentes Ultra Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Paleta Luxury Wellness */
+            --bg-linen: #FCFAF6;       /* Fondo ultra blanco roto/lino */
+            --bg-clay: #F2EBE1;        /* Fondo beige arena premium */
+            --bg-sage-dark: #2C3C32;   /* Verde olivo profundo casi negro */
+            
+            --text-dark: #1A1A1A;      /* Negro suave */
+            --text-muted: #5C5C5C;     /* Gris elegante */
+            
+            --accent-terracotta: #AD513B; /* Naranja rojizo arcilla */
+            --accent-gold: #C09559;       /* Dorado mate */
+            
+            --font-display: 'Cormorant Garamond', serif;
+            --font-body: 'Montserrat', sans-serif;
+            
+            --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-lux: 24px;         /* Bordes redondeados */
+            --radius-btn: 50px;         /* Botones tipo pastilla */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-linen);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            padding-top: 110px; 
+        }
+
+        /* --- Barra de Oferta (Top Bar) --- */
+        .top-bar {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: linear-gradient(90deg, #AD513B, #d95e41, #AD513B);
+            background-size: 200% auto;
+            color: white;
+            text-align: center;
+            padding: 10px 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            animation: gradient-shine 3s linear infinite;
+            transform: translateY(-100%); /* Oculto inicialmente */
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .top-bar.visible { transform: translateY(0); }
+
+        @keyframes gradient-shine { to { background-position: 200% center; } }
+
+        .countdown {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--accent-terracotta);
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-variant-numeric: tabular-nums;
+            font-weight: 700;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* --- Header / Menu --- */
+        .site-header {
+            position: fixed;
+            top: 0; /* Inicia arriba */
+            left: 0; width: 100%;
+            background-color: rgba(252, 250, 246, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: top 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+        }
+        
+        .site-header.pushed { top: 41px; /* Empujado cuando aparece top-bar */ }
+
+        .site-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--bg-sage-dark);
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-cta { display: none; }
+        @media (min-width: 768px) { .header-cta { display: block; } }
+
+        /* Tipografía Editorial */
+        h1, h2, h3, h4, h5 {
+            font-family: var(--font-display);
+            font-weight: 400;
+            line-height: 1.1;
+            color: var(--bg-sage-dark);
+        }
+
+        .uppercase-kicker {
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--accent-terracotta);
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Animaciones Luxury Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: opacity 1.2s var(--ease-lux), transform 1.2s var(--ease-lux);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+
+        /* Botón Masterpiece (Rounded) */
+        .btn-luxury {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 40px;
+            background-color: var(--bg-sage-dark);
+            color: var(--bg-linen);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            text-decoration: none;
+            transition: all 0.5s var(--ease-lux);
+            border: 1px solid var(--bg-sage-dark);
+            border-radius: var(--radius-btn);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(44, 60, 50, 0.15);
+        }
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--accent-terracotta);
+            transform: translateY(100%);
+            transition: transform 0.5s var(--ease-lux);
+            z-index: 0;
+        }
+        .btn-luxury:hover::before { transform: translateY(0); }
+        .btn-luxury span { position: relative; z-index: 1; display:flex; align-items:center; gap: 10px; }
+        .btn-luxury:hover {
+            border-color: var(--accent-terracotta);
+            box-shadow: 0 15px 30px rgba(173, 81, 59, 0.25);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            padding: 12px 24px;
+            border: 1px solid var(--bg-sage-dark);
+            color: var(--bg-sage-dark);
+            border-radius: var(--radius-btn);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover { background-color: var(--bg-sage-dark); color: var(--bg-linen); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: calc(100vh - 110px);
+            display: grid;
+            grid-template-columns: 5fr 4fr;
+            align-items: center;
+            position: relative;
+            padding-bottom: 50px;
+        }
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; padding-top: 40px; text-align: center; }
+        }
+
+        .hero-text { padding-right: 10%; z-index: 10; }
+        .hero-title { font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 30px; }
+        .hero-title i { font-style: italic; color: var(--accent-terracotta); }
+        .hero-desc { font-size: 1.1rem; color: var(--text-muted); font-weight: 300; max-width: 500px; margin-bottom: 40px; }
+        
+        @media (max-width: 900px) {
+            .hero-desc { margin: 0 auto 40px; }
+            .hero-text { padding-right: 0; padding-bottom: 50px; }
+        }
+
+        /* Hero Image Container for Mockup */
+        .hero-image-wrapper {
+            position: relative;
+            height: 80vh;
+            background: var(--bg-clay);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: var(--radius-lux);
+            padding: 20px;
+        }
+        @media (max-width: 900px) {
+            .hero-image-wrapper { height: auto; padding: 40px 20px; width: 100%; border-radius: var(--radius-lux); }
+        }
+
+        .hero-main-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transform: scale(1.1);
+        }
+
+        /* --- THE PROBLEM: MAGAZINE SPREAD --- */
+        .section-padding { padding: 120px 0; }
+        .magazine-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        @media (max-width: 900px) {
+            .magazine-grid { grid-template-columns: 1fr; gap: 50px; }
+        }
+
+        .problem-list { list-style: none; margin-top: 40px; }
+        .problem-list li {
+            font-size: 1.25rem; color: var(--text-dark); margin-bottom: 25px;
+            font-family: var(--font-display); font-style: italic;
+            border-bottom: 1px solid var(--bg-clay); padding-bottom: 25px;
+        }
+        .problem-list li:last-child { border: none; }
+
+        .image-portrait {
+            width: 100%;
+            aspect-ratio: 4/5;
+            object-fit: cover;
+            border-radius: var(--radius-lux);
+            box-shadow: 0 40px 80px rgba(0,0,0,0.1);
+        }
+
+        /* --- PARALLAX SECTION (THE SCIENCE) --- */
+        .parallax-section {
+            position: relative;
+            background-image: url('packfull.png');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: var(--bg-linen);
+            padding: 150px 0;
+            text-align: center;
+            overflow: hidden;
+            border-radius: var(--radius-lux);
+            margin: 0 2%;
+        }
+        
+        .parallax-section::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(44, 60, 50, 0.85); z-index: 1;
+        }
+
+        .parallax-content { position: relative; z-index: 2; }
+        .parallax-section h2 { color: var(--bg-linen); font-size: clamp(3rem, 5vw, 4.5rem); margin-bottom: 40px; }
+        
+        .solution-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 80px; text-align: left;
+        }
+        @media (max-width: 900px) { .solution-grid { grid-template-columns: 1fr; gap: 30px;} }
+
+        .solution-card {
+            background: rgba(255,255,255,0.05); backdrop-filter: blur(10px);
+            padding: 40px; border-radius: var(--radius-lux); border: 1px solid rgba(255,255,255,0.1);
+        }
+        .solution-card h3 { color: var(--accent-gold); font-size: 2rem; margin-bottom: 15px; }
+        .solution-card p { color: rgba(255,255,255,0.8); font-size: 0.95rem; font-weight: 300; }
+
+        /* --- VALUE STACK LUXURY BOX --- */
+        .eco-system {
+            background-color: var(--bg-clay);
+            padding: 120px 0;
+            margin-top: 100px;
+            border-radius: var(--radius-lux);
+        }
+
+        .offer-container {
+            background: white;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px;
+            border-radius: var(--radius-lux);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        @media (max-width: 768px) { .offer-container { padding: 40px 20px; } }
+
+        .offer-header { text-align: center; margin-bottom: 50px; }
+        .offer-header h2 { font-size: 3rem; }
+
+        .bundle-mockup-wrapper {
+            margin: 0 auto 50px;
+            max-width: 600px;
+            text-align: center;
+        }
+        .bundle-mockup-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.08));
+        }
+
+        .line-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 0; border-bottom: 1px solid var(--bg-clay);
+        }
+        .line-item:last-child { border: none; }
+        
+        .item-name { font-family: var(--font-display); font-size: 1.4rem; color: var(--bg-sage-dark); }
+        .item-desc { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+        .item-free { color: var(--accent-terracotta); font-weight: 600; letter-spacing: 0.1em; display: inline-block; margin-left: 10px;}
+
+        .total-box {
+            text-align: center; margin-top: 50px; padding-top: 50px;
+            border-top: 1px solid var(--accent-gold);
+        }
+        .price-strike { font-size: 1.1rem; color: var(--text-muted); text-decoration: line-through; margin-bottom: 10px; }
+        .price-final { font-family: var(--font-display); font-size: 5rem; line-height: 1; color: var(--bg-sage-dark); margin-bottom: 30px; }
+
+        /* --- FOOTER MAIN --- */
+        .site-footer {
+            background-color: var(--bg-sage-dark);
+            color: var(--bg-linen);
+            padding: 80px 5%;
+            margin-top: 100px;
+            border-radius: var(--radius-lux) var(--radius-lux) 0 0;
+            text-align: center;
+        }
+        .site-footer h2 { color: var(--bg-linen); font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 20px; }
+
+        .footer-links {
+            display: flex; justify-content: center; gap: 20px; margin-top: 60px;
+            font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+        }
+        .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.3s ease; }
+        .footer-links a:hover { color: var(--bg-linen); }
+
+        /* --- WALL OF LOVE / TESTIMONIALS --- */
+        .marquee-section {
+            padding: 100px 0 40px;
+            background-color: var(--bg-linen);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .marquee-header { text-align: center; margin-bottom: 20px; }
+        
+        .marquee {
+            width: 100vw;
+            display: flex;
+            overflow: hidden;
+            user-select: none;
+            gap: 20px;
+            margin-left: calc(-50vw + 50%); /* Forzar full width fuera del box model */
+        }
+        
+        .marquee-content {
+            flex-shrink: 0;
+            display: flex;
+            gap: 20px;
+            min-width: 100%;
+            animation: scroll-x 60s linear infinite;
+        }
+        
+        @keyframes scroll-x {
+            from { transform: translateX(0); }
+            to { transform: translateX(calc(-100% - 20px)); }
+        }
+
+        .marquee-reverse .marquee-content {
+            animation-direction: reverse;
+        }
+
+        .review-card {
+            width: 360px;
+            background: white;
+            border-radius: var(--radius-lux);
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+            border: 1px solid var(--bg-clay);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .review-text {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
             gap: 12px;
             margin-top: auto;
         }
@@ -482,7 +931,7 @@
     <div class="top-bar">
         <span>⚡ OFERTA DE LANZAMIENTO EXPIRA EN:</span>
         <span class="countdown" id="timer">23:59:59</span>
-        <span>|  PRECIO HOY: U$19</span>
+        <span>| Comparte con una amiga y obtén 50% OFF con el código <strong>SANA</strong></span>
     </div>
 
     <!-- HEADER / MENU -->
@@ -508,8 +957,8 @@
         </div>
         
         <div class="hero-image-wrapper reveal reveal-delay-2">
-            <!-- Mockup del Bundle principal de la nueva colección -->
-            <img src="file:///C:/Users/Usuario/.gemini/antigravity/brain/41c2138e-40c8-4549-9592-a4181517b9bb/media__1774755137459.png" alt="Bundle Ayurveda en tu Mesa" class="hero-main-img">
+            <!-- Imagen portada principal -->
+            <img src="portadafinal.png" alt="Bundle Ayurveda en tu Mesa" class="hero-main-img">
         </div>
     </section>
 
@@ -529,8 +978,8 @@
                 </ul>
             </div>
             <div class="reveal reveal-delay-2">
-                <!-- Imagen generada de la mujer comiendo un bowl saludable -->
-                <img src="file:///C:/Users/Usuario/.gemini/antigravity/brain/41c2138e-40c8-4549-9592-a4181517b9bb/mujer_comiendo_saludable_1774754808463.png" alt="Mujer feliz comiendo comida ayurvédica" class="image-portrait">
+                <!-- Imagen mujer comiendo saludable -->
+                <img src="mujer_comiendo_saludable.png" alt="Mujer feliz comiendo comida ayurvédica" class="image-portrait">
             </div>
         </div>
     </section>
@@ -628,9 +1077,9 @@
                     <h2>El Ecosistema <i>Ayurveda en tu Mesa</i></h2>
                 </div>
                 
-                <!-- Full Bundle Mockup -->
+                <!-- Ecosistema Completo -->
                 <div class="bundle-mockup-wrapper">
-                    <img src="file:///C:/Users/Usuario/.gemini/antigravity/brain/41c2138e-40c8-4549-9592-a4181517b9bb/media__1774754721344.png" alt="Ecosistema Completo Ayurveda">
+                    <img src="Ecosistema.png" alt="Ecosistema Completo Ayurveda">
                 </div>
 
                 <div class="line-item">
@@ -671,9 +1120,13 @@
                 </div>
 
                 <div class="total-box">
-                    <div class="price-strike">Valor por Separado: U$95</div>
+                    <div class="price-strike">Precio regular: U$38</div>
                     <div class="price-final">U$19</div>
-                    <div style="font-size: 0.85rem; color: #888; margin-top: -15px; margin-bottom: 25px; font-weight: 500;">*€ 16,50 aprox, sujeto a cotización del día</div>
+                    <div style="font-size: 0.85rem; color: #888; margin-top: -15px; margin-bottom: 10px; font-weight: 500;">*€ 16,50 aprox, sujeto a cotización del día</div>
+                    <div style="background: rgba(173,81,59,0.08); border: 1.5px dashed var(--accent-terracotta); border-radius: 12px; padding: 15px 20px; margin-bottom: 25px; text-align: center;">
+                        <span style="font-size: 0.8rem; color: var(--accent-terracotta); font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">🎁 ¿Hiciste el test y lo compartiste con una amiga?</span><br>
+                        <span style="font-size: 0.95rem; color: var(--text-dark); font-weight: 500;">Aplicá el código <strong style="color: var(--accent-terracotta); font-size: 1.1rem;">SANA</strong> al finalizar la compra y obtené el 50% OFF → <strong>U$19</strong></span>
+                    </div>
                     <a href="#" class="btn-luxury" style="width: 100%; max-width: 400px; padding: 25px; font-size: 0.9rem;">
                         <span>Finalizar Compra Segura</span>
                     </a>
@@ -689,7 +1142,7 @@
             <p class="reveal reveal-delay-1" style="max-width: 500px; margin: 20px auto 40px; font-weight: 300;">Recupera tu energía hoy mismo con Ayurveda en tu Mesa adaptado a tu vida moderna.</p>
             
             <a href="#experiencia" class="btn-luxury reveal reveal-delay-2" style="background: white; color: var(--bg-sage-dark);">
-                <span>Recibir Acceso (U$19)</span>
+                <span>Recibir Acceso (U$19 con código SANA)</span>
             </a>
 
             <div class="footer-links">
