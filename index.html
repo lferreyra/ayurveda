@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ayurveda en tu Mesa | El Fin de las Dietas Universales</title>
+    <title>Ayurveda en tu Mesa | Alimentación Saludable según tu Dosha</title>
+    <meta name="description" content="Descubre el sistema de alimentación Ayurveda para equilibrar tu energía y mejorar tu digestión según tu biotipo único (Vata, Pitta o Kapha). El fin de las dietas universales.">
+    <meta name="keywords" content="Ayurveda, Alimentación Saludable, Doshas, Vata, Pitta, Kapha, Nutrición Natural, Salud Holística">
     
     <!-- Fuentes Ultra Premium -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -23,8 +25,8 @@
             --accent-terracotta: #AD513B; /* Naranja rojizo arcilla */
             --accent-gold: #C09559;       /* Dorado mate */
             
-            --font-display: 'Cormorant Garamond', serif;
-            --font-body: 'Montserrat', sans-serif;
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Outfit', sans-serif;
             
             --ease-lux: cubic-bezier(0.16, 1, 0.3, 1);
             --radius-lux: 24px;         /* Bordes redondeados */
@@ -44,7 +46,7 @@
             line-height: 1.8;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            padding-top: 110px; 
+            /* SE ELIMINA padding-top: 110px; para manejarlo dinámicamente con la barra */
         }
 
         /* --- Barra de Oferta (Top Bar) --- */
@@ -216,6 +218,7 @@
             align-items: center;
             position: relative;
             padding-bottom: 50px;
+            padding-top: 130px;
         }
         @media (max-width: 900px) {
             .hero { grid-template-columns: 1fr; padding-top: 40px; text-align: center; }
@@ -520,17 +523,70 @@
             margin-top: 20px;
             opacity: 0.7;
         }
-        .hotmart-trust img { height: 20px; filter: grayscale(1); }
-        .hotmart-trust span { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        .exit-badge-highlight {
+            background: #1a1a1a;
+            color: #ffffff;
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+        }
+        .exit-badge-highlight::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: exit-shine 3s infinite;
+        }
+        @keyframes exit-shine { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
 
+        /* --- Floating Badge DISTINGUISHED --- */
+        .floating-badge {
+            position: absolute;
+            background: white;
+            padding: 1.2rem 1.8rem;
+            border-radius: var(--radius-lux);
+            box-shadow: 0 20px 40px rgba(62, 47, 38, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            bottom: 40px;
+            left: -30px;
+            z-index: 10;
+        }
+        .floating-badge h4 { font-family: var(--font-body); font-size: 0.9rem; margin: 0; color: var(--bg-sage-dark); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .floating-badge p { font-size: 0.75rem; margin: 0; color: var(--text-muted); opacity: 0.8; }
+        
+        .badge-shine {
+            position: relative; overflow: hidden;
+        }
+        .badge-shine::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+            animation: badge-glint 4s infinite;
+        }
+        @keyframes badge-glint { 0% { left: -100%; } 20% { left: 200%; } 100% { left: 200%; } }
 
+        /* Modal Pre-Checkout */
+        .pre-checkout-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); z-index: 30000; display: none; align-items: center; justify-content: center; opacity: 0; transition: 0.4s; }
+        .pre-checkout-overlay.show { display: flex; opacity: 1; }
+        .coupon-gif { width: 100%; border-radius: 12px; margin: 20px 0; border: 1px solid #eee; }
     </style>
 </head>
 <body>
 
     <!-- TOP BAR (24h Oferta Evergreen) -->
-    <div class="top-bar">
-        <span>⚡ OFERTA DE LANZAMIENTO EXPIRA EN:</span>
+    <div class="top-bar" id="main-top-bar">
+        <span id="top-bar-text">⚡ PRECIO SUBE A U$38 MAÑANA:</span>
         <span class="countdown" id="timer">23:59:59</span>
         <span>| Hacé el test y compartílo &mdash; ¡obtén un 50% de descuento!</span>
     </div>
@@ -538,26 +594,35 @@
     <!-- HEADER / MENU -->
     <header class="site-header">
         <a href="#" class="site-logo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM12 2v20"/><path d="M12 12c-3.87 0-7-3.13-7-7 3.87 0-7 3.13 7 7zm0 0c3.87 0 7-3.13 7-7-3.87 0-7 3.13-7 7z"/></svg>
             AYURVEDA EN TU MESA
         </a>
         <div class="header-cta">
-            <a href="https://pay.hotmart.com/G105134849B?bid=1774830495450" class="btn-outline">Acceso Inmediato</a>
+            <a href="https://pay.hotmart.com/G105134849B?bid=1774830495450" class="btn-outline btn-link-pre">Acceso Inmediato</a>
         </div>
     </header>
 
     <!-- HERO EDITORIAL -->
     <section class="hero container">
         <div class="hero-text reveal">
-            <span class="uppercase-kicker">Sabiduría de 5.000 años</span>
-            <h1 class="hero-title">El fin de las dietas <i>universales.</i></h1>
-            <p class="hero-desc">Descubre el alimento exacto que enciende tu metabolismo según tu código genético ancestral. Sin restricciones, sin contar calorías y con ingredientes de tu supermercado habitual.</p>
+            <span class="uppercase-kicker">Sabiduría Milenaria para la Mujer Moderna</span>
+            <h1 class="hero-title">Ayurveda en tu Mesa: El fin de las dietas <i>universales.</i><br><span style="font-size: 0.6em; font-style: normal; font-weight: 400; color: var(--text-muted);">Alimentación inteligente según tu biotipo único.</span></h1>
+            <p class="hero-desc">Descubre el alimento exacto que enciende tu metabolismo según tu tipo de cuerpo único. Sin restricciones, sin contar calorías y con ingredientes de tu supermercado habitual.</p>
+            <p style="font-size: 0.85rem; color: var(--accent-terracotta); margin-bottom: 15px; font-weight: 500;">🌿 Para mujeres que ya intentaron todo y están hartas de contar calorías</p>
             <a href="ayurveda-test-doshas.html" class="btn-luxury">
-                <span>Descubre tu Dosha Hoy</span>
+                <span>Descubre tu Dosha y la comida que reactivará tu metabolismo HOY</span>
             </a>
+            <p style="font-size: 0.75rem; color: #888; margin-top: 12px;">🛡️ Garantía de 7 días. Si no notas diferencia, te devolvemos el 100%.</p>
         </div>
         
         <div class="hero-image-wrapper reveal reveal-delay-2">
+            <!-- Badge Flotante Distinguished -->
+            <div class="floating-badge badge-shine" style="left: -20px; bottom: 60px;">
+                <div style="font-size: 1.5rem;">✨</div>
+                <div>
+                    <h4 style="font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.85rem; color: #1a1a1a;">100% Digital</h4>
+                    <p style="font-family: 'Outfit', sans-serif; font-size: 0.75rem; color: #666;">Resultados inmediatos</p>
+                </div>
+            </div>
             <!-- Imagen portada principal -->
             <img src="portadafinal.png" alt="Bundle Ayurveda en tu Mesa" class="hero-main-img">
         </div>
@@ -567,8 +632,8 @@
     <section class="section-padding">
         <div class="container magazine-grid">
             <div style="position: relative;" class="reveal">
-                <span class="uppercase-kicker">La desconexión</span>
-                <h2>Hermosamente únicas,<br>mal informadas.</h2>
+                <span class="uppercase-kicker">El Conflicto de la Nutrición Estándar</span>
+                <h2>¿Por qué las dietas comunes fallan en tu cuerpo?</h2>
                 <p style="margin-top: 30px; font-weight: 300;">La industria te hizo creer que todos los cuerpos son máquinas iguales. Te dieron soluciones estándar para un metabolismo que es un ecosistema irrepetible.</p>
                 <p style="margin-top: 15px; font-weight: 300;">Cuando comes alimentos que chocan con tu constitución biológica innata, tu cuerpo reacciona apagando tu energía. <strong>No estás fallando tú; usabas el manual equivocado.</strong></p>
                 
@@ -588,21 +653,21 @@
     <!-- THE SCIENCE : PARALLAX SECTION -->
     <section class="parallax-section">
         <div class="container parallax-content reveal">
-            <span class="uppercase-kicker" style="color: var(--accent-gold);">La Ciencia Detrás</span>
-            <h2>El secreto no es lo que comes,<br>es tu <i>Fuego Digestivo.</i></h2>
+            <span class="uppercase-kicker" style="color: var(--accent-gold);">La Ciencia del Equilibrio Vital</span>
+            <h2>Domina tu Alimentación Ayurvédica y tu <i>Fuego Digestivo.</i></h2>
             <p style="max-width: 600px; margin: 0 auto; color: rgba(255,255,255,0.8); font-weight: 300;">El Ayurveda demuestra que la clave radica en tu <strong>Agni</strong>. En minutos descubrirás si tu cuerpo opera bajo la fuerza de Vata (Aire), Pitta (Fuego) o Kapha (Tierra), y le daremos el combustible que clama.</p>
-
+ 
             <div class="solution-grid">
                 <div class="solution-card reveal reveal-delay-1">
-                    <h3>01. El Test Rápido</h3>
+                    <h3>01. Test de Doshas Rápido</h3>
                     <p>Descubre de forma reveladora en tan solo 5 minutos tu Dosha predominante en el Capítulo 3 de tu manual.</p>
                 </div>
                 <div class="solution-card reveal reveal-delay-2">
-                    <h3>02. Nutrición Exacta</h3>
+                    <h3>02. Nutrición Ayurvédica Exacta</h3>
                     <p>Accede a las instrucciones cerradas y menús diseñados únicamente para tu elemento corporal.</p>
                 </div>
                 <div class="solution-card reveal reveal-delay-3">
-                    <h3>03. Especias Diarias</h3>
+                    <h3>03. Alquimia de Especias Naturales</h3>
                     <p>Aplica las Especias Esenciales (alquimia simple) usando ingredientes que compras en el supermercado normal.</p>
                 </div>
             </div>
@@ -612,13 +677,12 @@
     <!-- WALL OF LOVE / RESEÑAS -->
     <section class="marquee-section">
         <div class="marquee-header reveal">
-            <span class="uppercase-kicker">Lo que dicen de nosotras</span>
-            <h2>Historias de transformación</h2>
+            <span class="uppercase-kicker">Resultados de la Comunidad</span>
+            <h2>Opiniones sobre Ayurveda en tu Mesa</h2>
         </div>
         
         <div class="marquee reveal reveal-delay-1">
             <div class="marquee-content">
-                <!-- Fila 1 - Original -->
                 <div class="review-card"><p class="review-text">"Por fin entiendo por qué la ensalada me hinchaba, mil gracias. Toda mi vida comiendo sano y sentándome mal, el test fue revelador."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Laura M.</span><span class="author-stars">★★★★★</span></div></div></div>
                 <div class="review-card"><p class="review-text">"Perdí la inflamación en 3 días al cocinar según mi Dosha Vata. La calidez del desayuno es mi salvación."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/68.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Carmen R.</span><span class="author-stars">★★★★★</span></div></div></div>
                 <div class="review-card"><p class="review-text">"Increíble. Cero dietas, solo especias adaptadas a mí y ahora la comida sabe mejor que nunca."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/33.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Elena T.</span><span class="author-stars">★★★★★</span></div></div></div>
@@ -630,7 +694,6 @@
                 <div class="review-card"><p class="review-text">"Amo la receta del tónico mañanero. Ha sustituido permanentemente mi café."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/55.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Andrea G.</span><span class="author-stars">★★★★★</span></div></div></div>
             </div>
             <div class="marquee-content" aria-hidden="true">
-                <!-- Fila 1 - Duplicado Inmediato para Scroll infinito -->
                 <div class="review-card"><p class="review-text">"Por fin entiendo por qué la ensalada me hinchaba, mil gracias. Toda mi vida comiendo sano y sentándome mal, el test fue revelador."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Laura M.</span><span class="author-stars">★★★★★</span></div></div></div>
                 <div class="review-card"><p class="review-text">"Perdí la inflamación en 3 días al cocinar según mi Dosha Vata. La calidez del desayuno es mi salvación."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/68.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Carmen R.</span><span class="author-stars">★★★★★</span></div></div></div>
                 <div class="review-card"><p class="review-text">"Increíble. Cero dietas, solo especias adaptadas a mí y ahora la comida sabe mejor que nunca."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/33.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Elena T.</span><span class="author-stars">★★★★★</span></div></div></div>
@@ -645,7 +708,6 @@
 
         <div class="marquee marquee-reverse reveal reveal-delay-2">
             <div class="marquee-content">
-                <!-- Fila 2 - Original -->
                 <div class="review-card"><p class="review-text">"Para una mujer ocupada con el trabajo, esto es literalmente un salvavidas."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/65.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Valeria F.</span><span class="author-stars">★★★★★</span></div></div></div>
                 <div class="review-card"><p class="review-text">"Comer según mi biotipo Kapha me quitó mágicamente la ansiedad brutal que tenía por el azúcar."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/71.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Cristina V.</span><span class="author-stars">★★★★★</span></div></div></div>
                 <div class="review-card"><p class="review-text">"Mi esposo también se unió a comer Ayurveda en la cena y los dos notamos mejor humor."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/8.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Natalia C.</span><span class="author-stars">★★★★★</span></div></div></div>
@@ -656,7 +718,6 @@
                 <div class="review-card"><p class="review-text">"19 euros es derechamente un regalo por la cantidad de conocimiento condensado acá."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/19.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Julia E.</span><span class="author-stars">★★★★★</span></div></div></div>
             </div>
             <div class="marquee-content" aria-hidden="true">
-                <!-- Fila 2 - Duplicado -->
                 <div class="review-card"><p class="review-text">"Para una mujer ocupada con el trabajo, esto es literalmente un salvavidas."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/65.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Valeria F.</span><span class="author-stars">★★★★★</span></div></div></div>
                 <div class="review-card"><p class="review-text">"Comer según mi biotipo Kapha me quitó mágicamente la ansiedad brutal que tenía por el azúcar."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/71.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Cristina V.</span><span class="author-stars">★★★★★</span></div></div></div>
                 <div class="review-card"><p class="review-text">"Mi esposo también se unió a comer Ayurveda en la cena y los dos notamos mejor humor."</p><div class="review-author"><img src="https://randomuser.me/api/portraits/women/8.jpg" class="review-avatar" alt="Avatar"><div class="author-info"><span class="author-name">Natalia C.</span><span class="author-stars">★★★★★</span></div></div></div>
@@ -674,8 +735,8 @@
         <div class="container reveal">
             <div class="offer-container">
                 <div class="offer-header">
-                    <span class="uppercase-kicker">La Experiencia Completa</span>
-                    <h2>El Ecosistema <i>Ayurveda en tu Mesa</i></h2>
+                    <span class="uppercase-kicker">Tu Hoja de Ruta al Bienestar</span>
+                    <h2>Contenido del Ecosistema Ayurveda Completo</h2>
                 </div>
                 
                 <!-- Ecosistema Completo -->
@@ -731,11 +792,11 @@
                     <div class="price-final">U$19<sup style="font-size: 1.5rem; vertical-align: super;">*</sup></div>
                     <div style="font-size: 0.85rem; color: #888; margin-top: -10px; margin-bottom: 8px; font-weight: 400;">(U$19 usando el código promocional)</div>
                     <div style="font-size: 0.78rem; color: #aaa; margin-bottom: 25px;">*€ 16,50 aprox, sujeto a cotización del día</div>
-                    <a href="https://pay.hotmart.com/G105134849B?bid=1774830495450" class="btn-luxury" style="width: 100%; max-width: 400px; padding: 25px; font-size: 0.9rem;">
+                    <a href="https://pay.hotmart.com/G105134849B?coupon=SANA" class="btn-luxury btn-link-pre" style="width: 100%; max-width: 400px; padding: 25px; font-size: 0.9rem;">
                         <span>Finalizar Compra Segura</span>
                     </a>
                     <div class="hotmart-trust">
-                        <img src="Hotmart_logo.png" alt="Hotmart">
+                        <img src="https://logodownload.org/wp-content/uploads/2019/07/hotmart-logo.png" alt="Hotmart">
                         <span>Compra 100% Segura y Procesada por Hotmart</span>
                     </div>
                 </div>
@@ -776,29 +837,56 @@
             }, observerOptions);
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-            let time = 24 * 3600 - 1; 
+            // LÓGICA DE RELOJ AVANZADO (3 Fases)
+            const now = Date.now();
+            let firstVisitTime = localStorage.getItem('ay_v1_time') || now;
+            localStorage.setItem('ay_v1_time', firstVisitTime);
+            
+            const diffHours = (now - firstVisitTime) / (1000 * 3600);
             const timerEl = document.getElementById("timer");
-            setInterval(() => {
-                let h = Math.floor(time / 3600);
-                let m = Math.floor((time % 3600) / 60);
-                let s = time % 60;
-                h = h < 10 ? '0'+h : h;
-                m = m < 10 ? '0'+m : m;
-                s = s < 10 ? '0'+s : s;
-                timerEl.innerText = `${h}:${m}:${s}`;
-                time--;
-                if(time < 0) time = 24 * 3600 - 1;
-            }, 1000);
+            const topText = document.getElementById("top-bar-text");
+            const topBar = document.querySelector(".top-bar");
+
+            if (diffHours < 24) {
+                // FASE 1: Urgencia Inicial
+                startTimer((parseInt(firstVisitTime) + 86400000 - now) / 1000);
+            } else if (diffHours < 48) {
+                // FASE 2: Regalo de Bienvenida (Extensión)
+                topBar.style.background = "linear-gradient(90deg, #2C3C32, #3e5446, #2C3C32)";
+                topText.innerText = "⭐ REGALO DE BIENVENIDA:";
+                startTimer((parseInt(firstVisitTime) + 172800000 - now) / 1000);
+            } else {
+                // FASE 3: Expirado
+                topBar.style.background = "#000";
+                topText.innerText = "⚠️ OFERTA EXPIRADA";
+                timerEl.innerText = "00:00:00";
+            }
+
+            function startTimer(seconds) {
+                let remaining = Math.floor(seconds);
+                const interval = setInterval(() => {
+                    remaining--;
+                    if (remaining <= 0) {
+                        clearInterval(interval);
+                        location.reload();
+                        return;
+                    }
+                    let h = Math.floor(remaining / 3600);
+                    let m = Math.floor((remaining % 3600) / 60);
+                    let s = Math.floor(remaining % 60);
+                    timerEl.innerText = `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+                }, 1000);
+            }
 
             // Animación de aparición de la barra de oferta tras cargar
             setTimeout(() => {
-                const topBar = document.querySelector('.top-bar');
                 const siteHeader = document.querySelector('.site-header');
                 if (topBar && siteHeader) {
                     topBar.classList.add('visible');
                     siteHeader.classList.add('pushed');
+                    document.body.style.paddingTop = "41px";
                 }
-            }, 2000); // Aparece 2 segundos después
+            }, 1500);
 
             // SOCIAL PROOF POPUP LOGIC
             const firstNames = ['María', 'Lucía', 'Ana', 'Emilia', 'Sofía', 'Camila', 'Valeria', 'Martina', 'Isabella', 'Daniela', 'Mariana', 'Gabriela', 'Renata', 'Natalia', 'Paula', 'Andrea', 'Fernanda', 'Julieta', 'Alejandra', 'Carolina'];
@@ -827,12 +915,10 @@
                 
                 setTimeout(() => {
                     salesPopup.classList.remove('show');
-                    // Random delay entre 30 y 40 segundos
                     const nextDelay = Math.floor(Math.random() * (40000 - 30000 + 1)) + 30000;
                     setTimeout(showRandomSale, nextDelay);
-                }, 6000); // Duration visible: 6 sec
+                }, 6000); 
             }
-            // First delay
             setTimeout(showRandomSale, 3000);
 
             // EXIT INTENT LOGIC
@@ -860,7 +946,7 @@
             <a href="ayurveda-test-doshas.html" class="btn-luxury" style="width: 100%; background: var(--accent-terracotta); border-color: var(--accent-terracotta);">
                 <span>Hacer el Test y obtener 50% OFF</span>
             </a>
-            <p style="margin-top: 20px; font-size: 0.8rem !important; opacity: 0.6;">* El cupón se genera automáticamente al finalizar el test.</p>
+            <div class="exit-badge-highlight">* El cupón se genera automáticamente al finalizar el test.</div>
         </div>
     </div>
 
@@ -873,5 +959,35 @@
             <span class="sales-time" id="sales-time">Hace 5 min</span>
         </div>
     </div>
+
+    <!-- PRE-CHECKOUT MODAL -->
+    <div id="pre-checkout-modal" class="pre-checkout-overlay">
+        <div class="exit-card" style="max-width: 450px;">
+            <div class="exit-badge">¡Importante antes de pagar! ✋</div>
+            <h3 style="font-size: 1.5rem;">Carga tu cupón <span style="color:var(--accent-terracotta);">SANA</span></h3>
+            <p style="margin-bottom: 15px;">Para asegurar tu precio de <b>U$19</b>, no olvides escribir el cupón en la pantalla de pago como se muestra aquí:</p>
+            <img src="instruccion-cupon.gif" alt="Cómo aplicar cupón" class="coupon-gif">
+            <a id="final-checkout-btn" href="#" class="btn-luxury" style="width: 100%; background: var(--bg-sage-dark);">
+                <span>Entendido, ir al Pago Seguro</span>
+            </a>
+            <p style="margin-top: 15px; font-size: 0.7rem; opacity: 0.6; cursor: pointer;" onclick="closePreModal()">Prefiero comprar mañana sin descuento</p>
+        </div>
+    </div>
+
+    <script>
+        // Lógica para interrumpir botones de compra
+        document.querySelectorAll('.btn-link-pre').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetUrl = this.getAttribute('href');
+                document.getElementById('final-checkout-btn').setAttribute('href', targetUrl);
+                document.getElementById('pre-checkout-modal').classList.add('show');
+            });
+        });
+
+        function closePreModal() {
+            document.getElementById('pre-checkout-modal').classList.remove('show');
+        }
+    </script>
 </body>
 </html>
