@@ -224,14 +224,14 @@
             .hero { grid-template-columns: 1fr; padding-top: 40px; text-align: center; }
         }
 
-        .hero-text { padding-right: 10%; z-index: 10; }
-        .hero-title { font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 30px; }
+        .hero-text { padding-right: 10%; z-index: 50; position: relative; }
+        .hero-title { font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 30px; position: relative; z-index: 51; }
         .hero-title i { font-style: italic; color: var(--accent-terracotta); }
-        .hero-desc { font-size: 1.1rem; color: var(--text-muted); font-weight: 300; max-width: 500px; margin-bottom: 40px; }
+        .hero-desc { font-size: 1.1rem; color: var(--text-muted); font-weight: 300; max-width: 500px; margin-bottom: 40px; position: relative; z-index: 51; }
         
         @media (max-width: 900px) {
             .hero-desc { margin: 0 auto 40px; }
-            .hero-text { padding-right: 0; padding-bottom: 50px; }
+            .hero-text { padding-right: 0; padding-bottom: 50px; z-index: 50; }
         }
 
         /* Hero Image Container for Mockup */
@@ -252,9 +252,11 @@
 
         .hero-main-img {
             width: 100%;
-            height: 100%;
+            height: auto;
+            max-height: 85vh;
             object-fit: contain;
-            transform: scale(1.1);
+            transform: scale(1);
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.12));
         }
 
         /* --- THE PROBLEM: MAGAZINE SPREAD --- */
@@ -615,16 +617,8 @@
         </div>
         
         <div class="hero-image-wrapper reveal reveal-delay-2">
-            <!-- Badge Flotante Distinguished -->
-            <div class="floating-badge badge-shine" style="left: -20px; bottom: 60px;">
-                <div style="font-size: 1.5rem;">✨</div>
-                <div>
-                    <h4 style="font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 0.85rem; color: #1a1a1a;">100% Digital</h4>
-                    <p style="font-family: 'Outfit', sans-serif; font-size: 0.75rem; color: #666;">Resultados inmediatos</p>
-                </div>
-            </div>
             <!-- Imagen portada principal -->
-            <img src="portadafinal.png" alt="Bundle Ayurveda en tu Mesa" class="hero-main-img">
+            <img src="portadafinal.png" alt="Ayurveda en tu Mesa - Portada Premium" class="hero-main-img">
         </div>
     </section>
 
@@ -796,7 +790,7 @@
                         <span>Finalizar Compra Segura</span>
                     </a>
                     <div class="hotmart-trust">
-                        <img src="https://logodownload.org/wp-content/uploads/2019/07/hotmart_logo.png" alt="Hotmart">
+                        <img src="https://logodownload.org/wp-content/uploads/2019/07/hotmart-logo.png" alt="Hotmart">
                         <span>Compra 100% Segura y Procesada por Hotmart</span>
                     </div>
                 </div>
