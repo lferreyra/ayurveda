@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayurveda en tu MESA | Transforma tu Energía</title>
+    
+    <!-- Fuentes Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Colores de Alta Conversión y Estética Premium */
+            --bg-body: #FAF8F5;
+            --bg-accent: #F0E8DD;
+            
+            --primary-dark: #3E2F26;
+            --primary-light: #5B473D;
+            
+            --accent-terracotta: #B96645;
+            --accent-terracotta-hover: #9E5639;
+            --accent-sand: #D9C3B0;
+            --accent-sage: #889C81;
+            
+            --white: #FFFFFF;
+            
+            /* Box Shadows 3D premium */
+            --shadow-soft: 0 20px 40px rgba(62, 47, 38, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+            --shadow-float: 0 30px 60px rgba(185, 102, 69, 0.15);
+            --shadow-btn: 0 15px 30px rgba(185, 102, 69, 0.3);
+            
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--primary-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Tipografía --- */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-dark);
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: var(--primary-light);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- Efectos Ambientales (Blobs) --- */
+        .blob-1, .blob-2 {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.5;
+            animation: float 10s ease-in-out infinite alternate;
+        }
+        
+        .blob-1 {
+            width: 600px;
+            height: 600px;
+            background: rgba(185, 102, 69, 0.15);
+            top: -200px;
+            right: -100px;
+        }
+        
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(136, 156, 129, 0.15);
+            bottom: -150px;
+            left: -150px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(-30px, 50px) scale(1.1); }
+        }
+
+        /* --- Botones --- */
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent-terracotta), #da7851);
+            color: var(--white);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding: 1.25rem 3rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow-btn);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-main::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -100%; }
+            20% { left: 200%; }
+            100% { left: 200%; }
+        }
+
+        .btn-main:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(185, 102, 69, 0.4);
+        }
+
+        /* --- Barra Superior --- */
+        .top-banner {
+            background-color: var(--primary-dark);
+            color: var(--accent-sand);
+            text-align: center;
+            padding: 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .top-banner span {
+            color: var(--white);
+            font-weight: 700;
+        }
+
+        /* --- Secciones --- */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        /* --- Hero --- */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 60px;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(136, 156, 129, 0.1);
+            color: var(--accent-sage);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(136, 156, 129, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            color: var(--accent-terracotta);
+            font-style: italic;
+            display: block;
+        }
+
+        .hero p.subtitle {
+            font-size: 1.35rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-img-wrapper {
+            position: relative;
+            transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+            transition: transform 0.8s ease;
+        }
+        
+        .hero-img-wrapper:hover {
+            transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+        }
+
+        .hero-img-wrapper img {
+            width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-float);
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            bottom: 40px;
+            left: -40px;
+            animation: float-badge 4s infinite alternate ease-in-out;
+        }
+        
+        .floating-badge h4 {
+            font-size: 1rem;
+            font-family: 'Outfit';
+        }
+
+        @keyframes float-badge {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-15px); }
+        }
+
+        /* --- Pain Points --- */
+        .pain-section {
+            background-color: var(--white);
+            border-top-left-radius: 80px;
+            border-top-right-radius: 80px;
+            padding: 120px 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 80px;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .glass-card {
+            background: rgba(250, 248, 245, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent-terracotta);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .glass-card:hover::before {
+            opacity: 1;
+        }
+
+        .glass-card div.icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .glass-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-family: 'Outfit';
+            font-weight: 600;
+        }
+
+        /* --- Resultados / Solucion --- */
+        .results-section {
+            background-color: var(--bg-accent);
+            padding: 120px 0;
+        }
+
+        .results-list {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .result-item {
+            background: var(--white);
+            padding: 25px 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
+        }
+
+        .result-item:hover {
+            transform: translateX(10px);
+        }
+
+        .check-icon {
+            color: var(--accent-sage);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* --- Social Proof --- */
+        .testimonials {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-body);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            position: relative;
+        }
+
+        .quote-mark {
+            font-family: 'Playfair Display';
+            font-size: 80px;
+            color: var(--accent-sand);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.5;
+            line-height: 1;
+        }
+
+        /* --- Value Stack Oferta --- */
+        .offer-section {
+            padding: 120px 0;
+            background-color: var(--primary-dark);
+            color: var(--bg-body);
+        }
+
+        .offer-section h2, .offer-section h3 {
+            color: var(--white);
+        }
+        
+        .offer-section p {
+            color: var(--accent-sand);
+        }
+
+        .offer-box {
+            background: var(--bg-body);
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+            color: var(--primary-dark);
+        }
+
+        .offer-box p {
+            color: var(--primary-light);
+        }
+
+        .stack-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+            padding: 30px 0;
+            border-bottom: 1px solid var(--accent-sand);
+        }
+
+        .stack-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .stack-icon {
+            font-size: 2.5rem;
+            background: var(--bg-accent);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .stack-content h4 {
+            font-size: 1.6rem;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+        }
+
+        .price-value {
+            color: var(--accent-terracotta);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 10px;
+            font-family: 'Outfit';
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .free-tag {
+            color: var(--accent-sage);
+        }
+
+        .total-box {
+            background: var(--bg-accent);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-top: 40px;
+            border: 2px solid var(--accent-sand);
+        }
+
+        .strike-price {
+            text-decoration: line-through;
+            font-size: 1.5rem;
+            color: var(--primary-light);
+            font-family: 'Playfair Display';
+        }
+
+        .real-price {
+            font-size: 5rem;
+            font-family: 'Playfair Display';
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1;
+            margin: 10px 0 30px;
+        }
+        
+        .real-price span {
+            font-size: 2rem;
+            color: var(--accent-terracotta);
+        }
+
+        .guarantee {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* Responsabilidad */
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero h1 { font-size: 3.5rem; }
+            .floating-badge { display: none; }
+            .grid-3, .test-grid { grid-template-columns: 1fr; gap: 20px; }
+            .offer-box { padding: 30px; }
+            .stack-item { flex-direction: column; text-align: center; align-items: center; }
+        }
+
+        /* Animations classes for JS */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <!-- Metricool Pixel -->
+    <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"63737fc02379fd87cca2f05c5d1f22e2"})});</script>
+</head>
+<body>
+
+    <div class="top-banner">
+        ⏳ PRECIO DE LANZAMIENTO · ACCESO INMEDIATO AL ARCHIVO · <span>8 CAPÍTULOS + 3 BONUS</span>
+    </div>
+
+    <div class="blob-1"></div>
+    <div class="blob-2"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="fade-in">
+                <div class="hero-badge">Alineación Ayurvédica Práctica</div>
+                <h1>Come según tu naturaleza. <br><span>Transforma tu energía.</span></h1>
+                <p class="subtitle">La guía ayurvédica más práctica en español — adaptada a los 3 doshas, con ingredientes de <strong>Mercadona, Lidl o el súper de tu barrio.</strong></p>
+                
+                <p style="margin-bottom: 2rem; font-size: 1.05rem; opacity: 0.9;">Imagina despertar liviana, con energía real desde la mañana y sin culpa después de cada comida. Eso es lo que pasa cuando dejas de pelear con tu cuerpo.</p>
+                
+                <a href="#precio" class="btn-main">Sí, quiero recuperar mi energía</a>
+            </div>
+            
+            <div class="hero-img-wrapper fade-in">
+                <!-- SUGERENCIA: Aquí irá el Collage/Mockup Bundle generado en Canva -->
+                <img src="https://images.unsplash.com/photo-1605282565612-426b3cba2674?q=80&w=1000&auto=format&fit=crop" alt="Ayurveda en Tu Mesa - Portada Prmium" style="width: 100%; border-radius: 24px;">
+                
+                <div class="floating-badge">
+                    <span style="font-size: 24px;">✨</span>
+                    <div>
+                        <h4 style="margin-bottom: 0;">100% Digital</h4>
+                        <p style="font-size: 0.8rem; margin:0;">Resultados inmediatos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PAIN POINTS -->
+    <section class="pain-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Has probado de todo... <br>y tu cuerpo sigue sin encontrar su equilibrio</h2>
+                <p style="font-size: 1.25rem;">Esto no es otra dieta restrictiva más. Es entender cómo estás diseñada.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="glass-card fade-in">
+                    <div class="icon">🥗</div>
+                    <h3>Comes súper sano...</h3>
+                    <p>Pero sigues sintiéndote hinchada, pesada o sin una energía constante durante el día. La "comida sana" estándar no siempre es sana para TU dosha.</p>
+                </div>
+                
+                <div class="glass-card fade-in" style="transition-delay: 0.1s;">
+                    <div class="icon">😫</div>
+                    <h3>Ansiedad y Dietas</h3>
+                    <p>Has seguido métodos que le funcionaron a tus amigas pero te hicieron rebotar. Hay días donde la ansiedad dicta lo que comes, no tú.</p>
+                </div>
+
+                <div class="glass-card fade-in" style="transition-delay: 0.2s;">
+                    <div class="icon">🧘‍♀️</div>
+                    <h3>Ayurveda Inaccesible</h3>
+                    <p>Te gusta la teoría, pero no encuentras las especias raras de la India ni tienes 3 horas para cocinar cada día de forma espiritual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS SECTION -->
+    <section class="results-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Resultados concretos,<br> no promesas vacías.</h2>
+                <p>Cada beneficio tiene un mecanismo específico dentro del sistema.</p>
+            </div>
+
+            <div class="results-list">
+                <div class="result-item fade-in">
+                    <div class="check-icon">✓</div>
+                    <p><strong>De hinchazón a ligereza:</strong> Digestión fluida en 7 días sin eliminar alimentos forzosamente, solo aprendiendo a combinarlos para tu Dosha (Caps. 4, 5 y 6).</p>
+                </div>
+                <div class="result-item fade-in" style="transition-delay: 0.1s;">
+                    <div class="check-icon">✓</div>
+                    <p><strong>De picos a estabilidad:</strong> Adiós a los bajones a las 3:00 PM. Energía estable sin estimulantes y usando las especias como medicina (Cap. 7).</p>
+                </div>
+                <div class="result-item fade-in" style="transition-delay: 0.2s;">
+                    <div class="check-icon">✓</div>
+                    <p><strong>De restricción a paz mental:</strong> Una relación serena y consciente con la alimentación real, adaptando los alimentos a tu edad, ciclo y estación (Cap. 8).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOCIAL PROOF -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Resultados reales de lectoras</h2>
+            </div>
+            
+            <div class="test-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="quote-mark">"</div>
+                    <p style="position: relative; z-index: 2;">"Descubrí que soy Vata y todo tuvo sentido. Siempre me sentía hinchada comiendo ensaladas crudas — este libro me explicó por qué. En una semana de seguir el menú del Bonus 1 me sentí completamente diferente."</p>
+                    <div style="margin-top: 20px; font-weight: 600; font-family: 'Outfit';">— Lector Verificado</div>
+                </div>
+
+                <div class="testimonial-card fade-in" style="transition-delay: 0.1s;">
+                    <div class="quote-mark">"</div>
+                    <p style="position: relative; z-index: 2;">"Soy Pitta y el capítulo 5 fue una revelación absoluta. Por fin entendí por qué el café matutino me generaba tanta acidez. Las 21 recetas del Bonus 2 las hago todas las semanas, son súper fáciles."</p>
+                    <div style="margin-top: 20px; font-weight: 600; font-family: 'Outfit';">— Lector Verificado</div>
+                </div>
+
+                <div class="testimonial-card fade-in" style="transition-delay: 0.2s;">
+                    <div class="quote-mark">"</div>
+                    <p style="position: relative; z-index: 2;">"Los desayunos del Bonus 3 cambiaron mis mañanas por completo. Todos los ingredientes los encontré en mi Mercadona. Todo fácil y nada imposible de conseguir — eso fue lo que me convenció de este libro."</p>
+                    <div style="margin-top: 20px; font-weight: 600; font-family: 'Outfit';">— Lector Verificado</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OFFER SECTION -->
+    <section id="precio" class="offer-section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 style="font-size: 3rem;">El Ecosistema Completo</h2>
+                <p style="font-size: 1.25rem;">Todo lo que necesitas para resetear tu relación con la comida.</p>
+            </div>
+
+            <div class="offer-box fade-in">
+                
+                <div class="stack-item">
+                    <div class="stack-icon">📖</div>
+                    <div class="stack-content">
+                        <h4>1. El Manual: Ayurveda en tu MESA</h4>
+                        <p>El libro digital con el sistema maestro de 8 capítulos para identificar tu Dosha y aplicar más de 5,000 años de ciencia a tu vida urbana y ocupada.</p>
+                        <div class="price-value">Valor Real: 39€</div>
+                    </div>
+                </div>
+
+                <div class="stack-item">
+                    <div class="stack-icon">📗</div>
+                    <div class="stack-content">
+                        <h4>2. BONUS: Menú Semanal por Dosha</h4>
+                        <p>No pienses qué comer. Toma este PDF con 7 días completos adaptados para Vata, Pitta o Kapha con la lista de compras exacta de tu súper habitual.</p>
+                        <div class="price-value free-tag">Valor Real: 19€ — HOY DE REGALO</div>
+                    </div>
+                </div>
+
+                <div class="stack-item">
+                    <div class="stack-icon">📙</div>
+                    <div class="stack-content">
+                        <h4>3. BONUS: 21 Recetas Ayurvédicas Simples</h4>
+                        <p>Tus nuevas recetas de cabecera. Platos fáciles al extremo, organizados para nutrir tu organismo sin pasar horas cocinando.</p>
+                        <div class="price-value free-tag">Valor Real: 25€ — HOY DE REGALO</div>
+                    </div>
+                </div>
+
+                <div class="stack-item">
+                    <div class="stack-icon">📒</div>
+                    <div class="stack-content">
+                        <h4>4. BONUS: 21 Desayunos Específicos</h4>
+                        <p>El desayuno perfecto para que tu energía no sufra picos y bajones. Opciones para arrancar con el estómago relajado.</p>
+                        <div class="price-value free-tag">Valor Real: 25€ — HOY DE REGALO</div>
+                    </div>
+                </div>
+
+                <div class="total-box">
+                    <div class="strike-price">VALOR TOTAL: 108€</div>
+                    <div class="real-price">19<span>€</span></div>
+                    <p style="margin-bottom: 2rem;">Pago único. Acceso inmediato.</p>
+                    
+                    <a href="https://pay.hotmart.com/" class="btn-main" style="width: 100%;">SI, QUIERO RECUPERAR MI ENERGÍA AHORA</a>
+                    
+                    <div class="guarantee">
+                        <span style="font-size: 1.5rem;">🛡️</span>
+                        <p style="margin: 0; font-size: 0.95rem;"><strong>Garantía de Paz Mental:</strong> Lee el manual y aplica el menú por 30 días. Si no sientes una mejora real en tu digestión, te devuelvo tu inversión al 100%.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Script para animaciones de Scroll -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

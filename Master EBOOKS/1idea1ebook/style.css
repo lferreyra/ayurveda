@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --brand-neon: #BEFF3D;
+    --brand-neon-soft: rgba(190, 255, 61, 0.15);
+    --brand-neon-glow: rgba(190, 255, 61, 0.4);
+    --brand-dark: #0F172A;
+    --brand-card-dark: #1E293B;
+    --radius-brand: 32px;
+}
+
+@layer components {
+    .btn-primary {
+        @apply relative flex items-center justify-center gap-2 bg-[#BEFF3D] hover:bg-[#ADFF2F] text-[#0F172A] font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg shadow-[#BEFF3D]/20 hover:-translate-y-1 overflow-hidden;
+    }
+    
+    .btn-secondary {
+        @apply flex items-center justify-center gap-2 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 border border-slate-200 dark:border-slate-700;
+    }
+    
+    .card-premium {
+        @apply bg-white dark:bg-[#1E293B] border border-slate-100 dark:border-slate-800 rounded-[32px] p-8 shadow-xl shadow-slate-200/50 dark:shadow-none transition-all duration-500 hover:border-[#BEFF3D]/30;
+    }
+    
+    .glass {
+        @apply backdrop-blur-md bg-white/70 dark:bg-slate-900/80 border-b border-white/20 dark:border-slate-800/50;
+    }
+    
+    .mesh-bg {
+        @apply absolute inset-0 -z-10 overflow-hidden;
+        background: radial-gradient(circle at 10% 10%, rgba(190, 255, 61, 0.1) 0%, transparent 40%),
+                    radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.05) 0%, transparent 40%);
+    }
+    
+    .dark .mesh-bg {
+        background: radial-gradient(circle at 10% 10%, rgba(190, 255, 61, 0.05) 0%, transparent 40%),
+                    radial-gradient(circle at 90% 90%, rgba(30, 41, 59, 1) 0%, transparent 40%);
+    }
+
+    /* Idiot-proof 01-02-03 styling */
+    .step-number {
+        @apply text-7xl md:text-8xl font-black opacity-10 dark:opacity-20 absolute -top-4 -left-4 font-display italic text-[#BEFF3D];
+    }
+}
+
+/* Base Adjustments */
+body {
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-display {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+/* Custom Scrollbar for Minimalist feel */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+    @apply bg-slate-300 dark:bg-slate-700 rounded-full;
+}
+
+/* Glow Effect */
+.neon-glow {
+    box-shadow: 0 0 20px var(--brand-neon-glow);
+}

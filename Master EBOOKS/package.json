@@ -1,0 +1,9 @@
+{
+  "name": "ayurveda-express-landing",
+  "version": "1.0.0",
+  "description": "Landing page para eBook de Ayurveda para bajar de peso",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  }
+}

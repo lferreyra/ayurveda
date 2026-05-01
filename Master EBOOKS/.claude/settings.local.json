@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:ayurveda-blue.vercel.app)",
+      "WebSearch"
+    ]
+  }
+}

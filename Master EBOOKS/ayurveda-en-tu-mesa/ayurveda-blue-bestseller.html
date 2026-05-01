@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayurveda V7 | El Fin de las Dietas Universales</title>
+    <meta name="description" content="Descubre el alimento exacto que enciende tu metabolismo según tus genes de hace 5.000 años.">
+    
+    <!-- Google Fonts: Inter & Playfair Display for Premium Look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Premium Blue & Sand Palette inspired by Ayurveda-Blue */
+            --bg-dark: #071018;
+            --bg-card: rgba(14, 28, 43, 0.6);
+            --primary: #cda270; /* Elegant Gold/Sand */
+            --primary-glow: rgba(205, 162, 112, 0.4);
+            --text-main: #f0f4f8;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6; /* Subtle brand blue */
+            --card-border: rgba(205, 162, 112, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+        }
+
+        /* Ambient Background Blobs */
+        .ambient-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: float 20s infinite ease-in-out alternate;
+        }
+        .blob-1 {
+            width: 600px; height: 600px;
+            background: linear-gradient(to right, #1e3a8a, #0c4a6e);
+            top: -100px; left: -200px;
+        }
+        .blob-2 {
+            width: 500px; height: 500px;
+            background: linear-gradient(to right, #78350f, #9a3412);
+            bottom: 20%; right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            100% { transform: translate(50px, 100px) rotate(45deg) scale(1.1); }
+        }
+
+        /* Layout & Typography */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .text-center { text-align: center; }
+        .text-primary { color: var(--primary); }
+        .text-gradient {
+            background: linear-gradient(to right, #fef3c7, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 0 80px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 48px;
+        }
+
+        /* Premium Button */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 48px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #000;
+            background: linear-gradient(135deg, #fde68a, var(--primary));
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px var(--primary-glow);
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-20deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            100% { left: 200%; }
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 40px var(--primary-glow);
+        }
+
+        /* 11-Point Sections */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        /* Cards */
+        .card {
+            padding: 40px;
+            border-radius: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(205, 162, 112, 0.3);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+
+        /* Value Stack */
+        .value-stack {
+            background: linear-gradient(145deg, var(--bg-card), rgba(0,0,0,0.8));
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 50px rgba(205, 162, 112, 0.1);
+        }
+
+        .price-strike {
+            text-decoration: line-through;
+            color: #64748b;
+            font-size: 1.5rem;
+        }
+
+        .price-real {
+            font-size: 4rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #fff;
+            margin: 10px 0 30px;
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--card-border);
+            padding: 30px 0;
+        }
+        .faq-q {
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+        .faq-a {
+            color: var(--text-muted);
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(205, 162, 112, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            border: 1px solid rgba(205, 162, 112, 0.2);
+        }
+        
+        .guarantee-box {
+            border: 1px dashed var(--primary);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            background: rgba(205, 162, 112, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding-top: 80px; }
+            .card { padding: 30px; }
+        }
+    </style>
+    <!-- Metricool Pixel -->
+    <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"63737fc02379fd87cca2f05c5d1f22e2"})});</script>
+</head>
+<body>
+
+    <!-- BARRA DE URGENCIA (Minimax Style) -->
+    <div style="background: #ef4444; color: white; text-align: center; padding: 12px; font-weight: 700; position: sticky; top: 0; z-index: 1000; font-size: 0.9rem; letter-spacing: 0.5px;">
+        ⚠️ ATENCIÓN: EL PRECIO SUBE A U$38 MAÑANA — QUEDAN <span id="timer">23:59:59</span>
+    </div>
+
+    <!-- Ambient Backgrounds -->
+    <div class="ambient-blob blob-1"></div>
+    <div class="ambient-blob blob-2"></div>
+
+    <!-- 1. PROMESA CLARA (HERO) -->
+    <header class="hero">
+        <div class="container text-center reveal">
+            <span class="badge" style="color: #fff; background: rgba(239, 68, 68, 0.2); border-color: #ef4444;">Oferta por tiempo limitado</span>
+            <p style="color: var(--primary); margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Para mujeres que ya intentaron todo y están hartas de contar calorías</p>
+            <h1>El fin de las <br><span class="text-gradient">"Dietas Universales"</span></h1>
+            <p style="font-style: italic; margin-top: -10px; color: #fff; font-size: 1.5rem;">La primera vez que vas a comer para tu cuerpo, no contra él.</p>
+            <p>Descubre el alimento exacto que enciende tu metabolismo según tu tipo de cuerpo único. Sin restricciones, sin contar calorías y con ingredientes de tu supermercado habitual.</p>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+                <a href="#offer" class="btn">Descubre tu Dosha y la comida que reactivará tu metabolismo HOY</a>
+                <p style="font-size: 0.9rem; color: #10b981; font-weight: 600;">✓ Garantía de 7 días. Si no notas diferencia, te devolvemos el 100%.</p>
+            </div>
+
+            <div style="margin-top: 24px; font-size: 0.9rem; color: var(--text-muted);">
+                🔒 Pago Seguro • Acceso Inmediato PDF
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. DOLORES DEL CLIENTE -->
+    <section class="container">
+        <div class="glass card reveal">
+            <h2 class="section-title">¿Te suena familiar esta frustración?</h2>
+            <div class="grid-3" style="margin-top: 40px;">
+                <div>
+                    <span class="card-icon">🥗</span>
+                    <h3 style="margin-bottom: 12px;">El "Efecto Amiga"</h3>
+                    <p class="text-muted">Estás exhausta de probar dietas de moda que le funcionaron a otros, pero a ti te dejan hinchada, pesada y con ansiedad.</p>
+                </div>
+                <div>
+                    <span class="card-icon">📉</span>
+                    <h3 style="margin-bottom: 12px;">Cansancio Crónico</h3>
+                    <p class="text-muted">Te despiertas sin energía, tu digestión es un caos y dependes del café para sobrevivir al bajón de las 16:00 hs.</p>
+                </div>
+                <div>
+                    <span class="card-icon">⚖️</span>
+                    <h3 style="margin-bottom: 12px;">Prisión de Calorías</h3>
+                    <p class="text-muted">Desarrollaste la creencia de que "comer sano" es sinónimo de comer insípido, limitarte o sufrir hambre constante.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. IDENTIFICACIÓN EMOCIONAL -->
+    <section class="container">
+        <div class="text-center reveal" style="max-width: 800px; margin: 0 auto;">
+            <span class="badge">No es tu culpa</span>
+            <h2 class="section-title">Respira tranquila. <br>Es una falta de alineación.</h2>
+            <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 24px;">La industria te ha mentido haciéndote creer que todos los cuerpos funcionan igual. Te dieron soluciones estándar para un metabolismo que es absolutamente único.</p>
+            <p style="font-size: 1.2rem; color: var(--text-muted);">Cuando comes alimentos que chocan con tu constitución biológica innata (tu <em>Prakriti</em>), tu cuerpo reacciona inflamándose y apagando tu energía. <strong>No estás fallando; estás usando el manual equivocado.</strong></p>
+        </div>
+    </section>
+
+    <!-- 4. BENEFICIOS & 5. EXPLICACIÓN TÉCNICA -->
+    <section class="container">
+        <div class="grid-2">
+            <!-- Beneficios -->
+            <div class="reveal">
+                <h2 class="section-title" style="text-align: left;">Lo que lograrás con tu naturaleza</h2>
+                <div style="margin-top: 40px;">
+                    <div style="margin-bottom: 24px;">
+                        <h4 style="color: var(--primary); font-size: 1.2rem;">✨ Vientre Plano Real</h4>
+                        <p class="text-muted">Adiós a la inflamación por estrés digestivo. Tu estómago procesará todo con facilidad.</p>
+                    </div>
+                    <div style="margin-bottom: 24px;">
+                        <h4 style="color: var(--primary); font-size: 1.2rem;">⚡ Energía Inquebrantable</h4>
+                        <p class="text-muted">Aprenderás exactamente qué combinaciones evitan la niebla mental de la tarde.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--primary); font-size: 1.2rem;">🔓 Libertad Absoluta</h4>
+                        <p class="text-muted">Entenderás que la comida es medicina. Sabrás qué cualidad te falta (calor, ligereza, humedad) y cómo obtenerla.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Técnica -->
+            <div class="glass card reveal">
+                <span class="badge">La Ciencia Detrás</span>
+                <h3 style="font-size: 2rem; margin-bottom: 16px;">El Secreto: Tu 'Agni'</h3>
+                <p class="text-muted" style="margin-bottom: 16px;">Esta no es una invención de TikTok. Es la medicina de la India de hace 5.000 años. El Ayurveda demuestra que la clave no es cuántas calorías comes, sino cómo tu <strong>Agni (fuego digestivo)</strong> las procesa.</p>
+                <p class="text-muted">Descubrirás si tu cuerpo opera bajo la fuerza de Vata (Aire), Pitta (Fuego) o Kapha (Tierra). Le daremos el combustible exacto que necesita para operar a máxima potencia sin sobrecalentarse.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CÓMO SE IMPLEMENTA -->
+    <section class="container text-center reveal">
+        <h2 class="section-title">Tu transformación en 3 pasos simples</h2>
+        <div class="grid-3" style="margin-top: 60px;">
+            <div class="glass card">
+                <h1 style="color: var(--primary); font-size: 4rem; opacity: 0.5;">01</h1>
+                <h3>Haz el Test (Cap. 3)</h3>
+                <p class="text-muted">Descubre de forma reveladora en tan solo 5 minutos tu Dosha predominante.</p>
+            </div>
+            <div class="glass card">
+                <h1 style="color: var(--primary); font-size: 4rem; opacity: 0.5;">02</h1>
+                <h3>Tu Manual (Cap. 4,5,6)</h3>
+                <p class="text-muted">Accede a las instrucciones exactas de alimentación diseñadas solo para tu elemento.</p>
+            </div>
+            <div class="glass card">
+                <h1 style="color: var(--primary); font-size: 4rem; opacity: 0.5;">03</h1>
+                <h3>Cocina Fácil (Cap. 7)</h3>
+                <p class="text-muted">Aplica las especias esenciales usando ingredientes normales de tu supermercado.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. COMPARACIÓN -->
+    <section class="container reveal">
+        <div class="glass card">
+            <h2 class="text-center" style="font-size: 2.5rem; margin-bottom: 40px;">¿Por qué este es el único camino lógico?</h2>
+            <div class="grid-3">
+                <div style="border-right: 1px solid var(--card-border); padding-right: 20px;">
+                    <h4 style="color: #ef4444;">❌ Dietas Modernas</h4>
+                    <p class="text-muted">Keto, ayunos, etc. Tratan tu cuerpo como máquina estándar. Causan rebote, estrés e insatisfacción.</p>
+                </div>
+                <div style="border-right: 1px solid var(--card-border); padding: 0 20px;">
+                    <h4 style="color: #ef4444;">❌ Nutricionista Clásico</h4>
+                    <p class="text-muted">Te restringen a opciones sosas, midiendo gramos por más de 80€ la consulta mensual.</p>
+                </div>
+                <div style="padding-left: 20px;">
+                    <h4 style="color: var(--primary);">✅ Ayurveda V7 Definitivo</h4>
+                    <p class="text-muted">Te da el poder de comprender cómo funciona TU cuerpo para siempre. Estilo de vida intuitivo por una fracción del costo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. GARANTÍA & 9. BONUS & 11. OFERTA (VALUE STACK) -->
+    <section id="offer" class="container reveal">
+        <div class="grid-2">
+            <div>
+                <h2 class="section-title" style="text-align: left;">Obtén el ecosistema completo hoy.</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 24px;">Al llevarte el Ebook hoy, obtienes nuestro pack de aceleración práctica <strong>completamente GRATIS</strong> para que no tengas que pensar qué cocinar.</p>
+                
+                <div class="glass" style="padding: 24px; margin-bottom: 16px;">
+                    <h4 style="color: var(--primary);">🎁 BONUS #1: Menú Semanal exacto</h4>
+                    <p class="text-muted">Plan de 7 días adaptado a Vata, Pitta o Kapha. <span style="text-decoration: line-through;">Valor: 25€</span> (HOY INCLUIDO)</p>
+                </div>
+                <div class="glass" style="padding: 24px; margin-bottom: 16px;">
+                    <h4 style="color: var(--primary);">🎁 BONUS #2: 21 Recetas Simples</h4>
+                    <p class="text-muted">Listas para cocinar con compras del súper. <span style="text-decoration: line-through;">Valor: 19€</span> (HOY INCLUIDO)</p>
+                </div>
+                <div class="glass" style="padding: 24px; margin-bottom: 40px;">
+                    <h4 style="color: var(--primary);">🎁 BONUS #3: 21 Desayunos Ayurvédicos</h4>
+                    <p class="text-muted">Inicia la mañana con alto impacto energético. <span style="text-decoration: line-through;">Valor: 19€</span> (HOY INCLUIDO)</p>
+                </div>
+
+                <div class="guarantee-box">
+                    <h3>Garantía de Digestión Perfecta (30 Días)</h3>
+                    <p class="text-muted" style="margin-top: 12px;">Haz el test y aplica el método. Si tu digestión y energía no cambian de forma radical, te devuelvo el 100% de tu dinero. Sin preguntas.</p>
+                </div>
+            </div>
+
+            <div class="card value-stack text-center">
+                <span class="badge" style="background: rgba(255,255,255,0.1); border: none; color: #fff;">DESCARGA INSTANTÁNEA</span>
+                <h2 style="font-size: 2rem; margin-bottom: 24px;">Ayurveda V7 Definitivo</h2>
+                <ul style="list-style: none; text-align: left; margin-bottom: 40px; color: var(--text-muted);">
+                    <li style="margin-bottom: 12px;">✓ Ebook Completo (8 Capítulos)</li>
+                    <li style="margin-bottom: 12px;">✓ BONUS: Menú Semanal</li>
+                    <li style="margin-bottom: 12px;">✓ BONUS: 21 Recetas</li>
+                    <li style="margin-bottom: 12px;">✓ BONUS: 21 Desayunos</li>
+                </ul>
+                <div style="margin-bottom: 24px;">
+                    <p class="price-strike">Valor total: 95€</p>
+                    <div class="price-real">19€</div>
+                    <p style="color: var(--text-muted);">Pago único. Acceso de por vida.</p>
+                </div>
+                <a href="#" class="btn" style="width: 100%;">SÍ, QUIERO MI ECOSISTEMA</a>
+                <img src="https://cdn-icons-png.flaticon.com/512/1083/1083073.png" style="width: 150px; opacity: 0.5; margin-top: 24px; filter: invert(1);" alt="Pagos Seguros">
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. PREGUNTAS FRECUENTES -->
+    <section class="container reveal" style="max-width: 800px; padding-bottom: 120px;">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        
+        <div class="faq-item">
+            <div class="faq-q">¿Y si no sé cuál es mi Dosha?</div>
+            <div class="faq-a">Problema resuelto desde el primer día. El Capítulo 3 contiene un Test rápido, claro y de alta precisión para que descubras tu biotipo antes de cambiar un solo plato.</div>
+        </div>
+        
+        <div class="faq-item">
+            <div class="faq-q">¿Necesito ingredientes raros importados de la India?</div>
+            <div class="faq-a">En lo absoluto. Este Ebook está diseñado para el mundo occidental. Te enseño a practicar Ayurveda real con alimentos que compras en tu Mercadona, Lidl, Carrefour o mercado local.</div>
+        </div>
+        
+        <div class="faq-item" style="border-bottom: none;">
+            <div class="faq-q">¿Es un libro físico o digital?</div>
+            <div class="faq-a">Es un producto 100% digital. Tan pronto como completes tu pedido, recibirás instantáneamente el Ebook y los 3 Bonus en formato PDF de alta calidad en tu correo electrónico.</div>
+        </div>
+    </section>
+
+    <!-- EXIT INTENT MODAL -->
+    <div id="exitModal" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 2000; align-items: center; justify-content: center; padding: 20px;">
+        <div class="glass" style="max-width: 500px; width: 100%; padding: 40px; text-align: center; border: 2px solid var(--primary);">
+            <h2 style="font-size: 2.5rem; color: #fff; margin-bottom: 20px;">¡Espera! No te vayas sin tu regalo...</h2>
+            <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem;">Si sales ahora, perderás el acceso al <strong>descuento del 50%</strong> y el precio subirá a U$38 mañana.</p>
+            <div style="background: rgba(239, 68, 68, 0.1); padding: 20px; border-radius: 12px; margin-bottom: 30px;">
+                <p style="color: #ef4444; font-weight: 700; font-size: 1.2rem;">ÚLTIMA OPORTUNIDAD: U$19</p>
+                <p style="color: #fff; font-size: 0.9rem;">Incluye todos los Bonus y Garantía de 7 días.</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <a href="#offer" onclick="closeModal()" class="btn" style="width: 100%;">SÍ, QUIERO APROVECHAR EL DESCUENTO</a>
+                <button onclick="closeModal()" style="background: none; border: none; color: #64748b; cursor: pointer; text-decoration: underline;">No gracias, prefiero pagar el precio completo mañana</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS for scroll animations & logic -->
+    <script>
+        // PERSISTENT TIMER LOGIC (Minimax Option B)
+        function initPersistentTimer(durationInSeconds, displayElementId) {
+            const storageKey = 'ayurveda_offer_end_time';
+            let endTime = localStorage.getItem(storageKey);
+
+            if (!endTime) {
+                // First time visit: set end time to 24h from now
+                endTime = Date.now() + (durationInSeconds * 1000);
+                localStorage.setItem(storageKey, endTime);
+            }
+
+            const display = document.getElementById(displayElementId);
+            
+            function updateTimer() {
+                const now = Date.now();
+                let remaining = Math.floor((endTime - now) / 1000);
+
+                if (remaining <= 0) {
+                    remaining = 0;
+                    // Change Top Bar message to "Grace Period" or "Expired"
+                    const topBar = display.parentElement;
+                    topBar.innerHTML = "⚠️ ¡ATENCIÓN! TU OFERTA DE LANZAMIENTO HA EXPIRADO. EL PRECIO SUBIRÁ EN MINUTOS.";
+                    topBar.style.background = "#000";
+                    clearInterval(timerInterval);
+                }
+
+                let hours = Math.floor(remaining / 3600);
+                let minutes = Math.floor((remaining % 3600) / 60);
+                let seconds = Math.floor(remaining % 60);
+
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                if (display) {
+                    display.textContent = hours + ":" + minutes + ":" + seconds;
+                }
+            }
+
+            const timerInterval = setInterval(updateTimer, 1000);
+            updateTimer(); // Initial call
+        }
+
+        // Exit Intent Logic
+        let modalShown = false;
+        let canShow = false;
+        setTimeout(() => { canShow = true; }, 8000); // Retraso de seguridad
+
+        document.addEventListener("mouseleave", (e) => {
+            if (e.clientY < 0 && !modalShown && canShow) {
+                document.getElementById('exitModal').style.display = 'flex';
+                modalShown = true;
+            }
+        });
+
+        function closeModal() {
+            document.getElementById('exitModal').style.display = 'none';
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Start 24h persistent timer
+            initPersistentTimer(86399, 'timer');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

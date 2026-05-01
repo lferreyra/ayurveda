@@ -1,0 +1,15 @@
+# Prólogo: El Día que Mi Corazón se Detuvo (o eso creía)
+
+El sol comenzaba a caer sobre la Ruta Provincial E-53, tiñendo el cielo de un naranja metálico mientras el atardecer avanzaba. El volante se sentía resbaladizo entre mis manos sudorosas, y el paisaje se desdibujaba en un túnel de luces y sombras. A mi lado, mi esposa venía concentrada en su celular, ajena al infierno que empezaba a desatarse dentro de mí. 
+
+De repente, el aire se volvió denso. El pecho se me cerró con una presión brutal, las manos se me adormecieron y un sudor frío me empapó por completo. Las palpitaciones se aceleraron a un ritmo frenético y la despersonalización me golpeó como una ola. Estaba teniendo un ataque de pánico. En plena ruta. Con mi esposa al lado. Y no era la primera vez que mi cuerpo me traicionaba de esta manera.
+
+Un año antes, una pericarditis me había llevado al hospital. Lo que comenzó como un control médico de rutina, se transformó en una internación de tres días que se sintieron como una eternidad en la Clínica Allende. Me hicieron un cateterismo, me sacaban sangre más de tres veces al día, y la confusión en los rostros de los médicos era palpable. No entendían qué me pasaba. No tenía sobrepeso, no fumaba, no bebía alcohol, no usaba drogas. Pero el sistema de salud, con su lógica de protocolo, se aprovechó de mi vulnerabilidad. Cada noche, la ansiedad se disparaba, y debían doparme para que pudiera conciliar el sueño. Viví un infierno de incertidumbre y miedo, sintiendo que mi cuerpo me abandonaba, mientras mi mente se ahogaba en un mar de preguntas sin respuesta.
+
+Salí de ese hospital con el alta médica, pero con el alma herida y la certeza de que algo fundamentalmente estaba mal. Recuperé la calma por un tiempo, pero la semilla del miedo ya estaba sembrada. Y germinó con fuerza cuando la presión de la vida real volvió a golpearme.
+
+Trabajaba en una concesionaria de autos, ganando un sueldo que apenas alcanzaba para cubrir las deudas que se acumulaban en un país con una inflación galopante. Había montado un spa con socios que, a último momento, cambiaron las condiciones, bloquearon la publicidad y me dejaron con una carga financiera insostenible. El negocio no era lo prometido; ni siquiera generaba lo suficiente para pagar lo que debía. La frustración, la impotencia y el miedo a la quiebra se convirtieron en mis compañeros constantes. 
+
+Y fue en ese contexto, con la presión laboral y la incertidumbre económica asfixiándome, que la ansiedad regresó, culminando en ese ataque de pánico en la Ruta E-53 aquel 1 de septiembre de 2025.
+
+Ese día, mientras luchaba por mantener el control del auto y de mí mismo, supe que no podía seguir así. Había tocado fondo. Pero también supe que la respuesta no estaba en escapar, ni en que otros me dijeran qué hacer. La respuesta estaba en mí. Como instructor de PNL, había enseñado a otros a reprogramar sus mentes, a cambiar sus patrones. Era hora de aplicar esas herramientas en mi propia vida. Y lo que descubrí en los siguientes cuatro días, cambió todo para siempre.

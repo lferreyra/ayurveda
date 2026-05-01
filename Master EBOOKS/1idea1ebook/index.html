@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaEbook.com | De 1 Idea a 1 Bestseller en un solo paso</title>
+    <meta name="description" content="La agencia definitiva de IA que convierte una sola idea en un eBook completo, con análisis de mercado y activos digitales en minutos.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        neon: {
+                            DEFAULT: '#BEFF3D',
+                            dark: '#ADFF2F',
+                            soft: 'rgba(190, 255, 61, 0.15)'
+                        },
+                        brand: {
+                            dark: '#0F172A',
+                            card: '#1E293B'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    },
+                    borderRadius: {
+                        'brand': '32px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 dark:bg-brand-dark text-slate-900 dark:text-slate-100 font-sans transition-colors duration-500">
+    
+    <div class="mesh-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <!-- Iconic SVG Logo (Merch-Ready & High-Luxury) -->
+                <div class="relative w-12 h-12 flex items-center justify-center">
+                    <div class="absolute inset-0 bg-neon/20 blur-xl rounded-full scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                    <svg viewBox="0 0 100 100" class="relative z-10 w-full h-full transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500">
+                        <!-- Hexagonal "Book/Shield" Frame -->
+                        <path d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" fill="none" class="stroke-slate-200 dark:stroke-slate-800" stroke-width="2"/>
+                        <!-- Bold Neon Lightning Bolt -->
+                        <path d="M60 15 L35 55 L55 55 L40 85" fill="#BEFF3D" class="drop-shadow-[0_0_15px_#BEFF3D]"/>
+                    </svg>
+                </div>
+                <span class="text-xl font-display font-black tracking-tighter">InstaEbook<span class="text-neon">.com</span></span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-widest">
+                <a href="#proceso" class="hover:text-neon transition-colors">Proceso</a>
+                <a href="#agentes" class="hover:text-neon transition-colors">La Agencia</a>
+                <a href="#precios" class="hover:text-neon transition-colors">Precios</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-neon"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden text-slate-600"></i>
+                </button>
+                <a href="#empezar" class="hidden sm:flex px-6 py-2 bg-neon text-brand-dark rounded-full text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform">Acceso Agency</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-40 pb-24 px-6 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-neon/10 text-neon text-[10px] font-black uppercase tracking-[0.2em] mb-8 border border-neon/20">
+                <span class="flex h-2 w-2 rounded-full bg-neon animate-pulse"></span>
+                IA de Transformación Rentable
+            </div>
+            <h1 class="text-6xl md:text-8xl font-display font-black tracking-tight leading-[0.95] mb-10">
+                Tu idea es oro. <br> Nuestra IA <span class="text-neon italic underline decoration-white/10 italic">lo extrae.</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-14 max-w-2xl mx-auto leading-relaxed font-medium">
+                14 agentes coordinados validan, diseñan y escriben tu eBook en minutos. <br class="hidden md:block"> De 1 idea a 1 negocio en un solo paso.
+            </p>
+            
+            <div class="max-w-2xl mx-auto mb-20">
+                <div class="p-2 bg-white dark:bg-brand-card rounded-full shadow-2xl shadow-slate-200/50 dark:shadow-none border border-slate-200 dark:border-slate-800 flex items-center gap-2 transition-all focus-within:ring-4 focus-within:ring-neon/20 pr-4">
+                    <div class="pl-8 w-full">
+                        <input type="text" id="ebook-idea" placeholder="Escribe aquí tu idea maestra..." class="w-full bg-transparent border-none focus:outline-none text-slate-800 dark:text-white font-bold placeholder:text-slate-400">
+                    </div>
+                    <button onclick="startProcess()" class="btn-primary">
+                        <span>Iniciar Agencia</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Idiot-proof Process Section -->
+    <section id="proceso" class="py-24 px-6 border-y border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-display font-black mb-4">El camino más corto al <span class="text-neon italic tracking-tight">éxito digital.</span></h2>
+                <p class="text-slate-500 font-medium">A prueba de tontos. Sin curvas de aprendizaje.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Step 01 -->
+                <div class="relative p-10 bg-white dark:bg-brand-card rounded-brand border border-slate-100 dark:border-slate-800 overflow-hidden group hover:border-neon/30 transition-colors">
+                    <span class="step-number">01</span>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-neon/10 rounded-2xl flex items-center justify-center text-neon mb-6">
+                            <i data-lucide="search" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4">Valida</h3>
+                        <p class="text-slate-500 font-medium leading-relaxed">Nuestra IA de mercado encuentra las tendencias reales para asegurar que tu idea tenga demanda antes de escribir una sola palabra.</p>
+                    </div>
+                </div>
+                <!-- Step 02 -->
+                <div class="relative p-10 bg-white dark:bg-brand-card rounded-brand border border-slate-100 dark:border-slate-800 overflow-hidden group hover:border-neon/30 transition-colors">
+                    <span class="step-number">02</span>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-neon/10 rounded-2xl flex items-center justify-center text-neon mb-6">
+                            <i data-lucide="feather" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4">Crea</h3>
+                        <h4 class="text-xs font-black text-neon uppercase tracking-widest mb-2">14 Agentes Activos</h4>
+                        <p class="text-slate-500 font-medium leading-relaxed">Redacción estratégica, diseño de portadas premium y activos digitales. Todo generado simultáneamente.</p>
+                    </div>
+                </div>
+                <!-- Step 03 -->
+                <div class="relative p-10 bg-white dark:bg-brand-card rounded-brand border border-slate-100 dark:border-slate-800 overflow-hidden group hover:border-neon/30 transition-colors">
+                    <span class="step-number">03</span>
+                    <div class="relative z-10">
+                        <div class="w-12 h-12 bg-neon/10 rounded-2xl flex items-center justify-center text-neon mb-6">
+                            <i data-lucide="shopping-cart" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-black mb-4">Vende</h3>
+                        <p class="text-slate-500 font-medium leading-relaxed">Recibe tu eBook listo en PDF/Mobi y activos para Shopify o Hotmart. De idea maestra a producto vendible en 15 min.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Orchestrator -->
+    <section id="process-viewer" class="px-6 py-24 hidden bg-slate-900/40 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto">
+            <div class="card-premium relative overflow-hidden bg-brand-dark border-neon/10 shadow-[0_0_50px_rgba(190,255,61,0.05)]">
+                <div id="loading-bar" class="absolute top-0 left-0 h-1 bg-neon shadow-[0_0_15px_#BEFF3D] transition-all duration-300 w-0"></div>
+                <div class="flex flex-col md:flex-row items-center justify-between gap-16">
+                    <div class="w-full md:w-1/2">
+                        <h3 class="text-4xl font-display font-black mb-6 text-white leading-tight">
+                            La Agencia está <span id="agent-name" class="text-neon italic">Orquestando...</span>
+                        </h3>
+                        <p id="agent-log" class="text-slate-400 font-medium italic mb-10 h-12">Sincronizando con los 14 agentes de conversión...</p>
+                        
+                        <div class="space-y-6">
+                            <div class="agent-step flex items-center gap-5 opacity-30 transition-all duration-500" data-step="1">
+                                <div class="w-8 h-8 rounded-full border-2 border-neon flex items-center justify-center text-sm font-black text-neon shadow-[0_0_10px_rgba(190,255,61,0.2)]">1</div>
+                                <span class="font-bold text-white uppercase tracking-widest text-xs">Validación de Nicho</span>
+                            </div>
+                            <div class="agent-step flex items-center gap-5 opacity-30 transition-all duration-500" data-step="2">
+                                <div class="w-8 h-8 rounded-full border-2 border-neon flex items-center justify-center text-sm font-black text-neon shadow-[0_0_10px_rgba(190,255,61,0.2)]">2</div>
+                                <span class="font-bold text-white uppercase tracking-widest text-xs">Estrategia CEO de Ventas</span>
+                            </div>
+                            <div class="agent-step flex items-center gap-5 opacity-30 transition-all duration-500" data-step="3">
+                                <div class="w-8 h-8 rounded-full border-2 border-neon flex items-center justify-center text-sm font-black text-neon shadow-[0_0_10px_rgba(190,255,61,0.2)]">3</div>
+                                <span class="font-bold text-white uppercase tracking-widest text-xs">Dirección de Arte Neón</span>
+                            </div>
+                            <div class="agent-step flex items-center gap-5 opacity-30 transition-all duration-500" data-step="4">
+                                <div class="w-8 h-8 rounded-full border-2 border-neon flex items-center justify-center text-sm font-black text-neon shadow-[0_0_10px_rgba(190,255,61,0.2)]">4</div>
+                                <span class="font-bold text-white uppercase tracking-widest text-xs">Compilación Bestseller</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full md:w-1/2 flex items-center justify-center">
+                        <div id="visual-output" class="w-full aspect-square max-w-sm rounded-brand bg-slate-800/50 flex items-center justify-center border-4 border-dashed border-slate-700 relative overflow-hidden group">
+                            <i data-lucide="cpu" class="w-16 h-16 text-neon animate-pulse opacity-20"></i>
+                            <div id="mockup-img" class="absolute inset-0 hidden">
+                                <img src="" alt="Preview" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Section 01: Mobile & Backend Mockup -->
+    <section class="relative h-[600px] flex items-center justify-center overflow-hidden">
+        <!-- Parallax Background -->
+        <div class="absolute inset-0 z-0 h-[120%] -top-[10%] bg-cover bg-center transition-all duration-500 will-change-transform" 
+             style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000'); filter: contrast(1.1) brightness(0.6);"
+             id="parallax-bg-1"></div>
+        
+        <!-- Blurry Overlay on Scroll -->
+        <div id="parallax-blur-1" class="absolute inset-0 z-10 backdrop-blur-none transition-all duration-300 pointer-events-none"></div>
+
+        <div class="relative z-20 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-1/2 text-white">
+                <h2 class="text-4xl md:text-6xl font-display font-black mb-6 leading-tight">Control Total desde <span class="text-neon italic">tu bolsillo.</span></h2>
+                <p class="text-slate-300 text-lg font-medium">Gestiona tus 14 agentes, revisa borradores y lanza nuevos eBooks sin tocar una laptop. El backend más potente, ahora en miniatura.</p>
+            </div>
+            
+            <!-- Custom HTML DARK Dashboard Mockup -->
+            <div class="w-full md:w-1/2 flex justify-center">
+                <div class="relative w-64 aspect-[9/19.5] bg-slate-900 rounded-[3rem] border-[6px] border-slate-800 shadow-2xl overflow-hidden animate-float">
+                    <!-- Notch -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-800 rounded-b-2xl z-30"></div>
+                    
+                    <!-- DARK Dashboard Content (HTML Mockup) -->
+                    <div class="absolute inset-0 bg-brand-dark z-20 p-4 pt-10 flex flex-col gap-4 overflow-hidden border border-slate-800 rounded-[2.5rem]">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="w-8 h-8 rounded-lg bg-neon shadow-[0_0_15px_rgba(190,255,61,0.5)]"></div>
+                            <div class="h-2 w-20 bg-slate-800 rounded-full"></div>
+                        </div>
+                        <div class="h-32 w-full bg-slate-900 rounded-2xl border border-slate-800 p-3 shadow-inner">
+                            <div class="flex items-end gap-1 h-full">
+                                <div class="w-2 h-1/2 bg-neon/20 rounded-t-sm animate-pulse" style="animation-delay: 0.1s"></div>
+                                <div class="w-2 h-3/4 bg-neon/40 rounded-t-sm animate-pulse" style="animation-delay: 0.2s"></div>
+                                <div class="w-2 h-1/3 bg-neon rounded-t-sm animate-pulse" style="animation-delay: 0.3s"></div>
+                                <div class="w-2 h-full bg-neon/60 rounded-t-sm animate-pulse" style="animation-delay: 0.4s"></div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="h-4 w-full bg-slate-800 rounded-lg"></div>
+                            <div class="h-4 w-3/4 bg-slate-800 rounded-lg"></div>
+                            <div class="h-4 w-full bg-neon/10 rounded-lg"></div>
+                        </div>
+                        <div class="mt-auto h-10 w-full bg-slate-800 rounded-xl flex items-center justify-center text-[10px] font-black text-neon uppercase tracking-tighter border border-neon/30">Panel Agency</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO Welcome Section -->
+    <section class="py-24 px-6 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+            <div class="w-full md:w-1/3 text-center">
+                <div class="w-48 h-48 mx-auto rounded-brand bg-neon/10 border-2 border-neon/20 p-2 mb-6">
+                    <img src="https://i.pravatar.cc/300?u=ceo" alt="CEO Visionary" class="w-full h-full object-cover rounded-[28px] grayscale hover:grayscale-0 transition-all">
+                </div>
+                <h4 class="text-xl font-black font-display">Visionary Founder</h4>
+                <p class="text-xs font-black text-neon uppercase tracking-widest">CEO @ InstaEbook</p>
+            </div>
+            <div class="w-full md:w-2/3">
+                <h3 class="text-3xl md:text-4xl font-display font-black leading-tight mb-8">"Creamos esto porque sabemos que tienes <span class="text-neon italic tracking-tighter">1,000 ideas</span> pero cero tiempo."</h3>
+                <div class="space-y-6 text-lg text-slate-500 font-medium italic border-l-4 border-neon/30 pl-8">
+                    <p>En el mundo digital de hoy, la velocidad es la ventaja definitiva. InstaEbook nació de la frustración de ver proyectos brillantes morir en un cajón por falta de diseño o investigación de mercado.</p>
+                    <p>Mi promesa es simple: tú pones la chispa de la idea, y nuestra agencia de 14 agentes de IA hace el trabajo pesado. Queremos que seas autor hoy, no el próximo año.</p>
+                </div>
+                <div class="mt-10 font-display font-black text-4xl opacity-40">CEO Signed.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Is this for you? Section -->
+    <section class="py-24 px-6 bg-slate-100 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-display font-black mb-4">¿Es esto para ti?</h2>
+                <p class="text-slate-500 font-medium uppercase tracking-widest text-xs">10 razones por las que somos tu socio ideal</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-6 max-w-4xl mx-auto">
+                <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-neon/5 transition-colors group">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-neon group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-slate-700 dark:text-slate-300 italic">Tienes una idea experta pero no sabes por dónde empezar.</span>
+                </div>
+                <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-neon/5 transition-colors group">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-neon group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-slate-700 dark:text-slate-300 italic">Quieres validar tu nicho sin gastar miles de dólares.</span>
+                </div>
+                <!-- ... Repeat for 10 total ... -->
+                <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-neon/5 transition-colors group">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-neon group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-slate-700 dark:text-slate-300 italic">Odias perder horas en herramientas de diseño complejas.</span>
+                </div>
+                <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-neon/5 transition-colors group">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-neon group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-slate-700 dark:text-slate-300 italic">Buscas contenido técnico, no solo rellenos generados por IA.</span>
+                </div>
+                <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-neon/5 transition-colors group">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-neon group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-slate-700 dark:text-slate-300 italic">Deseas automatizar tu flujo de creación de productos.</span>
+                </div>
+                <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-neon/5 transition-colors group">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-neon group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-slate-700 dark:text-slate-300 italic">Necesitas activos listos para Shopify o Hotmart ya.</span>
+                </div>
+                <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-neon/5 transition-colors group">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-neon group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-slate-700 dark:text-slate-300 italic">Eres un experto con poco tiempo para la redacción extensa.</span>
+                </div>
+                <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-neon/5 transition-colors group">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-neon group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-slate-700 dark:text-slate-300 italic">Buscas una ventaja injusta sobre tus competidores.</span>
+                </div>
+                <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-neon/5 transition-colors group">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-neon group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-slate-700 dark:text-slate-300 italic">Quieres convertir tu conocimiento en un activo pasivo.</span>
+                </div>
+                <div class="flex items-start gap-4 p-4 rounded-2xl hover:bg-neon/5 transition-colors group">
+                    <i data-lucide="check-circle" class="w-6 h-6 text-neon group-hover:scale-110 transition-transform"></i>
+                    <span class="font-bold text-slate-700 dark:text-slate-300 italic">Crees en el poder de la IA para escalar exponencialmente.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Section 02: Results Background for Testimonials -->
+    <section class="relative py-24 px-6 overflow-hidden">
+        <!-- Parallax Background Dashboard Results -->
+        <div class="absolute inset-0 z-0 h-[120%] -top-[10%] bg-cover bg-center transition-all duration-500" 
+             style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000');"
+             id="parallax-bg-2"></div>
+        
+        <!-- Overlay variable según el tema: Deja pasar la imagen en ambos modos -->
+        <div class="absolute inset-0 z-10 bg-slate-100/30 dark:bg-brand-dark/80 transition-colors"></div>
+
+        <div class="max-w-7xl mx-auto relative z-20">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-display font-black mb-4 tracking-tighter text-slate-900 dark:text-white">Voces del <span class="text-neon italic underline decoration-neon/20 italic">Crecimiento.</span></h2>
+                <p class="text-slate-500 dark:text-slate-400 font-bold uppercase tracking-widest text-[10px]">Resultados validados en Hotmart & Shopify</p>
+            </div>
+            <div id="social-proof-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Injected via app.js -->
+            </div>
+            <div class="text-center">
+                <button onclick="loadMoreProofs()" class="btn-secondary">Ver 6 testimonios más</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organized Footer -->
+    <footer class="pt-24 pb-12 px-6 bg-white dark:bg-brand-dark border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-20">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-3 mb-6 group cursor-pointer">
+                        <div class="w-12 h-12">
+                            <svg viewBox="0 0 100 100" class="w-full h-full transform group-hover:scale-110 transition-transform duration-300">
+                                <path d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z" fill="none" class="stroke-slate-200 dark:stroke-slate-800" stroke-width="2"/>
+                                <path d="M60 15 L35 55 L55 55 L40 85" fill="#BEFF3D"/>
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-display font-black tracking-tighter">InstaEbook<span class="text-neon">.com</span></span>
+                    </div>
+                    <p class="text-slate-500 font-medium mb-8 max-w-sm">La solución definitiva para expertos ocupados. 14 agentes de IA a tu servicio para crear activos digitales rentables en minutos.</p>
+                    <div class="flex items-center gap-4">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Shopify_logo_2018.svg" class="h-6 opacity-30 grayscale hover:grayscale-0 transition-all cursor-pointer">
+                        <img src="https://logodownload.org/wp-content/uploads/2019/12/hotmart-logo.png" class="h-6 opacity-30 grayscale hover:grayscale-0 transition-all cursor-pointer">
+                    </div>
+                </div>
+                <div>
+                    <h5 class="text-xs font-black uppercase tracking-[0.2em] mb-6 text-slate-400 dark:text-slate-600">Compañía</h5>
+                    <ul class="space-y-4 text-sm font-bold text-slate-500 dark:text-slate-400">
+                        <li><a href="#" class="hover:text-neon transition-colors">Sobre Nosotros</a></li>
+                        <li><a href="#" class="hover:text-neon transition-colors">Mensaje del CEO</a></li>
+                        <li><a href="#" class="hover:text-neon transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-xs font-black uppercase tracking-[0.2em] mb-6 text-slate-400 dark:text-slate-600">Producto</h5>
+                    <ul class="space-y-4 text-sm font-bold text-slate-500 dark:text-slate-400">
+                        <li><a href="#" class="hover:text-neon transition-colors">La Agencia IA</a></li>
+                        <li><a href="#" class="hover:text-neon transition-colors">Precios</a></li>
+                        <li><a href="#" class="hover:text-neon transition-colors">Casos de Éxito</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-xs font-black uppercase tracking-[0.2em] mb-6 text-slate-400 dark:text-slate-600">Legal</h5>
+                    <ul class="space-y-4 text-sm font-bold text-slate-500 dark:text-slate-400">
+                        <li><a href="#" class="hover:text-neon transition-colors">Privacidad</a></li>
+                        <li><a href="#" class="hover:text-neon transition-colors">Términos</a></li>
+                        <li><a href="#" class="hover:text-neon transition-colors">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 text-xs font-bold text-slate-400 uppercase tracking-widest">
+                <span>&copy; 2026 InstaEbook.com</span>
+                <div class="flex items-center gap-8">
+                    <span>Diseñado con IA</span>
+                    <span>Optimizado para Ventas</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
