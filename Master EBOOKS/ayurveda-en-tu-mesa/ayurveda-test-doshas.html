@@ -1086,31 +1086,14 @@
             const timeoutId = setTimeout(() => controller.abort(), 3500); // 3.5 segundos máximo
 
             try {
-                await fetch('https://api.brevo.com/v3/contacts', {
-                    method: 'POST',
-                    headers: {
-                        'accept': 'application/json',
-                        'api-key': BREVO_API_KEY,
-                        'content-type': 'application/json'
-                    },
+                await fetch(ENDPOINT_BREVO, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
                     signal: controller.signal,
-                    body: JSON.stringify({
-                        email: email,
-                        attributes: { NOMBRE: nombre, DOSHA: doshaFormatted, ORIGEN: 'test_ayurveda' },
-                        listIds: [2],
-                        updateEnabled: true
-                    })
+                    body: JSON.stringify({ email: email, NOMBRE: nombre, DOSHA: doshaFormatted })
                 });
             } catch (error) {
-                console.warn("Intento API bloqueado o lento, probando vía endpoint o saltando al resultado.");
-                // Intentamos una vez más al endpoint pero sin esperar demasiado
-                try {
-                    await fetch(ENDPOINT_BREVO, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ email: email, NOMBRE: nombre, DOSHA: doshaFormatted })
-                    });
-                } catch(e) { /* Falló silenciosamente para no trabar el UI */ }
+                console.warn("Hubo un error conectando al servidor Vercel.", error);
             } finally {
                 clearTimeout(timeoutId);
                 // Garantizamos que el usuario vea su resultado pase lo que pase con la API
