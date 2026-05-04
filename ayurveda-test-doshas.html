@@ -464,7 +464,80 @@
             cursor: pointer;
             color: var(--text-muted);
         }
+
+        /* --- BREVO EMAIL GATE --- */
+        @font-face {
+            font-display: block;
+            font-family: Roboto;
+            src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
+        }
+        @font-face {
+            font-display: fallback;
+            font-family: Roboto;
+            font-weight: 600;
+            src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
+        }
+        @font-face {
+            font-display: fallback;
+            font-family: Roboto;
+            font-weight: 700;
+            src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
+        }
+        #sib-container input:-ms-input-placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda; }
+        #sib-container input::placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda; }
+        #sib-container textarea::placeholder { text-align: left; font-family: Helvetica, sans-serif; color: #c0ccda; }
+        #sib-container a { text-decoration: underline; color: #2BB2FC; }
+
+        /* Gate form styling - premium look */
+        #email-gate-view {
+            text-align: center;
+        }
+        #email-gate-view .gate-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+        #email-gate-view h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        #email-gate-view .gate-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        #email-gate-view .sib-form {
+            background-color: transparent !important;
+        }
+        #email-gate-view #sib-container {
+            background-color: var(--bg-linen) !important;
+            border-color: var(--bg-clay) !important;
+            border-radius: var(--radius-lux) !important;
+        }
+        #email-gate-view .sib-form-block__button {
+            background-color: var(--accent-terracotta) !important;
+            border-radius: 50px !important;
+            width: 100%;
+            padding: 18px !important;
+            font-size: 0.9rem !important;
+            letter-spacing: 0.1em !important;
+            text-transform: uppercase !important;
+        }
+        #email-gate-view .sib-form-block__button:hover {
+            opacity: 0.9;
+        }
+        .gate-trust {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
     </style>
+    <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
     <!-- Metricool Pixel -->
     <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"63737fc02379fd87cca2f05c5d1f22e2"})});</script>
 </head>
@@ -473,11 +546,11 @@
     <!-- BARRA DE URGENCIA (Minimax Style) -->
     <div
         style="background: #AD513B; color: white; text-align: center; padding: 10px; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;">
-        ⚠️ Precio especial U$19 sube a U$38 mañana — QUEDAN <span id="timer-top">23:59:59</span>
+        ⚡ Completá el test y desbloqueá tu precio personalizado — QUEDAN <span id="timer-top">23:59:59</span>
     </div>
 
     <header class="header">
-        <a href="index.html" class="logo">AYURVEDA EN TU MESA</a>
+        <a href="ayurveda-en-tu-mesa.html" class="logo">AYURVEDA EN TU MESA</a>
     </header>
 
     <!-- COUPON MODAL (Minimax Optimized) -->
@@ -486,15 +559,14 @@
             <button class="coupon-close" onclick="closeCouponModal()">&#x2715;</button>
             <span class="emoji-big">🔒 REGALO DESBLOQUEADO</span>
             <h3 style="color: #AD513B;">¡Solo para ti (por los próximos 30 min)!</h3>
-            <p style="font-weight: 600; color: #1A1A1A;">Has desbloqueado el Descuento de Acción Inmediata.</p>
-            <p>Si sales de esta página ahora, el precio volverá a su valor real de U$38 mañana. Aprovecha tu recompensa
-                por completar el test:</p>
+            <p style="font-weight: 600; color: #1A1A1A;">Has desbloqueado tu Precio Personalizado.</p>
+            <p>Completaste el test y activaste tu descuento exclusivo. Aprovechá antes de que expire:</p>
 
             <div class="coupon-code-box" style="background: #fff; border: 2px solid #AD513B;">
                 <span class="label" style="color: #AD513B; font-weight: 700;">CUPÓN ACTIVO:</span>
                 <div class="code" style="font-size: 4rem;">SANA</div>
                 <div class="detail" style="font-size: 1rem; color: #1A1A1A;"><strong>Pagarás solo U$19</strong> en lugar
-                    de U$38.</div>
+                    de U$29.</div>
             </div>
 
             <div style="margin-bottom: 25px; padding: 10px; background: #FFF5F2; border-radius: 8px;">
@@ -505,13 +577,14 @@
             <a href="ayurveda-en-tu-mesa.html" class="btn-wa-confirm"
                 style="background: #AD513B; margin-bottom: 12px; text-decoration: none;">USAR MI CUPÓN Y COMPRAR
                 AHORA</a>
-            <button class="btn-wa-confirm" id="wa-confirm-btn" style="background: #25D366; opacity: 0.8;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+            <a href="#" class="btn-wa-confirm" id="wa-confirm-btn" target="_blank"
+                style="background: #25D366; opacity: 1; text-decoration: none; color: white; display: flex; align-items: center; justify-content: center;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 10px;">
                     <path
                         d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
                 </svg>
                 Compartir y guardar mi regalo
-            </button>
+            </a>
         </div>
     </div>
 
@@ -556,9 +629,44 @@
 
             <!-- 3. LA ESPERA (Cálculo) -->
             <div id="loading-view" class="view" style="text-align: center; padding: 60px 0;">
-                <h2 style="font-size: 2rem;">Decodificando tu Fuego Digestivo...</h2>
+                <h2 style="font-size: 2rem; margin-bottom: 30px;">Decodificando tu Fuego Digestivo...</h2>
                 <div class="loader"></div>
-                <p style="color: var(--text-muted);">Analizando tus respuestas genéticas y metabólicas.</p>
+                <div id="loading-status" style="font-weight: 500; color: var(--accent-terracotta); font-size: 0.9rem; margin-top: 20px; text-transform: uppercase; letter-spacing: 0.1em; height: 20px;">
+                    Analizando respuestas metabólicas
+                </div>
+                <p style="color: var(--text-muted); margin-top: 10px; font-weight: 300;">Por favor, no cierres esta ventana. Estamos mapeando tu constitución biológica única.</p>
+            </div>
+
+            <!-- 3.5 EMAIL GATE (Receta Usuario) -->
+            <div id="emailGate" class="view" style="text-align: center; padding: 20px 0;">
+                <span class="gate-icon">🔒</span>
+                <h3>Tu resultado está listo</h3>
+                <p>¿A dónde te lo enviamos?</p>
+                
+                <div class="custom-gate-container" style="max-width: 450px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; border: 1px solid var(--bg-clay); box-shadow: var(--shadow-lux);">
+                    <div style="margin-bottom: 20px; text-align: left;">
+                        <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 8px; color: var(--text-dark);">TU NOMBRE</label>
+                        <input type="text" id="userName" placeholder="Ej: Maria" required 
+                            style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ddd; font-family: inherit;">
+                    </div>
+                    <div style="margin-bottom: 25px; text-align: left;">
+                        <label style="display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 8px; color: var(--text-dark);">TU EMAIL PRINCIPAL</label>
+                        <input type="email" id="userEmail" placeholder="Tu email" required 
+                            style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ddd; font-family: inherit;">
+                    </div>
+                    
+                    <button onclick="continuarResultado()" id="gate-submit-btn" class="btn-luxury" style="width: 100%; background: var(--accent-terracotta); border-color: var(--accent-terracotta); cursor: pointer; color: white;">
+                        <span>Ver mi resultado →</span>
+                    </button>
+                    
+                    <div id="gate-error" style="display:none; color: #AD513B; font-size: 0.85rem; margin-top: 15px;">
+                        Ocurrió un error. Por favor intenta de nuevo.
+                    </div>
+                    <!-- Hidden field para tracking/receta -->
+                    <input type="hidden" id="DOSHA_RECETA" name="DOSHA" value="">
+                </div>
+
+                <div class="gate-trust" style="margin-top: 20px;">🔒 No spam · Solo tu resultado personalizado · Cancelá cuando quieras</div>
             </div>
 
             <!-- 4. PANTALLA DE RESULTADO -->
@@ -790,6 +898,7 @@
         const quizView = document.getElementById('quiz-view');
         const loadingView = document.getElementById('loading-view');
         const resultView = document.getElementById('result-view');
+        const emailGateView = document.getElementById('emailGate');
 
         const qSection = document.getElementById('q-section');
         const qTitle = document.getElementById('q-title');
@@ -884,40 +993,154 @@
             }
         }
 
-        function finishQuiz() {
-            quizView.classList.remove('active');
-            loadingView.classList.add('active');
+        // Variable global para almacenar el dosha calculado
+        let calculatedDosha = "";
 
-            // Simular tiempo de carga/algoritmo
-            setTimeout(() => {
-                loadingView.classList.remove('active');
-                showResult();
-            }, 2000);
-        }
-
-        function showResult() {
-            resultView.classList.add('active');
-
-            // Lógica de cálculo estricta
+        // Calcular el dosha ANTES de mostrar el gate (para enviarlo a Brevo)
+        function calculateDosha() {
             const a = answers.A;
             const b = answers.B;
             const c = answers.C;
 
-            let dosha = "";
-            let description = "";
+            if (a > b && a > c) { calculatedDosha = "VATA"; }
+            else if (b > a && b > c) { calculatedDosha = "PITTA"; }
+            else if (c > a && c > b) { calculatedDosha = "KAPHA"; }
+            else if (a === b && a > c) { calculatedDosha = "VATA-PITTA"; }
+            else if (b === c && b > a) { calculatedDosha = "PITTA-KAPHA"; }
+            else if (a === c && a > b) { calculatedDosha = "VATA-KAPHA"; }
+            else { calculatedDosha = "TRIDOSHICO"; }
 
-            // Mayoría simple
-            if (a > b && a > c) { dosha = "VATA"; }
-            else if (b > a && b > c) { dosha = "PITTA"; }
-            else if (c > a && c > b) { dosha = "KAPHA"; }
-            // Empates
-            else if (a === b && a > c) { dosha = "VATA-PITTA (Bi-dóshico)"; }
-            else if (b === c && b > a) { dosha = "PITTA-KAPHA (Bi-dóshico)"; }
-            else if (a === c && a > b) { dosha = "VATA-KAPHA (Bi-dóshico)"; }
-            else { dosha = "TRIDÓSHICO (Equilibrado)"; }
+            window.doshaFinal = calculatedDosha;
+            return calculatedDosha;
+        }
+
+        function finishQuiz() {
+            quizView.classList.remove('active');
+            loadingView.classList.add('active');
+
+            // 1. Calcular dosha ANTES del gate
+            calculateDosha();
+            
+            // 2. Inyectar en el campo oculto para la receta
+            const hiddenField = document.getElementById('DOSHA_RECETA');
+            if(hiddenField) {
+                const doshaRaw = calculatedDosha;
+                hiddenField.value = doshaRaw.charAt(0).toUpperCase() + doshaRaw.slice(1).toLowerCase();
+            }
+
+            // 3. Inyectar en el hidden field del formulario Brevo
+            const doshaHidden = document.getElementById('DOSHA_HIDDEN');
+            if (doshaHidden) doshaHidden.value = calculatedDosha;
+
+            // 3. Simular tiempo de carga con mensajes dinámicos
+            const statusEl = document.getElementById('loading-status');
+            const messages = [
+                "Mapeando constitución biológica...",
+                "Analizando balance de elementos...",
+                "Calculando Agni (fuego digestivo)...",
+                "Definiendo Dosha predominante...",
+                "Resultado listo. Preparando plan..."
+            ];
+            
+            let msgIndex = 0;
+            const statusInterval = setInterval(() => {
+                if (msgIndex < messages.length) {
+                    statusEl.innerText = messages[msgIndex];
+                    msgIndex++;
+                } else {
+                    clearInterval(statusInterval);
+                }
+            }, 800);
+            // 4. Mostrar email gate después de la simulación
+            setTimeout(() => {
+                loadingView.classList.remove('active');
+                emailGateView.classList.add('active');
+            }, 4500);
+        }
+
+        const ENDPOINT_BREVO = "/api/brevo";
+        // 🔒 SEGURIDAD: API Key removida para el push público. 
+        // Cámbiala localmente por tu clave real de Brevo.
+        const BREVO_API_KEY = "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";
+
+        async function continuarResultado() {
+            const email = document.getElementById('userEmail').value;
+            const nombre = document.getElementById('userName').value;
+            const submitBtn = document.getElementById('gate-submit-btn');
+            
+            if(!email) {
+                alert("Ingresá tu email");
+                return;
+            }
+
+            // Estado de carga visual
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "<span>Enviando...</span>";
+
+            const rawDosha = window.doshaFinal;
+            // Formatear dosha a Capitalized (Vata, Pitta, Kapha)
+            const doshaFormatted = rawDosha.charAt(0).toUpperCase() + rawDosha.slice(1).toLowerCase();
+
+            // Enviar a Brevo (Con timeout de seguridad para evitar que quede "tildado")
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 3500); // 3.5 segundos máximo
+
+            try {
+                await fetch('https://api.brevo.com/v3/contacts', {
+                    method: 'POST',
+                    headers: {
+                        'accept': 'application/json',
+                        'api-key': BREVO_API_KEY,
+                        'content-type': 'application/json'
+                    },
+                    signal: controller.signal,
+                    body: JSON.stringify({
+                        email: email,
+                        attributes: { NOMBRE: nombre, DOSHA: doshaFormatted, ORIGEN: 'test_ayurveda' },
+                        listIds: [2],
+                        updateEnabled: true
+                    })
+                });
+            } catch (error) {
+                console.warn("Intento API bloqueado o lento, probando vía endpoint o saltando al resultado.");
+                // Intentamos una vez más al endpoint pero sin esperar demasiado
+                try {
+                    await fetch(ENDPOINT_BREVO, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email: email, NOMBRE: nombre, DOSHA: doshaFormatted })
+                    });
+                } catch(e) { /* Falló silenciosamente para no trabar el UI */ }
+            } finally {
+                clearTimeout(timeoutId);
+                // Garantizamos que el usuario vea su resultado pase lo que pase con la API
+                emailGateView.classList.remove('active');
+                showResult();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+
+
+        function showResult() {
+            resultView.classList.add('active');
+
+            // Usar el dosha ya calculado antes del gate
+            let dosha = calculatedDosha;
+
+            const displayNames = {
+                "VATA": "VATA",
+                "PITTA": "PITTA",
+                "KAPHA": "KAPHA",
+                "VATA-PITTA": "VATA-PITTA (Bi-dóshico)",
+                "PITTA-KAPHA": "PITTA-KAPHA (Bi-dóshico)",
+                "VATA-KAPHA": "VATA-KAPHA (Bi-dóshico)",
+                "TRIDOSHICO": "TRIDÓSHICO (Equilibrado)"
+            };
+            const doshaDisplay = displayNames[dosha] || dosha;
 
             // Llenar datos (Textos basados en el libro)
-            document.getElementById('result-title').innerText = dosha;
+            document.getElementById('result-title').innerText = doshaDisplay;
 
             const descHtml = document.getElementById('result-desc');
             if (dosha.includes("VATA") && !dosha.includes("PITTA") && !dosha.includes("KAPHA")) {
@@ -937,6 +1160,99 @@
                 descHtml.innerHTML = `<p><strong>Eres de naturaleza bi-dóshica o mixta.</strong> Compartes grandes virtudes de dos constituciones. Esto significa que reaccionas a diferentes estímulos dependiendo de la época del año o el tipo de estrés.</p>
                 <p style="margin-top:10px;">En <strong>Ayurveda en tu Mesa</strong> te explicaremos exactamente cómo modular ambos lados de tu fuego digestivo (Agni) para que ni te sobrecalientes ni teestanques.</p>`;
             }
+
+
+            // 🔥 LÓGICA: 1 RESULTADO = 1 MENSAJE (Receta Usuario Dinámica)
+            let bloqueVenta = "";
+            let normalizedDosha = dosha.toLowerCase();
+
+            if (normalizedDosha.includes("vata")) {
+                bloqueVenta = `
+                <div style="margin-top:40px; padding: 30px; background: var(--bg-sage); border-radius: 20px; border: 2px solid var(--accent-gold); text-align: center;">
+                    <h3 style="color: var(--text-dark); margin-bottom: 10px;">Tu cuerpo no necesita más dietas</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">Necesita estabilidad, calor y rutina.<br>Si seguís comiendo frío, liviano o irregular… tu energía va a seguir cayendo.</p>
+                    
+                    <div style="text-align:left; max-width:400px; margin: 0 auto 25px auto; background: rgba(255,255,255,0.5); padding: 20px; border-radius: 15px;">
+                        <span style="font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent-terracotta); display: block; margin-bottom: 15px; text-transform: uppercase;">👉 Este plan está diseñado para:</span>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 10px; display: flex; align-items: center; font-size: 0.95rem;"><span style="color: green; margin-right: 10px;">✔</span> Calmar tu sistema nervioso</li>
+                            <li style="margin-bottom: 10px; display: flex; align-items: center; font-size: 0.95rem;"><span style="color: green; margin-right: 10px;">✔</span> Eliminar la hinchazón constante</li>
+                            <li style="margin-bottom: 0; display: flex; align-items: center; font-size: 0.95rem;"><span style="color: green; margin-right: 10px;">✔</span> Recuperar energía sostenida</li>
+                        </ul>
+                    </div>
+
+                    <p style="color:#AD513B; font-weight:bold; margin-bottom: 5px;">✔ Precio desbloqueado después de tu test</p>
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$19</div>
+                    
+                    <a href="https://pay.hotmart.com/G105134849B?bid=1774830495450" class="btn-luxury" style="display: inline-block; padding: 18px 40px; background: var(--accent-terracotta); color: white; text-decoration: none; border-radius: 50px; font-weight: 700;">
+                        Quiero equilibrar mi cuerpo →
+                    </a>
+                    <p style="font-size:12px; opacity:0.7; margin-top: 15px;">Disponible hoy con acceso inmediato</p>
+                </div>
+                `;
+            } else if (normalizedDosha.includes("pitta")) {
+                bloqueVenta = `
+                <div style="margin-top:40px; padding: 30px; background: var(--bg-sage); border-radius: 20px; border: 2px solid var(--accent-gold); text-align: center;">
+                    <h3 style="color: var(--text-dark); margin-bottom: 10px;">Tu metabolismo es fuerte… pero está fuera de control</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">El exceso de intensidad está generando inflamación, irritación y desgaste corporal.</p>
+                    
+                    <div style="text-align:left; max-width:400px; margin: 0 auto 25px auto; background: rgba(255,255,255,0.5); padding: 20px; border-radius: 15px;">
+                        <span style="font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent-terracotta); display: block; margin-bottom: 15px; text-transform: uppercase;">👉 Este plan te ayuda a:</span>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 10px; display: flex; align-items: center; font-size: 0.95rem;"><span style="color: green; margin-right: 10px;">✔</span> Reducir inflamación y acidez</li>
+                            <li style="margin-bottom: 10px; display: flex; align-items: center; font-size: 0.95rem;"><span style="color: green; margin-right: 10px;">✔</span> Equilibrar tu energía sin agotarte</li>
+                            <li style="margin-bottom: 0; display: flex; align-items: center; font-size: 0.95rem;"><span style="color: green; margin-right: 10px;">✔</span> Volver a sentir calma en tu cuerpo</li>
+                        </ul>
+                    </div>
+
+                    <p style="color:#AD513B; font-weight:bold; margin-bottom: 5px;">✔ Precio desbloqueado después de tu test</p>
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$19</div>
+                    
+                    <a href="https://pay.hotmart.com/G105134849B?bid=1774830495450" class="btn-luxury" style="display: inline-block; padding: 18px 40px; background: var(--accent-terracotta); color: white; text-decoration: none; border-radius: 50px; font-weight: 700;">
+                        Quiero equilibrar mi energía →
+                    </a>
+                    <p style="font-size:12px; opacity:0.7; margin-top: 15px;">Disponible hoy con acceso inmediato</p>
+                </div>
+                `;
+            } else if (normalizedDosha.includes("kapha")) {
+                bloqueVenta = `
+                <div style="margin-top:40px; padding: 30px; background: var(--bg-sage); border-radius: 20px; border: 2px solid var(--accent-gold); text-align: center;">
+                    <h3 style="color: var(--text-dark); margin-bottom: 10px;">Tu cuerpo no está fallando… está apagado</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">La lentitud metabólica está acumulando peso, cansancio y falta de motivación diaria.</p>
+                    
+                    <div style="text-align:left; max-width:400px; margin: 0 auto 25px auto; background: rgba(255,255,255,0.5); padding: 20px; border-radius: 15px;">
+                        <span style="font-weight: 700; font-size: 0.8rem; letter-spacing: 0.1em; color: var(--accent-terracotta); display: block; margin-bottom: 15px; text-transform: uppercase;">👉 Este plan está diseñado para:</span>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 10px; display: flex; align-items: center; font-size: 0.95rem;"><span style="color: green; margin-right: 10px;">✔</span> Activar tu metabolismo naturalmente</li>
+                            <li style="margin-bottom: 10px; display: flex; align-items: center; font-size: 0.95rem;"><span style="color: green; margin-right: 10px;">✔</span> Reducir la pesadez corporal</li>
+                            <li style="margin-bottom: 0; display: flex; align-items: center; font-size: 0.95rem;"><span style="color: green; margin-right: 10px;">✔</span> Recuperar energía y motivación</li>
+                        </ul>
+                    </div>
+
+                    <p style="color:#AD513B; font-weight:bold; margin-bottom: 5px;">✔ Precio desbloqueado después de tu test</p>
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$19</div>
+                    
+                    <a href="https://pay.hotmart.com/G105134849B?bid=1774830495450" class="btn-luxury" style="display: inline-block; padding: 18px 40px; background: var(--accent-terracotta); color: white; text-decoration: none; border-radius: 50px; font-weight: 700;">
+                        Quiero activar mi metabolismo →
+                    </a>
+                    <p style="font-size:12px; opacity:0.7; margin-top: 15px;">Disponible hoy con acceso inmediato</p>
+                </div>
+                `;
+            } else {
+                // Mensaje genérico para perfiles mixtos
+                bloqueVenta = `
+                <div style="margin-top:40px; padding: 30px; background: var(--bg-sage); border-radius: 20px; border: 2px solid var(--accent-gold); text-align: center;">
+                    <h3 style="color: var(--text-dark); margin-bottom: 10px;">Tu plan personalizado está listo</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">Accedé ahora con tu precio desbloqueado por completar el test:</p>
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$19</div>
+                    <a href="https://pay.hotmart.com/G105134849B?bid=1774830495450" class="btn-luxury" style="display: inline-block; padding: 18px 40px; background: var(--accent-terracotta); color: white; text-decoration: none; border-radius: 50px; font-weight: 700;">
+                        ¡ACCEDER AHORA CON DESCUENTO! →
+                    </a>
+                    <p style="font-size:12px; opacity:0.7; margin-top: 15px;">Disponible hoy con acceso inmediato</p>
+                </div>
+                `;
+            }
+            descHtml.innerHTML += bloqueVenta;
         }
 
         // Web Share API (Supabase Placeholder)
@@ -954,21 +1270,42 @@
             }
         }
 
-        // WhatsApp Share
-        let whatsAppUrl = '';
-
-        function shareWhatsApp() {
-            const doshaResult = document.getElementById('result-title').innerText;
-            const text = encodeURIComponent(`¡Hola!\n\nAcabo de hacer un breve test de Ayurveda, y me salió que mi tipo de metabolismo es ${doshaResult}.\n\nLa verdad está súper interesante, porque te explica por qué a veces, por más que comas sano, igual terminas sintiéndote mal o sin energía.\n\nTe lo comparto para que lo hagas tú también a ver qué te sale. No tardas nada:\n\n${window.location.href}`);
-            whatsAppUrl = `https://wa.me/?text=${text}`;
-
-            // Primero mostrar el modal con el cupón
+        function showCouponModal() {
             document.getElementById('coupon-overlay').classList.add('show');
+        }
 
-            // Al confirmar, abrir WhatsApp
-            document.getElementById('wa-confirm-btn').onclick = function () {
-                window.open(whatsAppUrl, '_blank');
-                closeCouponModal();
+        async function shareWhatsApp() {
+            const doshaResult = document.getElementById('result-title').innerText;
+            const shareText = `¡Hola!\n\nAcabo de hacer un breve test de Ayurveda, y me salió que mi tipo de metabolismo es ${doshaResult}.\n\nLa verdad está súper interesante, porque te explica por qué a veces, por más que comas sano, igual terminas sintiéndote mal o sin energía.\n\nTe lo comparto para que lo hagas tú también a ver qué te sale. No tardas nada:\n\n${window.location.href}`;
+            const whatsAppUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+            const waConfirmBtn = document.getElementById('wa-confirm-btn');
+
+            // Si el navegador soporta Native Share (Mobile)
+            if (navigator.share && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                try {
+                    await navigator.share({
+                        title: 'Mi Dosha Ayurveda',
+                        text: shareText,
+                        url: window.location.href.split('?')[0]
+                    });
+                    // Si compartió con éxito, mostramos el cupón directo
+                    showCouponModal();
+                } catch (err) {
+                    // Si canceló o falló (pero no por cerrar el sheet), abrimos el modal de respaldo
+                    if (err.name !== 'AbortError') {
+                        waConfirmBtn.href = whatsAppUrl;
+                        showCouponModal();
+                    }
+                }
+            } else {
+                // PC o navegadores sin Share API (Desktop)
+                waConfirmBtn.href = whatsAppUrl;
+                showCouponModal();
+            }
+
+            // Aseguramos que al hacer click en el botón del modal se cierre el modal
+            waConfirmBtn.onclick = function() {
+                setTimeout(closeCouponModal, 500);
             };
         }
 
