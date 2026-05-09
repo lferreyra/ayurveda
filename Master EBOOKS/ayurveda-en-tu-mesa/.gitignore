@@ -1,0 +1,17 @@
+# Security
+.env
+.env.local
+.env.*.local
+
+# Build
+.vercel
+out/
+build/
+dist/
+
+# Dependencies
+node_modules/
+
+# OS Files
+.DS_Store
+Thumbs.db
