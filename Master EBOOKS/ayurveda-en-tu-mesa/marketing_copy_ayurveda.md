@@ -246,7 +246,7 @@ Lo que incluye:
 🧘 **Tu Protocolo Personal** — Plan de 7 días para empezar hoy
 ✅ **Garantía de 7 días** — Si no te convence, te devolvemos el 100%
 
-**Precio especial de lanzamiento: U$19**
+**Precio especial de lanzamiento: U$15**
 
 **→ [Accedé acá antes de que cierre: ayurveda-sana.vercel.app](https://ayurveda-sana.vercel.app)**
 
@@ -281,7 +281,7 @@ No te lo digo para presionarte. Te lo digo porque lo entiendo perfectamente. Cam
 
 Es el punto de partida que yo hubiera querido tener.
 
-**U$19. Garantía de 7 días. Acceso inmediato.**
+**U$15. Garantía de 7 días. Acceso inmediato.**
 
 **→ [Último acceso al precio de lanzamiento: ayurveda-sana.vercel.app](https://ayurveda-sana.vercel.app)**
 
