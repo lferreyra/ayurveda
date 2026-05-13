@@ -347,124 +347,6 @@
         }
 
         /* COUPON MODAL */
-        .coupon-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 99999;
-            backdrop-filter: blur(4px);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .coupon-overlay.show {
-            display: flex;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .coupon-modal {
-            background: white;
-            border-radius: 24px;
-            padding: 50px 40px;
-            max-width: 480px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
-        }
-
-        .coupon-modal .emoji-big {
-            font-size: 3rem;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .coupon-modal h3 {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            color: var(--bg-sage-dark);
-            margin-bottom: 10px;
-        }
-
-        .coupon-modal p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 300;
-            margin-bottom: 25px;
-        }
-
-        .coupon-code-box {
-            background: rgba(173, 81, 59, 0.07);
-            border: 2px dashed var(--accent-terracotta);
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-
-        .coupon-code-box .label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .coupon-code-box .code {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--accent-terracotta);
-            letter-spacing: 4px;
-            line-height: 1;
-        }
-
-        .coupon-code-box .detail {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 8px;
-        }
-
-        .btn-wa-confirm {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 18px;
-            background: #25D366;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-family: var(--font-body);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-wa-confirm:hover {
-            background: #1da851;
-            transform: translateY(-2px);
-        }
-
-        .coupon-close {
-            position: absolute;
-            top: 18px;
-            right: 22px;
-            background: none;
-            border: none;
-            font-size: 1.4rem;
-            cursor: pointer;
-            color: var(--text-muted);
-        }
-
         /* --- BREVO EMAIL GATE --- */
         @font-face {
             font-display: block;
@@ -546,47 +428,14 @@
     <!-- BARRA DE URGENCIA (Minimax Style) -->
     <div
         style="background: #AD513B; color: white; text-align: center; padding: 10px; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;">
-        ⚡ Completá el test y desbloqueá tu precio personalizado — QUEDAN <span id="timer-top">23:59:59</span>
+        ⚡ PRECIO DE LANZAMIENTO: U$15 (ANTES U$39) — QUEDAN <span id="timer-top">23:59:59</span>
     </div>
 
     <header class="header">
         <a href="ayurveda-en-tu-mesa.html" class="logo">AYURVEDA EN TU MESA</a>
     </header>
 
-    <!-- COUPON MODAL (Minimax Optimized) -->
-    <div class="coupon-overlay" id="coupon-overlay">
-        <div class="coupon-modal" style="border: 3px solid var(--accent-terracotta);">
-            <button class="coupon-close" onclick="closeCouponModal()">&#x2715;</button>
-            <span class="emoji-big">🔒 REGALO DESBLOQUEADO</span>
-            <h3 style="color: #AD513B;">¡Solo para ti (por los próximos 30 min)!</h3>
-            <p style="font-weight: 600; color: #1A1A1A;">Has desbloqueado tu Precio Personalizado.</p>
-            <p>Completaste el test y activaste tu descuento exclusivo. Aprovechá antes de que expire:</p>
 
-            <div class="coupon-code-box" style="background: #fff; border: 2px solid #AD513B;">
-                <span class="label" style="color: #AD513B; font-weight: 700;">CUPÓN ACTIVO:</span>
-                <div class="code" style="font-size: 4rem;">SANA</div>
-                <div class="detail" style="font-size: 1rem; color: #1A1A1A;"><strong>Pagarás solo U$19</strong> en lugar
-                    de U$29.</div>
-            </div>
-
-            <div style="margin-bottom: 25px; padding: 10px; background: #FFF5F2; border-radius: 8px;">
-                <p style="color: #AD513B; margin-bottom: 0; font-weight: 700;">⏳ ESTA OFERTA SE ELIMINARÁ EN: <span
-                        id="timer-modal">29:59</span></p>
-            </div>
-
-            <a href="ayurveda-en-tu-mesa.html" class="btn-wa-confirm"
-                style="background: #AD513B; margin-bottom: 12px; text-decoration: none;">USAR MI CUPÓN Y COMPRAR
-                AHORA</a>
-            <a href="#" class="btn-wa-confirm" id="wa-confirm-btn" target="_blank"
-                style="background: #25D366; opacity: 1; text-decoration: none; color: white; display: flex; align-items: center; justify-content: center;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 10px;">
-                    <path
-                        d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232" />
-                </svg>
-                Compartir y guardar mi regalo
-            </a>
-        </div>
-    </div>
 
     <main class="container">
         <div class="card">
@@ -760,8 +609,6 @@
         document.addEventListener("DOMContentLoaded", () => {
             // Main offer timer (24h) - Shared with landing
             initPersistentTimer(86399, 'timer-top', 'ayurveda_offer_end_time');
-            // Coupon specific timer (30 min)
-            initPersistentTimer(1799, 'timer-modal', 'ayurveda_coupon_end_time', true);
         });
 
         // LA BASE DE DATOS DEL TEST
@@ -1059,9 +906,6 @@
         }
 
         const ENDPOINT_BREVO = "/api/brevo";
-        // 🔒 SEGURIDAD: API Key removida para el push público. 
-        // Cámbiala localmente por tu clave real de Brevo.
-        const BREVO_API_KEY = "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";
 
         async function continuarResultado() {
             const email = document.getElementById('userEmail').value;
@@ -1086,31 +930,21 @@
             const timeoutId = setTimeout(() => controller.abort(), 3500); // 3.5 segundos máximo
 
             try {
-                await fetch('https://api.brevo.com/v3/contacts', {
-                    method: 'POST',
-                    headers: {
-                        'accept': 'application/json',
-                        'api-key': BREVO_API_KEY,
-                        'content-type': 'application/json'
-                    },
+                const response = await fetch(ENDPOINT_BREVO, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
                     signal: controller.signal,
-                    body: JSON.stringify({
-                        email: email,
-                        attributes: { NOMBRE: nombre, DOSHA: doshaFormatted, ORIGEN: 'test_ayurveda' },
-                        listIds: [2],
-                        updateEnabled: true
-                    })
+                    body: JSON.stringify({ email: email, NOMBRE: nombre, DOSHA: doshaFormatted })
                 });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error("Error al registrar lead en Brevo:", errorData);
+                } else {
+                    console.log("Lead registrado exitosamente en Brevo");
+                }
             } catch (error) {
-                console.warn("Intento API bloqueado o lento, probando vía endpoint o saltando al resultado.");
-                // Intentamos una vez más al endpoint pero sin esperar demasiado
-                try {
-                    await fetch(ENDPOINT_BREVO, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ email: email, NOMBRE: nombre, DOSHA: doshaFormatted })
-                    });
-                } catch(e) { /* Falló silenciosamente para no trabar el UI */ }
+                console.warn("Hubo un error conectando al endpoint de Brevo.", error);
             } finally {
                 clearTimeout(timeoutId);
                 // Garantizamos que el usuario vea su resultado pase lo que pase con la API
@@ -1181,8 +1015,8 @@
                         </ul>
                     </div>
 
-                    <p style="color:#AD513B; font-weight:bold; margin-bottom: 5px;">✔ Precio desbloqueado después de tu test</p>
-                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$19</div>
+                    <p style="color:#AD513B; font-weight:bold; margin-bottom: 5px;">✔ OFERTA LANZAMIENTO — 60% OFF</p>
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$15</div>
                     
                     <a href="https://pay.hotmart.com/G105134849B?bid=1774830495450" class="btn-luxury" style="display: inline-block; padding: 18px 40px; background: var(--accent-terracotta); color: white; text-decoration: none; border-radius: 50px; font-weight: 700;">
                         Quiero equilibrar mi cuerpo →
@@ -1205,8 +1039,8 @@
                         </ul>
                     </div>
 
-                    <p style="color:#AD513B; font-weight:bold; margin-bottom: 5px;">✔ Precio desbloqueado después de tu test</p>
-                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$19</div>
+                    <p style="color:#AD513B; font-weight:bold; margin-bottom: 5px;">✔ OFERTA LANZAMIENTO — 60% OFF</p>
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$15</div>
                     
                     <a href="https://pay.hotmart.com/G105134849B?bid=1774830495450" class="btn-luxury" style="display: inline-block; padding: 18px 40px; background: var(--accent-terracotta); color: white; text-decoration: none; border-radius: 50px; font-weight: 700;">
                         Quiero equilibrar mi energía →
@@ -1229,8 +1063,8 @@
                         </ul>
                     </div>
 
-                    <p style="color:#AD513B; font-weight:bold; margin-bottom: 5px;">✔ Precio desbloqueado después de tu test</p>
-                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$19</div>
+                    <p style="color:#AD513B; font-weight:bold; margin-bottom: 5px;">✔ OFERTA LANZAMIENTO — 60% OFF</p>
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$15</div>
                     
                     <a href="https://pay.hotmart.com/G105134849B?bid=1774830495450" class="btn-luxury" style="display: inline-block; padding: 18px 40px; background: var(--accent-terracotta); color: white; text-decoration: none; border-radius: 50px; font-weight: 700;">
                         Quiero activar mi metabolismo →
@@ -1243,10 +1077,10 @@
                 bloqueVenta = `
                 <div style="margin-top:40px; padding: 30px; background: var(--bg-sage); border-radius: 20px; border: 2px solid var(--accent-gold); text-align: center;">
                     <h3 style="color: var(--text-dark); margin-bottom: 10px;">Tu plan personalizado está listo</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 20px;">Accedé ahora con tu precio desbloqueado por completar el test:</p>
-                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$19</div>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">Accedé ahora con el descuento de lanzamiento:</p>
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$15</div>
                     <a href="https://pay.hotmart.com/G105134849B?bid=1774830495450" class="btn-luxury" style="display: inline-block; padding: 18px 40px; background: var(--accent-terracotta); color: white; text-decoration: none; border-radius: 50px; font-weight: 700;">
-                        ¡ACCEDER AHORA CON DESCUENTO! →
+                        ¡ACCEDER AHORA AL PRECIO DE LANZAMIENTO! →
                     </a>
                     <p style="font-size:12px; opacity:0.7; margin-top: 15px;">Disponible hoy con acceso inmediato</p>
                 </div>
@@ -1270,15 +1104,10 @@
             }
         }
 
-        function showCouponModal() {
-            document.getElementById('coupon-overlay').classList.add('show');
-        }
-
         async function shareWhatsApp() {
             const doshaResult = document.getElementById('result-title').innerText;
             const shareText = `¡Hola!\n\nAcabo de hacer un breve test de Ayurveda, y me salió que mi tipo de metabolismo es ${doshaResult}.\n\nLa verdad está súper interesante, porque te explica por qué a veces, por más que comas sano, igual terminas sintiéndote mal o sin energía.\n\nTe lo comparto para que lo hagas tú también a ver qué te sale. No tardas nada:\n\n${window.location.href}`;
             const whatsAppUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
-            const waConfirmBtn = document.getElementById('wa-confirm-btn');
 
             // Si el navegador soporta Native Share (Mobile)
             if (navigator.share && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
@@ -1288,35 +1117,19 @@
                         text: shareText,
                         url: window.location.href.split('?')[0]
                     });
-                    // Si compartió con éxito, mostramos el cupón directo
-                    showCouponModal();
                 } catch (err) {
-                    // Si canceló o falló (pero no por cerrar el sheet), abrimos el modal de respaldo
+                    // Si canceló o falló, podemos abrir WhatsApp directamente como respaldo
                     if (err.name !== 'AbortError') {
-                        waConfirmBtn.href = whatsAppUrl;
-                        showCouponModal();
+                        window.open(whatsAppUrl, '_blank');
                     }
                 }
             } else {
                 // PC o navegadores sin Share API (Desktop)
-                waConfirmBtn.href = whatsAppUrl;
-                showCouponModal();
+                window.open(whatsAppUrl, '_blank');
             }
-
-            // Aseguramos que al hacer click en el botón del modal se cierre el modal
-            waConfirmBtn.onclick = function() {
-                setTimeout(closeCouponModal, 500);
-            };
         }
 
-        function closeCouponModal() {
-            document.getElementById('coupon-overlay').classList.remove('show');
-        }
 
-        // Cerrar al hacer click fuera del modal
-        document.getElementById('coupon-overlay').addEventListener('click', function (e) {
-            if (e.target === this) closeCouponModal();
-        });
     </script>
 </body>
 
