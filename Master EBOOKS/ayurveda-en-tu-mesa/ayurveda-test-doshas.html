@@ -347,124 +347,6 @@
         }
 
         /* COUPON MODAL */
-        .coupon-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 99999;
-            backdrop-filter: blur(4px);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .coupon-overlay.show {
-            display: flex;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .coupon-modal {
-            background: white;
-            border-radius: 24px;
-            padding: 50px 40px;
-            max-width: 480px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2);
-        }
-
-        .coupon-modal .emoji-big {
-            font-size: 3rem;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .coupon-modal h3 {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            color: var(--bg-sage-dark);
-            margin-bottom: 10px;
-        }
-
-        .coupon-modal p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            font-weight: 300;
-            margin-bottom: 25px;
-        }
-
-        .coupon-code-box {
-            background: rgba(173, 81, 59, 0.07);
-            border: 2px dashed var(--accent-terracotta);
-            border-radius: 14px;
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-
-        .coupon-code-box .label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .coupon-code-box .code {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            font-weight: 700;
-            color: var(--accent-terracotta);
-            letter-spacing: 4px;
-            line-height: 1;
-        }
-
-        .coupon-code-box .detail {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 8px;
-        }
-
-        .btn-wa-confirm {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 18px;
-            background: #25D366;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-family: var(--font-body);
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-wa-confirm:hover {
-            background: #1da851;
-            transform: translateY(-2px);
-        }
-
-        .coupon-close {
-            position: absolute;
-            top: 18px;
-            right: 22px;
-            background: none;
-            border: none;
-            font-size: 1.4rem;
-            cursor: pointer;
-            color: var(--text-muted);
-        }
-
         /* --- BREVO EMAIL GATE --- */
         @font-face {
             font-display: block;
@@ -546,7 +428,7 @@
     <!-- BARRA DE URGENCIA (Minimax Style) -->
     <div
         style="background: #AD513B; color: white; text-align: center; padding: 10px; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase;">
-        ⚡ OFERTA DE LANZAMIENTO: 60% DE DESCUENTO DISPONIBLE HOY — QUEDAN <span id="timer-top">23:59:59</span>
+        ⚡ PRECIO DE LANZAMIENTO: U$15 (ANTES U$39) — QUEDAN <span id="timer-top">23:59:59</span>
     </div>
 
     <header class="header">
@@ -727,8 +609,6 @@
         document.addEventListener("DOMContentLoaded", () => {
             // Main offer timer (24h) - Shared with landing
             initPersistentTimer(86399, 'timer-top', 'ayurveda_offer_end_time');
-            // Coupon specific timer (30 min)
-            initPersistentTimer(1799, 'timer-modal', 'ayurveda_coupon_end_time', true);
         });
 
         // LA BASE DE DATOS DEL TEST
@@ -1198,7 +1078,7 @@
                 <div style="margin-top:40px; padding: 30px; background: var(--bg-sage); border-radius: 20px; border: 2px solid var(--accent-gold); text-align: center;">
                     <h3 style="color: var(--text-dark); margin-bottom: 10px;">Tu plan personalizado está listo</h3>
                     <p style="color: var(--text-muted); margin-bottom: 20px;">Accedé ahora con el descuento de lanzamiento:</p>
-                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$19</div>
+                    <div style="font-size: 3rem; font-weight: 700; color: var(--accent-terracotta); margin-bottom: 20px;">U$15</div>
                     <a href="https://pay.hotmart.com/G105134849B?bid=1774830495450" class="btn-luxury" style="display: inline-block; padding: 18px 40px; background: var(--accent-terracotta); color: white; text-decoration: none; border-radius: 50px; font-weight: 700;">
                         ¡ACCEDER AHORA AL PRECIO DE LANZAMIENTO! →
                     </a>
@@ -1222,10 +1102,6 @@
             } else {
                 alert("Funcionalidad a conectar con tu API de Supabase en producción para generar un link único de perfiles. ¡Por ahora, tu resultado es: " + doshaResult + "!");
             }
-        }
-
-        function showCouponModal() {
-            document.getElementById('coupon-overlay').classList.add('show');
         }
 
         async function shareWhatsApp() {
